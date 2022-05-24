@@ -158,6 +158,7 @@
       </Dialog>
     </TransitionRoot>
 
+
     <header class="relative bg-white">
       <!-- <p
         class="bg-indigo-600 h-10 flex items-center justify-center text-sm font-medium text-white px-4 sm:px-6 lg:px-8"
@@ -174,7 +175,7 @@
               @click="open = true"
             >
               <span class="sr-only">Open menu</span>
-              <MenuIcon class="h-8 w-8" aria-hidden="true" />
+              <MenuIcon class="h-6 w-6" aria-hidden="true" />
             </button>
 
             
@@ -322,7 +323,7 @@
                   <span class="sr-only">Search</span>
                   <SearchIcon
                     @click="opensearch = true"
-                    class="w-7 h-7"
+                    class="w-6 h-6"
                     aria-hidden="true"
                   />
                 </div>
@@ -340,17 +341,17 @@
               </div> -->
 
               <div class="mx-2 flow-root pt-1 lg:ml-6">
-                <div  class="group ">
+                <NuxtLink to="/users">
                   <UserIcon
-                    class="flex-shrink-0 h-7 w-7"
+                    class="flex-shrink-0 h-6 w-6"
                     aria-hidden="true"
                   />
-                </div>
+                </NuxtLink>
               </div>
 
               <!-- Logo -->
               <div class="flex w-full justify-end ml-0">
-                <a href="#">
+                <a href="/">
                   <span class="sr-only">Workflow</span>
                   <img
                     class="h-8 w-auto"
