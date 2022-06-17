@@ -18,8 +18,13 @@
     "@nuxtjs/tailwindcss": "^5.0.4",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.1",
+    "@vueform/slider": "^2.0.10",
     "flowbite": "^1.4.7",
+    "lightgallery": "^2.4.0",
     "swiper": "^8.1.5",
-    "tw-elements": "^1.0.0-alpha12"
+    "tw-elements": "^1.0.0-alpha12",
+    "vue-light-gallery": "^1.0.1",
+    "vue-money-format": "^1.2.4",
+    "vue3-slider": "^1.7.0"
   }
 }

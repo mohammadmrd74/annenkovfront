@@ -28,7 +28,7 @@
             <DialogPanel
               class="relative max-w-[75%] w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
             >
-              <div class="px-4 pt-5 pb-2 flex">
+              <!-- <div class="px-4 pt-5 pb-2 flex">
                 <button
                   type="button"
                   class="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
@@ -37,60 +37,55 @@
                   <span class="sr-only">Close menu</span>
                   <XIcon class="h-6 w-6" aria-hidden="true" />
                 </button>
-              </div>
+              </div> -->
 
               <!-- Links -->
-              <div
-                v-for="category in navigation.categories"
-                :key="category.name"
-                class="pt-10 pb-8 px-4 space-y-10"
-              >
-                <strong class="text-xl">آننکوف</strong>
-                <div
+
+              <strong class="text-3xl px-6 mt-5">ANNENKOV STORE</strong>
+              <!-- <div
                   class="aspect-w-2 max-w-sm w-sm aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75"
                 >
                   <img
                     src="~/assets/logo.jpg"
                     class="object-center object-cover"
                   />
-                </div>
-                <div v-for="section in category.sections" :key="section.name">
-                  <p
-                    :id="`${category.id}-${section.id}-heading-mobile`"
-                    class="font-medium text-gray-900"
+                </div> -->
+
+              <div v-for="section in landing.data.menus.main" :key="section.mainId" class="p-6">
+                <p
+                  :id="`${section.mainId}-heading-mobile`"
+                  class="font-medium text-gray-900"
+                >
+                  {{ section.mainType }}
+                </p>
+                <ul
+                  role="list"
+                  :aria-labelledby="
+                    `${section.mainType}-heading-mobile`
+                  "
+                  class="mt-6 flex flex-col space-y-6"
+                >
+                  <li
+                    v-for="item in section.categories"
+                    :key="item.categoryId"
+                    class="flow-root"
                   >
-                    {{ section.name }}
-                  </p>
-                  <ul
-                    role="list"
-                    :aria-labelledby="
-                      `${category.id}-${section.id}-heading-mobile`
-                    "
-                    class="mt-6 flex flex-col space-y-6"
-                  >
-                    <li
-                      v-for="item in section.items"
-                      :key="item.name"
-                      class="flow-root"
-                    >
-                      <a :href="item.href" class="-m-2 p-2 block text-gray-500">
-                        {{ item.name }}
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                    <a  class="-m-2 p-2 block text-gray-500">
+                      {{ item.categoryTitle }}
+                    </a>
+                  </li>
+                </ul>
               </div>
 
               <div class="border-t border-gray-200 py-6 px-4 space-y-6">
                 <div
-                  v-for="page in navigation.pages"
-                  :key="page.name"
+                  v-for="brand in landing.data.menus.brands"
+                  :key="brand.brandId"
                   class="flow-root"
                 >
                   <a
-                    :href="page.href"
                     class="-m-2 p-2 block font-medium text-gray-900"
-                    >{{ page.name }}</a
+                    >{{ brand.brandNameEn }}</a
                   >
                 </div>
               </div>
@@ -158,7 +153,6 @@
       </Dialog>
     </TransitionRoot>
 
-
     <header class="relative bg-white">
       <!-- <p
         class="bg-indigo-600 h-10 flex items-center justify-center text-sm font-medium text-white px-4 sm:px-6 lg:px-8"
@@ -177,8 +171,6 @@
               <span class="sr-only">Open menu</span>
               <MenuIcon class="h-6 w-6" aria-hidden="true" />
             </button>
-
-            
 
             <!-- Flyout menus -->
             <PopoverGroup class="hidden lg:ml-8 lg:block lg:self-stretch">
@@ -300,7 +292,7 @@
               </div>
             </PopoverGroup>
 
-            <div class="flex  w-full items-center">
+            <div class="flex w-full items-center">
               <div
                 class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"
               >
@@ -342,10 +334,7 @@
 
               <div class="mx-2 flow-root pt-1 lg:ml-6">
                 <NuxtLink to="/users">
-                  <UserIcon
-                    class="flex-shrink-0 h-6 w-6"
-                    aria-hidden="true"
-                  />
+                  <UserIcon class="flex-shrink-0 h-6 w-6" aria-hidden="true" />
                 </NuxtLink>
               </div>
 
@@ -383,6 +372,9 @@ import {
   TabPanel,
   TabPanels,
   TransitionChild,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
   TransitionRoot
 } from '@headlessui/vue'
 import {
@@ -439,10 +431,82 @@ const navigation = {
     }
   ],
   pages: [
-    { name: 'دربارمه ما', href: '#' },
+    { name: 'درباره  ما', href: '#' },
     { name: 'تماس با ما', href: '#' }
   ]
 }
+
+import {
+  ChevronDownIcon,
+  FilterIcon,
+  MinusSmIcon,
+  PlusSmIcon,
+  ViewGridIcon
+} from '@heroicons/vue/solid'
+
+const sortOptions = [
+  { name: 'Most Popular', href: '#', current: true },
+  { name: 'Best Rating', href: '#', current: false },
+  { name: 'Newest', href: '#', current: false },
+  { name: 'Price: Low to High', href: '#', current: false },
+  { name: 'Price: High to Low', href: '#', current: false }
+]
+const subCategories = [
+  { name: 'Totes', href: '#' },
+  { name: 'Backpacks', href: '#' },
+  { name: 'Travel Bags', href: '#' },
+  { name: 'Hip Bags', href: '#' },
+  { name: 'Laptop Sleeves', href: '#' }
+]
+const filters = [
+  {
+    id: 'color',
+    name: 'Color',
+    options: [
+      { value: 'white', label: 'White', checked: false },
+      { value: 'beige', label: 'Beige', checked: false },
+      { value: 'blue', label: 'Blue', checked: true },
+      { value: 'brown', label: 'Brown', checked: false },
+      { value: 'green', label: 'Green', checked: false },
+      { value: 'purple', label: 'Purple', checked: false }
+    ]
+  },
+  {
+    id: 'category',
+    name: 'Category',
+    options: [
+      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
+      { value: 'sale', label: 'Sale', checked: false },
+      { value: 'travel', label: 'Travel', checked: true },
+      { value: 'organization', label: 'Organization', checked: false },
+      { value: 'accessories', label: 'Accessories', checked: false }
+    ]
+  },
+  {
+    id: 'size',
+    name: 'Size',
+    options: [
+      { value: '2l', label: '2L', checked: false },
+      { value: '6l', label: '6L', checked: false },
+      { value: '12l', label: '12L', checked: false },
+      { value: '18l', label: '18L', checked: false },
+      { value: '20l', label: '20L', checked: false },
+      { value: '40l', label: '40L', checked: true }
+    ]
+  }
+]
+
+const { data: landing } = await useAsyncData('landing', () =>
+  $fetch(useRuntimeConfig().public.BASE_URL + '/landing')
+)
+// const { data } = await useAsyncData('filter', () =>
+//       $fetch(useRuntimeConfig().public.BASE_URL + '/landing')
+// )
+
+onMounted(() => {
+  // console.log(useRuntimeConfig().public.BASE_URL)
+  console.log(landing._rawValue.data)
+})
 
 const open = ref(false)
 const opensearch = ref(false)

@@ -2,6 +2,7 @@
   <div>
     <Carousel></Carousel>
     <section class="px-3 mt-10">
+
       <div class="swiperTitle">
         فروش ویژه
       </div>
@@ -14,8 +15,8 @@
         @slideChange="onSlideChange"
       >
         <swiper-slide
-          v-for="product in products"
-          :key="product.id"
+          v-for="product in landingItems.data.inSale"
+          :key="product.productId"
           :href="product.href"
           class="group py-2"
         >
@@ -23,16 +24,19 @@
             class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
           >
             <img
-              :src="product.imageSrc"
-              :alt="product.imageAlt"
+              :src="product.image"
+              :alt="product.title"
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-          <h3 class="mt-4 text-sm text-gray-700">
-            {{ product.name }}
+          <h2 class="mt-4 text-sm font-semibold text-gray-700">
+            {{ product.title }}
+          </h2>
+          <h3 class="mt-1 text-sm  text-gray-700">
+            {{ product.brand }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }}
+            {{ product.price }}  تومان 
           </p>
         </swiper-slide>
       </swiper>
@@ -40,7 +44,7 @@
 
     <section class="px-3 mt-10">
       <div class="swiperTitle">
-        در حراج
+        آخرین محصولات
       </div>
       <swiper
         :modules="modules"
@@ -51,8 +55,8 @@
         @slideChange="onSlideChange"
       >
         <swiper-slide
-          v-for="product in products"
-          :key="product.id"
+          v-for="product in landingItems.data.newProducts"
+          :key="product.productId"
           :href="product.href"
           class="group py-2"
         >
@@ -60,16 +64,19 @@
             class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
           >
             <img
-              :src="product.imageSrc"
-              :alt="product.imageAlt"
+              :src="product.image"
+              :alt="product.title"
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-          <h3 class="mt-4 text-sm text-gray-700">
-            {{ product.name }}
+          <h2 class="mt-4  font-semibold text-gray-700">
+            {{ product.title }}
+          </h2>
+          <h3 class="mt-1 text-sm font-semibold text-gray-700">
+            {{ product.brand }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }}
+            {{ product.price }}  تومان
           </p>
         </swiper-slide>
       </swiper>
@@ -98,7 +105,7 @@ export default {
     SwiperSlide,
     Carousel
   },
-  setup () {
+  async setup () {
     const products = [
       {
         id: 1,
@@ -142,6 +149,14 @@ export default {
       }
       // More products...
     ]
+
+    onMounted(() => {
+      // console.log(useRuntimeConfig().public.BASE_URL)
+      console.log(landingItems)
+    })
+    const { data: landingItems } = await useAsyncData('landingItems', () =>
+      $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
+    )
     const onSwiper = swiper => {
       console.log(swiper)
     }
@@ -149,6 +164,7 @@ export default {
       console.log('slide change')
     }
     return {
+      landingItems,
       products,
       pagination: {
         clickable: true,
