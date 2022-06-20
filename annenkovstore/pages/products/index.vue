@@ -33,7 +33,7 @@
                 class="flex text-base text-left transform transition w-full md:max-w-2xl md:px-4 md:my-8 lg:max-w-4xl"
               >
                 <div
-                  class="w-full relative bg-white px-4 pb-16 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8"
+                  class="w-full relative bg-white px-4 filterdialog pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8"
                 >
                   <button
                     type="button"
@@ -53,7 +53,7 @@
                       {{ currenyConvert(min) }} تومان
                     </div>
                   </div>
-                  <div style="direction: ltr" class="mt-2">
+                  <div style="direction: ltr" class="mt-4 mb-2 px-8">
                     <Slider
                       @update="changeCost"
                       direction="ltr"
@@ -65,7 +65,6 @@
                     />
                   </div>
 
-                 
                   <!-- <vue3-slider  class="my-3" :min="filters.data.filters[0].minprice" :max="filters.data.filters[0].maxprice" v-model="price" color="#FB278D" track-color="#FEFEFE" />   -->
                   <div class="accordion w-full mt-6" id="brands">
                     <div class="accordion-item bg-white border border-gray-200">
@@ -103,7 +102,7 @@
                         data-bs-parent="#sizecollapse"
                       >
                         <div
-                          v-for="size in filters.data.filters[0].sizes"
+                          v-for="(size, i) in filters.data.filters[0].sizes"
                           :key="size.id"
                           class="accordion-body py-4 px-5"
                         >
@@ -111,7 +110,7 @@
                             <input
                               class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                               type="checkbox"
-                              value=""
+                              v-model="sizes[i]"
                               id="flexCheckChecked"
                             />
                             <label
@@ -163,7 +162,7 @@
                         data-bs-parent="#brandcollapse"
                       >
                         <div
-                          v-for="brand in filters.data.filters[0].brands"
+                          v-for="(brand, i) in filters.data.filters[0].brands"
                           :key="brand.id"
                           class="accordion-body py-4 px-5"
                         >
@@ -171,6 +170,7 @@
                             <input
                               class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                               type="checkbox"
+                              v-model="brands[i]"
                               value=""
                               id="flexCheckChecked"
                             />
@@ -221,7 +221,7 @@
                         data-bs-parent="#brandcollapse"
                       >
                         <div
-                          v-for="typee in filters.data.filters[0].types"
+                          v-for="(typee, i) in filters.data.filters[0].types"
                           :key="typee.id"
                           class="accordion-body py-4 px-5"
                         >
@@ -229,7 +229,7 @@
                             <input
                               class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                               type="checkbox"
-                              value=""
+                              v-model="types[i]"
                               id="flexCheckChecked"
                             />
                             <label
@@ -280,7 +280,7 @@
                         data-bs-parent="#brandcollapse"
                       >
                         <div
-                          v-for="color in filters.data.filters[0].colors"
+                          v-for="(color, i) in filters.data.filters[0].colors"
                           :key="color.id"
                           class="accordion-body py-4 px-5"
                         >
@@ -288,7 +288,7 @@
                             <input
                               class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                               type="checkbox"
-                              value=""
+                              v-model="colors[i]"
                               id="flexCheckChecked"
                             />
                             <label
@@ -339,7 +339,8 @@
                         data-bs-parent="#brandcollapse"
                       >
                         <div
-                          v-for="color in filters.data.filters[0].secondColors"
+                          v-for="(color, i) in filters.data.filters[0]
+                            .secondColors"
                           :key="color.id"
                           class="accordion-body py-4 px-5"
                         >
@@ -347,7 +348,7 @@
                             <input
                               class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
                               type="checkbox"
-                              value=""
+                              v-model="scolors[i]"
                               id="flexCheckChecked"
                             />
                             <label
@@ -363,6 +364,7 @@
                   </div>
                 </div>
                 <button
+                  @click="filterItems"
                   class="fixed inset-x-0 mx-10 h-12 bottom-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
                   فیلتر
@@ -378,37 +380,90 @@
     >
       <div class="flex justify-between items-center my-3">
         <h2 class=" text-xl font-bold">مردانه</h2>
-        <button class="flex bg-gray-100 p-2 rounded-md" @click="open = true">
-          فیلتر
-          <FilterIcon class="h-6 w-6" aria-hidden="true" />
-        </button>
+        <div class="flex">
+          <Menu as="div" class="relative inline-block  mx-3 text-left">
+            <div>
+              <MenuButton
+                class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+              >
+                مرتب سازی
+                <ChevronDownIcon
+                  class="-mr-1 ml-2 h-5 w-5"
+                  aria-hidden="true"
+                />
+              </MenuButton>
+            </div>
+
+            <transition
+              enter-active-class="transition ease-out duration-100"
+              enter-from-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="transition ease-in duration-75"
+              leave-from-class="transform opacity-100 scale-100"
+              leave-to-class="transform opacity-0 scale-95"
+            >
+              <MenuItems
+                class="origin-top-right absolute right-0 mt-2 w-40 z-10 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+              >
+                <div class="py-1">
+                  <MenuItem v-slot="{ active }">
+                    <div
+                      @click="sortItems('desc')"
+                      :class="[
+                        orderDir == 'desc' ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm'
+                      ]"
+                      >گران ترین</div
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <div
+                      @click="sortItems('asc')"
+                      :class="[
+                        orderDir == 'asc' ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
+                        'block px-4 py-2 text-sm'
+                      ]"
+                      >ارزان ترین</div
+                    >
+                  </MenuItem>
+                </div>
+              </MenuItems>
+            </transition>
+          </Menu>
+          <button class="flex bg-gray-100 p-2 rounded-md" @click="open = true">
+            فیلتر
+            <FilterIcon class="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
       </div>
 
       <div
         class="grid grid-cols-2 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
       >
-        <a
-          v-for="product in products"
-          :key="product.id"
-          :href="product.href"
+        <nuxt-link
+          v-for="product in allproducts.data.products"
+          :key="product.productId"
           class="group"
+          :to="`/products/${product.productId}/${product.title.replace(/\//g, '-').replace(/ /g, '-')}`"
         >
           <div
+            v-if="product.images && product.images[0]"
             class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
           >
+            <!-- {{product.images}} -->
             <img
-              :src="product.imageSrc"
-              :alt="product.imageAlt"
+              :src="product.images[0]"
+              :alt="product.title"
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
           <h3 class="mt-4 text-sm text-gray-700">
-            {{ product.name }}
+            {{ product.title }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }}
+            {{ currenyConvert(product.price) }} تومان
           </p>
-        </a>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -416,6 +471,8 @@
 
 <script setup>
 // import 'tw-elements'
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/solid'
 import { FilterIcon } from '@heroicons/vue/outline'
 import { ref } from 'vue'
 import {
@@ -456,30 +513,45 @@ const product = {
     { name: 'XXXL', inStock: false }
   ]
 }
-const min = ref(0);
-const max = ref(100);
+const min = ref(0)
+const max = ref(100)
+const open = ref(false)
 
-const price = ref([0, 100000])
+const brands = ref([])
+const brandsToFilter = ref([])
+const sizesToFilter = ref([])
+const sizes = ref([])
+const typesToFilter = ref([])
+const types = ref([])
+const colorsToFilter = ref([])
+const colors = ref([])
+const scolorsToFilter = ref([])
+const scolors = ref([])
+const orderDir = ref('desc')
 
-const { data: allproducts } = await useAsyncData('allproducts', () =>
-  $fetch(useRuntimeConfig().public.BASE_URL + '/products', {
-    method: 'POST',
-    body: {
-      brands: [],
-      sizes: [],
-      colors: [],
-      secondColors: [],
-      types: [],
-      main: [],
-      search: '',
-      showDiscounts: false,
-      page: 1,
-      orderBy: 'price',
-      orderDir: 'desc',
-      minprice: '',
-      maxprice: ''
-    }
-  })
+const price = ref([0, 0])
+
+const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
+  'allproducts',
+  () =>
+    $fetch(useRuntimeConfig().public.BASE_URL + '/products', {
+      method: 'POST',
+      body: {
+        brands: brandsToFilter.value,
+        sizes: sizesToFilter.value,
+        colors: colorsToFilter.value,
+        secondColors: scolorsToFilter.value,
+        types: typesToFilter.value,
+        main: [],
+        search: '',
+        showDiscounts: false,
+        page: 1,
+        orderBy: 'price',
+        orderDir: orderDir.value,
+        minprice: price.value[0],
+        maxprice: price.value[1]
+      }
+    })
 )
 
 const { data: filters } = await useAsyncData('filters', () =>
@@ -488,99 +560,62 @@ const { data: filters } = await useAsyncData('filters', () =>
 
 onMounted(() => {
   // console.log(useRuntimeConfig().public.BASE_URL)
-  console.log(filters._rawValue.data.filters[0].minprice)
-  console.log(filters._rawValue.data.filters[0].maxprice)
-  min.value = filters._rawValue.data.filters[0].minprice;
-  max.value = filters._rawValue.data.filters[0].maxprice
+  console.log(allproducts)
+  min.value = filters.value.data.filters[0].minprice
+  max.value = filters.value.data.filters[0].maxprice
   price.value = [min.value, max.value]
 })
 
-
-function currenyConvert(value) {
-if (typeof value !== "number") {
-        return value;
-    }
-    return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-}
-function changeCost(value) {
-  min.value = value[0];
-  max.value = value[1];
-}
-const open = ref(false)
-const selectedColor = ref(product.colors[0])
-const selectedSize = ref(product.sizes[2])
-const products = [
-  {
-    id: 1,
-    name: 'Earthen Bottle',
-    href: '#',
-    price: '$48',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-    imageAlt:
-      'Tall slender porcelain bottle with natural clay textured body and cork stopper.'
-  },
-  {
-    id: 2,
-    name: 'Nomad Tumbler',
-    href: '#',
-    price: '$35',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
-    imageAlt:
-      'Olive drab green insulated bottle with flared screw lid and flat top.'
-  },
-  {
-    id: 3,
-    name: 'Focus Paper Refill',
-    href: '#',
-    price: '$89',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
-    imageAlt:
-      'Person using a pen to cross a task off a productivity paper card.'
-  },
-  {
-    id: 4,
-    name: 'Machined Mechanical Pencil',
-    href: '#',
-    price: '$35',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
-    imageAlt:
-      'Hand holding black machined steel mechanical pencil with brass tip and top.'
-  },
-  {
-    id: 5,
-    name: 'Nomad Tumbler',
-    href: '#',
-    price: '$35',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
-    imageAlt:
-      'Olive drab green insulated bottle with flared screw lid and flat top.'
-  },
-  {
-    id: 6,
-    name: 'Focus Paper Refill',
-    href: '#',
-    price: '$89',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
-    imageAlt:
-      'Person using a pen to cross a task off a productivity paper card.'
-  },
-  {
-    id: 7,
-    name: 'Machined Mechanical Pencil',
-    href: '#',
-    price: '$35',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
-    imageAlt:
-      'Hand holding black machined steel mechanical pencil with brass tip and top.'
+function currenyConvert (value) {
+  if (typeof value !== 'number') {
+    return value
   }
-]
+  return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+}
+function changeCost (value) {
+  min.value = value[0]
+  max.value = value[1]
+}
+
+function sortItems(sort) {
+  orderDir.value = sort
+  refreshProducts();
+}
+
+function filterItems () {
+  brandsToFilter.value = filters.value.data.filters[0].brands
+    .filter((br, i) => {
+      if (brands.value[i]) return br
+    })
+    .map(bri => bri.id)
+
+  sizesToFilter.value = filters.value.data.filters[0].sizes
+    .filter((br, i) => {
+      if (sizes.value[i]) return br
+    })
+    .map(bri => bri.id)
+
+  typesToFilter.value = filters.value.data.filters[0].types
+    .filter((br, i) => {
+      if (types.value[i]) return br
+    })
+    .map(bri => bri.id)
+
+  colorsToFilter.value = filters.value.data.filters[0].colors
+    .filter((br, i) => {
+      if (colors.value[i]) return br
+    })
+    .map(bri => bri.id)
+
+  scolorsToFilter.value = filters.value.data.filters[0].secondColors
+    .filter((br, i) => {
+      if (scolors.value[i]) return br
+    })
+    .map(bri => bri.id)
+
+  refreshProducts()
+  open.value = false
+}
 </script>
 
 <style src="@vueform/slider/themes/default.css"></style>
@@ -589,5 +624,8 @@ const products = [
 .accordion-button:after {
   margin-right: auto;
   margin-left: 0;
+}
+.filterdialog {
+  padding-bottom: 110px;
 }
 </style>
