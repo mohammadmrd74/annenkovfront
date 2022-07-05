@@ -2,7 +2,6 @@
   <div>
     <Carousel></Carousel>
     <section class="px-3 mt-10">
-
       <div class="swiperTitle">
         فروش ویژه
       </div>
@@ -11,13 +10,18 @@
         :slides-per-view="2"
         :space-between="30"
         :pagination="pagination"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
       >
         <swiper-slide
           v-for="product in landingItems.data.inSale"
           :key="product.productId"
-          :href="product.href"
+          tag="div"
+          @click="
+            openUrl(
+              `/products/${product.productId}/${product.title
+                .replace(/\//g, '-')
+                .replace(/ /g, '-')}`
+            )
+          "
           class="group py-2"
         >
           <div
@@ -36,7 +40,7 @@
             {{ product.brand }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }}  تومان 
+            {{ product.price }} تومان
           </p>
         </swiper-slide>
       </swiper>
@@ -51,13 +55,18 @@
         :slides-per-view="2"
         :space-between="30"
         :pagination="pagination"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
       >
         <swiper-slide
-          v-for="product in landingItems.data.newProducts"
-          :key="product.productId"
-          :href="product.href"
+          v-for="(product, i) in landingItems.data.newProducts"
+          :key="i"
+          @click="
+            openUrl(
+              `/products/${product.productId}/${product.title
+                .replace(/\//g, '-')
+                .replace(/ /g, '-')}`
+            )
+          "
+          tag="div"
           class="group py-2"
         >
           <div
@@ -76,7 +85,7 @@
             {{ product.brand }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }}  تومان
+            {{ product.price }} تومان
           </p>
         </swiper-slide>
       </swiper>
@@ -88,6 +97,8 @@ import Carousel from '@/components/main/carousel.vue'
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
+
+
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -106,54 +117,7 @@ export default {
     Carousel
   },
   async setup () {
-    const products = [
-      {
-        id: 1,
-        name: 'Earthen Bottle',
-        href: '#',
-        price: '$48',
-        imageSrc:
-          'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg',
-        imageAlt:
-          'Tall slender porcelain bottle with natural clay textured body and cork stopper.'
-      },
-      {
-        id: 2,
-        name: 'Nomad Tumbler',
-        href: '#',
-        price: '$35',
-        imageSrc:
-          'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg',
-        imageAlt:
-          'Olive drab green insulated bottle with flared screw lid and flat top.'
-      },
-      {
-        id: 3,
-        name: 'Focus Paper Refill',
-        href: '#',
-        price: '$89',
-        imageSrc:
-          'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg',
-        imageAlt:
-          'Person using a pen to cross a task off a productivity paper card.'
-      },
-      {
-        id: 4,
-        name: 'Machined Mechanical Pencil',
-        href: '#',
-        price: '$35',
-        imageSrc:
-          'https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg',
-        imageAlt:
-          'Hand holding black machined steel mechanical pencil with brass tip and top.'
-      }
-      // More products...
-    ]
-
-    onMounted(() => {
-      // console.log(useRuntimeConfig().public.BASE_URL)
-      console.log(landingItems)
-    })
+    
     const { data: landingItems } = await useAsyncData('landingItems', () =>
       $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
     )
@@ -163,16 +127,23 @@ export default {
     const onSlideChange = () => {
       console.log('slide change')
     }
+    const openUrl = url => {
+      Object.assign(document.createElement('a'), {
+        target: '_blank',
+        rel: 'noopener noreferrer',
+        href: url
+      }).click()
+    }
+
     return {
       landingItems,
-      products,
       pagination: {
         clickable: true,
         renderBullet: function (index, className) {
-          console.log(className)
           return '<span class="' + className + '"></span>'
         }
       },
+      openUrl,
       onSwiper,
       onSlideChange,
       modules: [Navigation, Pagination, Scrollbar, A11y]

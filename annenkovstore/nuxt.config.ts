@@ -4,7 +4,7 @@ import { defineNuxtConfig } from 'nuxt'
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   
-  buildModules:['@nuxtjs/tailwindcss'],
+  buildModules:['@nuxtjs/tailwindcss', '@pinia/nuxt'],
   
   css: ["@/assets/sass/_global.scss"],
 

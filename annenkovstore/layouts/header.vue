@@ -51,7 +51,11 @@
                   />
                 </div> -->
 
-              <div v-for="section in landing.data.menus.main" :key="section.mainId" class="p-6">
+              <div
+                v-for="section in landing.data.menus.main"
+                :key="section.mainId"
+                class="p-6"
+              >
                 <p
                   :id="`${section.mainId}-heading-mobile`"
                   class="font-medium text-gray-900"
@@ -60,9 +64,7 @@
                 </p>
                 <ul
                   role="list"
-                  :aria-labelledby="
-                    `${section.mainType}-heading-mobile`
-                  "
+                  :aria-labelledby="`${section.mainType}-heading-mobile`"
                   class="mt-6 flex flex-col space-y-6"
                 >
                   <li
@@ -70,7 +72,7 @@
                     :key="item.categoryId"
                     class="flow-root"
                   >
-                    <a  class="-m-2 p-2 block text-gray-500">
+                    <a class="-m-2 p-2 block text-gray-500">
                       {{ item.categoryTitle }}
                     </a>
                   </li>
@@ -83,10 +85,9 @@
                   :key="brand.brandId"
                   class="flow-root"
                 >
-                  <a
-                    class="-m-2 p-2 block font-medium text-gray-900"
-                    >{{ brand.brandNameEn }}</a
-                  >
+                  <a class="-m-2 p-2 block font-medium text-gray-900">{{
+                    brand.brandNameEn
+                  }}</a>
                 </div>
               </div>
 
@@ -281,62 +282,116 @@
                     </PopoverPanel>
                   </transition>
                 </Popover>
-
-                <a
-                  v-for="page in navigation.pages"
-                  :key="page.name"
-                  :href="page.href"
-                  class="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >{{ page.name }}</a
-                >
               </div>
             </PopoverGroup>
 
             <div class="flex w-full items-center">
-              <div
-                class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6"
-              >
-                <a
-                  href="#"
-                  class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >Sign in</a
-                >
-                <span class="h-6 w-px bg-gray-200" aria-hidden="true" />
-                <a
-                  href="#"
-                  class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >Create account</a
-                >
-              </div>
-
               <!-- Search -->
-              <div class="flex mx-2">
-                <div href="#" class="">
-                  <span class="sr-only">Search</span>
-                  <SearchIcon
-                    @click="opensearch = true"
-                    class="w-6 h-6"
-                    aria-hidden="true"
-                  />
+              <div class="flex mx-2 w-1/3" style="position:relative">
+                <input
+                id="searchinput"
+                  @input="searchProduct"
+                  v-model="searchText"
+                  placeholder="جستجو کنید..."
+                  class="border px-3 h-12 rounded-lg w-full searchInput"
+                />
+
+                <div id="searchmenu" class="mymenu" :class="[searchText.length>3 ? '' : 'hidden']">
+                  <div v-if="searchProducts.length > 0" class="py-1">
+                    <div v-for="(product, i) in searchProducts" :key="i">
+                      <a  target="_blank" :href="`/products/${product.productId}/${product.title.replace(/\//g, '-').replace(/ /g, '-')}`" class="flex py-6 mt-4 px-10 hover:bg-gray-200 cursor-pointer">
+                        <div
+                          class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                        >
+                          <img
+                            v-if="product.images"
+                            :src="product.images[0]"
+                            alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                            class="h-full w-full object-cover object-center"
+                          />
+                        </div>
+
+                        <div class="mr-4 flex flex-1 flex-col">
+                          <div>
+                            <div
+                              class="flex justify-between align-center text-base font-medium text-gray-900"
+                            >
+                              <h3>
+                                 {{ product.title }} 
+                              </h3>
+                              <p class="mr-4">
+                                {{
+                                  product.price
+                                    .toString()
+                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+                                }}
+                                تومان
+                              </p>
+                            </div>
+                            <p class="mt-1 text-sm text-gray-500">
+                              {{ product.styleNumber }}
+                            </p>
+                          </div>
+                          <div
+                            class="flex flex-1 items-end justify-end text-sm"
+                          ></div>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                  <div v-else>
+                    <div v-for="(product, i) in searchProducts" :key="i">
+                      <li class="flex py-6 mt-4 px-10">
+                        محصولی یافت نشد
+                      </li>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <!-- Cart -->
-              <!-- <div class="mx-2 flow-root lg:ml-6">
-                <div  class="group ">
+              <div
+                v-if="authstore.getIsUser == 1"
+                class="mx-2 flow-root lg:ml-6"
+              >
+                <NuxtLink to="/cart">
                   <ShoppingBagIcon
-                    class="flex-shrink-0 h-8 w-8 "
+                    class="flex-shrink-0 h-6 w-6"
                     aria-hidden="true"
                   />
-                  <span class="sr-only">items in cart, view bag</span>
-                </div>
-              </div> -->
-
-              <div class="mx-2 flow-root pt-1 lg:ml-6">
-                <NuxtLink to="/users">
-                  <UserIcon class="flex-shrink-0 h-6 w-6" aria-hidden="true" />
                 </NuxtLink>
               </div>
+
+              <div
+                v-if="authstore.getIsUser == 1"
+                class="mx-2 flow-root lg:ml-3"
+              >
+                <NuxtLink
+                  to="/users"
+                  class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  پنل کاربری
+                </NuxtLink>
+              </div>
+              <div
+                v-if="authstore.getIsUser == 0"
+                class="mx-2 flow-root lg:ml-3"
+              >
+                <NuxtLink
+                  to="/users"
+                  class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  ورود / ثبت نام
+                </NuxtLink>
+              </div>
+
+              <a
+                v-for="page in navigation.pages"
+                :key="page.name"
+                :href="page.href"
+                class="flex items-center whitespace-nowrap mx-3 text-sm font-medium text-gray-700 hover:text-gray-800"
+                >{{ page.name }}</a
+              >
 
               <!-- Logo -->
               <div class="flex w-full justify-end ml-0">
@@ -359,6 +414,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import {
   Dialog,
   DialogPanel,
@@ -375,7 +431,11 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  TransitionRoot
+  TransitionRoot,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems
 } from '@headlessui/vue'
 import {
   MenuIcon,
@@ -384,7 +444,8 @@ import {
   UserIcon,
   XIcon
 } from '@heroicons/vue/outline'
-
+const searchProducts = ref('')
+const searchText = ref('')
 const navigation = {
   categories: [
     {
@@ -499,20 +560,83 @@ const filters = [
 const { data: landing } = await useAsyncData('landing', () =>
   $fetch(useRuntimeConfig().public.BASE_URL + '/landing')
 )
-// const { data } = await useAsyncData('filter', () =>
-//       $fetch(useRuntimeConfig().public.BASE_URL + '/landing')
-// )
 
-onMounted(() => {
-  // console.log(useRuntimeConfig().public.BASE_URL)
-  console.log(landing._rawValue.data)
-})
+const authstore = useAuthStore()
 
 const open = ref(false)
 const opensearch = ref(false)
+const opensearch2 = ref(false)
+
+async function searchProduct (e) {
+  if (e.target.value.length > 3) {
+    const { data: allproducts, refresh: refreshProducts } = await $fetch(
+      useRuntimeConfig().public.BASE_URL + '/products',
+      {
+        method: 'POST',
+        body: {
+          brands: [],
+          sizes: [],
+          colors: [],
+          secondColors: [],
+          types: [],
+          main: [],
+          search: e.target.value,
+          showDiscounts: false,
+          page: 1,
+          orderBy: 'price',
+          orderDir: 'desc',
+          minprice: 0,
+          maxprice: 0
+        }
+      }
+    )
+
+    console.log(allproducts)
+    if (allproducts.products.length > 0) {
+      searchProducts.value = allproducts.products
+    }
+  }
+}
+
+onMounted(async () => {
+  document.addEventListener('click', ({ target }) => {
+  if (!target.closest('#searchmenu') && !target.closest('#searchinput')) {
+    searchText.value = ''
+  }
+})
+  if (authstore.getToken) {
+    try {
+      const token = await $fetch(
+        useRuntimeConfig().public.BASE_URL + '/parsetoken',
+        {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${authstore.getToken}`
+          }
+        }
+      )
+      console.log(12, token)
+      authstore.setUser(1)
+    } catch (error) {
+      console.log(13, error)
+      authstore.setUser(0)
+    }
+  } else authstore.setUser(0)
+})
 </script>
 
 <style lang="scss">
+.mymenu {
+  width: 30vw;
+  height: 50vh;
+  overflow: auto;
+  position: absolute;
+  z-index: 150;
+  background: white;
+  top: 50px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+}
 .searchInput {
   background: #f5f5f5;
 }

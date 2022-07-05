@@ -12,6 +12,10 @@ module.exports = {
       },
     },
   },
+  modules: [
+    ['nuxt-tailvue', {toast: true}],
+  ],
+  
   plugins: [
     // ...
     require('@tailwindcss/forms'),
