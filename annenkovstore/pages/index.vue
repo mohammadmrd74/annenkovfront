@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container mx-auto">
     <Carousel></Carousel>
     <section class="px-3 mt-10">
       <div class="swiperTitle">
@@ -7,7 +7,9 @@
       </div>
       <swiper
         :modules="modules"
-        :slides-per-view="2"
+        :slides-per-view="isDesktop ? 4 : 2"
+        :cssMode="isDesktop ? true : false"
+        :navigation="isDesktop ? true : false"
         :space-between="30"
         :pagination="pagination"
       >
@@ -25,7 +27,7 @@
           class="group py-2"
         >
           <div
-            class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
+            class="w-full cursor-pointer aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
           >
             <img
               :src="product.image"
@@ -40,7 +42,10 @@
             {{ product.brand }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }} تومان
+            {{
+              product.totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            }}
+            تومان
           </p>
         </swiper-slide>
       </swiper>
@@ -52,9 +57,11 @@
       </div>
       <swiper
         :modules="modules"
-        :slides-per-view="2"
+        :slides-per-view="isDesktop ? 4 : 2"
         :space-between="30"
         :pagination="pagination"
+        :cssMode="isDesktop ? true : false"
+        :navigation="isDesktop ? true : false"
       >
         <swiper-slide
           v-for="(product, i) in landingItems.data.newProducts"
@@ -70,7 +77,7 @@
           class="group py-2"
         >
           <div
-            class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
+            class="w-full cursor-pointer aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
           >
             <img
               :src="product.image"
@@ -84,8 +91,12 @@
           <h3 class="mt-1 text-sm font-semibold text-gray-700">
             {{ product.brand }}
           </h3>
+          
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.price }} تومان
+            {{
+              product.totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            }}
+            تومان
           </p>
         </swiper-slide>
       </swiper>
@@ -97,8 +108,6 @@ import Carousel from '@/components/main/carousel.vue'
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
-
-
 
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -117,7 +126,6 @@ export default {
     Carousel
   },
   async setup () {
-    
     const { data: landingItems } = await useAsyncData('landingItems', () =>
       $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
     )
@@ -135,8 +143,16 @@ export default {
       }).click()
     }
 
+    const isDesktop = computed(() => {
+      if (process.client) {
+        return window.innerWidth > 900
+      }
+      return -1
+    })
+
     return {
       landingItems,
+      isDesktop,
       pagination: {
         clickable: true,
         renderBullet: function (index, className) {
@@ -158,6 +174,29 @@ export default {
 }
 .swiper {
   padding: 15px 0px !important;
+}
+
+.swiper-button-next {
+  border-top-right-radius: 8px;
+  background: white;
+  box-shadow: 2px 1px 10px 2px #88888840;
+  width: 40px;
+  height: 93px;
+  top: 41%;
+  left: 0 !important;
+  color: #3c3a3a;
+  border-bottom-right-radius: 8px;
+}
+.swiper-button-prev {
+  border-top-left-radius: 8px;
+  background: white;
+  box-shadow: 2px 1px 10px 2px #88888840;
+  width: 40px;
+  color: #3c3a3a;
+  height: 93px;
+  top: 41%;
+  right: 0px !important;
+  border-bottom-left-radius: 8px;
 }
 
 .swiper-pagination-bullet {

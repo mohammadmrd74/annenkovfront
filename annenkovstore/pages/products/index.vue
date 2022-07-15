@@ -43,7 +43,7 @@
                     <XIcon class="h-6 w-6 text-black" aria-hidden="true" />
                     <span class="text-2xl text-black mr-3">فیلتر ها</span>
                   </button>
-                  <div class="flex justify-between px-6 mt-6">
+                  <div class="flex justify-between px-6 mt-9 md:mt-12">
                     <div>
                       <div class="font-bold text-right">بیشترین</div>
                       {{ currenyConvert(max) }} تومان
@@ -54,23 +54,30 @@
                     </div>
                   </div>
                   <div style="direction: ltr" class="mt-4 mb-2 px-8">
+                  
                     <Slider
                       @update="changeCost"
                       direction="ltr"
                       :lazy="false"
                       :tooltips="false"
-                      :min="filters.data.filters[0].minprice"
-                      :max="filters.data.filters[0].maxprice"
+                      :min="parseInt(filters.data.filters[0].minprice)"
+                      :max="parseInt(filters.data.filters[0].maxprice)"
                       v-model="price"
                     />
                   </div>
 
                   <!-- <vue3-slider  class="my-3" :min="filters.data.filters[0].minprice" :max="filters.data.filters[0].maxprice" v-model="price" color="#FB278D" track-color="#FEFEFE" />   -->
-                  <div class="accordion w-full mt-6" id="brands">
-                    <div class="accordion-item bg-white border border-gray-200">
-                      <h2 class="accordion-header mb-0" id="sizeheading">
-                        <button
-                          class="
+                  <div
+                    style="max-height: 55vh;
+                  overflow: auto;"
+                  >
+                    <div class="accordion w-full mt-6" id="brands">
+                      <div
+                        class="accordion-item bg-white border border-gray-200"
+                      >
+                        <h2 class="accordion-header mb-0" id="sizeheading">
+                          <button
+                            class="
                             accordion-button
                             relative
                             collapsed
@@ -86,51 +93,53 @@
                             transition
                             focus:outline-none
                           "
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#sizecollapse"
-                          aria-expanded="true"
-                          aria-controls="sizecollapse"
-                        >
-                          <span class="mx-2 font-bold">سایز</span>
-                        </button>
-                      </h2>
-                      <div
-                        id="sizecollapse"
-                        class="accordion-collapse collapse  text-right"
-                        aria-labelledby="sizecollapse"
-                        data-bs-parent="#sizecollapse"
-                      >
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#sizecollapse"
+                            aria-expanded="true"
+                            aria-controls="sizecollapse"
+                          >
+                            <span class="mx-2 font-bold">سایز</span>
+                          </button>
+                        </h2>
                         <div
-                          v-for="(size, i) in filters.data.filters[0].sizes"
-                          :key="size.id"
-                          class="accordion-body py-4 px-5"
+                          id="sizecollapse"
+                          class="accordion-collapse collapse  text-right"
+                          aria-labelledby="sizecollapse"
+                          data-bs-parent="#sizecollapse"
                         >
-                          <div class="form-check">
-                            <input
-                              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                              type="checkbox"
-                              v-model="sizes[i]"
-                              id="flexCheckChecked"
-                            />
-                            <label
-                              class="form-check-label inline-block text-gray-800"
-                              for="flexCheckChecked"
-                              style="direction: ltr;"
-                            >
-                              {{ size.name }}
-                            </label>
+                          <div
+                            v-for="(size, i) in filters.data.filters[0].sizes"
+                            :key="size.id"
+                            class="accordion-body py-4 px-5"
+                          >
+                            <div class="form-check">
+                              <input
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox"
+                                v-model="sizes[i]"
+                                id="flexCheckChecked"
+                              />
+                              <label
+                                class="form-check-label inline-block text-gray-800"
+                                for="flexCheckChecked"
+                                style="direction: ltr;"
+                              >
+                                {{ size.name }}
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="accordion w-full mt-6" id="brands">
-                    <div class="accordion-item bg-white border border-gray-200">
-                      <h2 class="accordion-header mb-0" id="headingbrand">
-                        <button
-                          class="
+                    <div class="accordion w-full mt-6" id="brands">
+                      <div
+                        class="accordion-item bg-white border border-gray-200"
+                      >
+                        <h2 class="accordion-header mb-0" id="headingbrand">
+                          <button
+                            class="
                             accordion-button
                             relative
                             collapsed
@@ -146,50 +155,52 @@
                             transition
                             focus:outline-none
                           "
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#collapseOne"
-                          aria-expanded="true"
-                          aria-controls="collapseOne"
-                        >
-                          <span class="mx-2 font-bold">برند</span>
-                        </button>
-                      </h2>
-                      <div
-                        id="collapseOne"
-                        class="accordion-collapse collapse  text-right"
-                        aria-labelledby="brandcollapse"
-                        data-bs-parent="#brandcollapse"
-                      >
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne"
+                            aria-expanded="true"
+                            aria-controls="collapseOne"
+                          >
+                            <span class="mx-2 font-bold">برند</span>
+                          </button>
+                        </h2>
                         <div
-                          v-for="(brand, i) in filters.data.filters[0].brands"
-                          :key="brand.id"
-                          class="accordion-body py-4 px-5"
+                          id="collapseOne"
+                          class="accordion-collapse collapse  text-right"
+                          aria-labelledby="brandcollapse"
+                          data-bs-parent="#brandcollapse"
                         >
-                          <div class="form-check">
-                            <input
-                              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                              type="checkbox"
-                              v-model="brands[i]"
-                              value=""
-                              id="flexCheckChecked"
-                            />
-                            <label
-                              class="form-check-label inline-block text-gray-800"
-                              for="flexCheckChecked"
-                            >
-                              {{ brand.name }}
-                            </label>
+                          <div
+                            v-for="(brand, i) in filters.data.filters[0].brands"
+                            :key="brand.id"
+                            class="accordion-body py-4 px-5"
+                          >
+                            <div class="form-check">
+                              <input
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox"
+                                v-model="brands[i]"
+                                value=""
+                                id="flexCheckChecked"
+                              />
+                              <label
+                                class="form-check-label inline-block text-gray-800"
+                                for="flexCheckChecked"
+                              >
+                                {{ brand.name }}
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="accordion w-full mt-6" id="types">
-                    <div class="accordion-item bg-white border border-gray-200">
-                      <h2 class="accordion-header mb-0" id="headingtype">
-                        <button
-                          class="
+                    <div class="accordion w-full mt-6" id="types">
+                      <div
+                        class="accordion-item bg-white border border-gray-200"
+                      >
+                        <h2 class="accordion-header mb-0" id="headingtype">
+                          <button
+                            class="
                             accordion-button
                             relative
                             collapsed
@@ -205,50 +216,52 @@
                             transition
                             focus:outline-none
                           "
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#typecollapse"
-                          aria-expanded="true"
-                          aria-controls="typecollapse"
-                        >
-                          <span class="mx-2 font-bold">نوع</span>
-                        </button>
-                      </h2>
-                      <div
-                        id="typecollapse"
-                        class="accordion-collapse collapse  text-right"
-                        aria-labelledby="typecollapse"
-                        data-bs-parent="#brandcollapse"
-                      >
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#typecollapse"
+                            aria-expanded="true"
+                            aria-controls="typecollapse"
+                          >
+                            <span class="mx-2 font-bold">نوع</span>
+                          </button>
+                        </h2>
                         <div
-                          v-for="(typee, i) in filters.data.filters[0].types"
-                          :key="typee.id"
-                          class="accordion-body py-4 px-5"
+                          id="typecollapse"
+                          class="accordion-collapse collapse  text-right"
+                          aria-labelledby="typecollapse"
+                          data-bs-parent="#brandcollapse"
                         >
-                          <div class="form-check">
-                            <input
-                              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                              type="checkbox"
-                              v-model="types[i]"
-                              id="flexCheckChecked"
-                            />
-                            <label
-                              class="form-check-label inline-block text-gray-800"
-                              for="flexCheckChecked"
-                            >
-                              {{ typee.name }}
-                            </label>
+                          <div
+                            v-for="(typee, i) in filters.data.filters[0].types"
+                            :key="typee.id"
+                            class="accordion-body py-4 px-5"
+                          >
+                            <div class="form-check">
+                              <input
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox"
+                                v-model="types[i]"
+                                id="flexCheckChecked"
+                              />
+                              <label
+                                class="form-check-label inline-block text-gray-800"
+                                for="flexCheckChecked"
+                              >
+                                {{ typee.name }}
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="accordion w-full mt-6" id="types">
-                    <div class="accordion-item bg-white border border-gray-200">
-                      <h2 class="accordion-header mb-0" id="headingtype">
-                        <button
-                          class="
+                    <div class="accordion w-full mt-6" id="types">
+                      <div
+                        class="accordion-item bg-white border border-gray-200"
+                      >
+                        <h2 class="accordion-header mb-0" id="headingtype">
+                          <button
+                            class="
                             accordion-button
                             relative
                             collapsed
@@ -264,50 +277,52 @@
                             transition
                             focus:outline-none
                           "
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#colorcollapse"
-                          aria-expanded="true"
-                          aria-controls="colorcollapse"
-                        >
-                          <span class="mx-2 font-bold">رنگ اصلی</span>
-                        </button>
-                      </h2>
-                      <div
-                        id="colorcollapse"
-                        class="accordion-collapse collapse  text-right"
-                        aria-labelledby="colorcollapse"
-                        data-bs-parent="#brandcollapse"
-                      >
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#colorcollapse"
+                            aria-expanded="true"
+                            aria-controls="colorcollapse"
+                          >
+                            <span class="mx-2 font-bold">رنگ اصلی</span>
+                          </button>
+                        </h2>
                         <div
-                          v-for="(color, i) in filters.data.filters[0].colors"
-                          :key="color.id"
-                          class="accordion-body py-4 px-5"
+                          id="colorcollapse"
+                          class="accordion-collapse collapse  text-right"
+                          aria-labelledby="colorcollapse"
+                          data-bs-parent="#brandcollapse"
                         >
-                          <div class="form-check">
-                            <input
-                              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                              type="checkbox"
-                              v-model="colors[i]"
-                              id="flexCheckChecked"
-                            />
-                            <label
-                              class="form-check-label inline-block text-gray-800"
-                              for="flexCheckChecked"
-                            >
-                              {{ color.name }}
-                            </label>
+                          <div
+                            v-for="(color, i) in filters.data.filters[0].colors"
+                            :key="color.id"
+                            class="accordion-body py-4 px-5"
+                          >
+                            <div class="form-check">
+                              <input
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox"
+                                v-model="colors[i]"
+                                id="flexCheckChecked"
+                              />
+                              <label
+                                class="form-check-label inline-block text-gray-800"
+                                for="flexCheckChecked"
+                              >
+                                {{ color.name }}
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="accordion w-full mt-6" id="types">
-                    <div class="accordion-item bg-white border border-gray-200">
-                      <h2 class="accordion-header mb-0" id="headingtype">
-                        <button
-                          class="
+                    <div class="accordion w-full mt-6" id="types">
+                      <div
+                        class="accordion-item bg-white border border-gray-200"
+                      >
+                        <h2 class="accordion-header mb-0" id="headingtype">
+                          <button
+                            class="
                             accordion-button
                             relative
                             collapsed
@@ -323,40 +338,41 @@
                             transition
                             focus:outline-none
                           "
-                          type="button"
-                          data-bs-toggle="collapse"
-                          data-bs-target="#scolorcollapse"
-                          aria-expanded="true"
-                          aria-controls="scolorcollapse"
-                        >
-                          <span class="mx-2 font-bold">رنگ دوم</span>
-                        </button>
-                      </h2>
-                      <div
-                        id="scolorcollapse"
-                        class="accordion-collapse collapse  text-right"
-                        aria-labelledby="scolorcollapse"
-                        data-bs-parent="#brandcollapse"
-                      >
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#scolorcollapse"
+                            aria-expanded="true"
+                            aria-controls="scolorcollapse"
+                          >
+                            <span class="mx-2 font-bold">رنگ دوم</span>
+                          </button>
+                        </h2>
                         <div
-                          v-for="(color, i) in filters.data.filters[0]
-                            .secondColors"
-                          :key="color.id"
-                          class="accordion-body py-4 px-5"
+                          id="scolorcollapse"
+                          class="accordion-collapse collapse  text-right"
+                          aria-labelledby="scolorcollapse"
+                          data-bs-parent="#brandcollapse"
                         >
-                          <div class="form-check">
-                            <input
-                              class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                              type="checkbox"
-                              v-model="scolors[i]"
-                              id="flexCheckChecked"
-                            />
-                            <label
-                              class="form-check-label inline-block text-gray-800"
-                              for="flexCheckChecked"
-                            >
-                              {{ color.name }}
-                            </label>
+                          <div
+                            v-for="(color, i) in filters.data.filters[0]
+                              .secondColors"
+                            :key="color.id"
+                            class="accordion-body py-4 px-5"
+                          >
+                            <div class="form-check">
+                              <input
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                type="checkbox"
+                                v-model="scolors[i]"
+                                id="flexCheckChecked"
+                              />
+                              <label
+                                class="form-check-label inline-block text-gray-800"
+                                for="flexCheckChecked"
+                              >
+                                {{ color.name }}
+                              </label>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -379,7 +395,10 @@
       class="max-w-2xl mx-auto py-4 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
     >
       <div class="flex justify-between items-center my-3">
-        <h2 class=" text-xl font-bold">مردانه</h2>
+        <h2 class=" text-xl font-bold">
+          {{ route.query.mainType || 'همه محصولات' }}
+          ({{ allproducts.data.recordNumbers }} عدد)
+        </h2>
         <div class="flex">
           <Menu as="div" class="relative inline-block  mx-3 text-left">
             <div>
@@ -410,21 +429,27 @@
                     <div
                       @click="sortItems('desc')"
                       :class="[
-                        orderDir == 'desc' ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
+                        orderDir == 'desc'
+                          ? 'bg-gray-200 text-gray-900'
+                          : 'text-gray-700',
                         'block px-4 py-2 text-sm'
                       ]"
-                      >گران ترین</div
                     >
+                      گران ترین
+                    </div>
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
                     <div
                       @click="sortItems('asc')"
                       :class="[
-                        orderDir == 'asc' ? 'bg-gray-200 text-gray-900' : 'text-gray-700',
+                        orderDir == 'asc'
+                          ? 'bg-gray-200 text-gray-900'
+                          : 'text-gray-700',
                         'block px-4 py-2 text-sm'
                       ]"
-                      >ارزان ترین</div
                     >
+                      ارزان ترین
+                    </div>
                   </MenuItem>
                 </div>
               </MenuItems>
@@ -444,14 +469,18 @@
           v-for="product in allproducts.data.products"
           :key="product.productId"
           class="group"
-          :to="`/products/${product.productId}/${product.title.replace(/\//g, '-').replace(/ /g, '-')}`"
+          :to="
+            `/products/${product.productId}/${product.title
+              .replace(/\//g, '-')
+              .replace(/ /g, '-')}`
+          "
         >
           <div
-            v-if="product.images && product.images[0]"
             class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
           >
             <!-- {{product.images}} -->
             <img
+              v-if="product.images && product.images[0]"
               :src="product.images[0]"
               :alt="product.title"
               class="w-full h-full object-center object-cover group-hover:opacity-75"
@@ -461,9 +490,33 @@
             {{ product.title }}
           </h3>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ currenyConvert(product.price) }} تومان
+            {{ product.totalPrice.toString()
+                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') }} تومان
           </p>
         </nuxt-link>
+      </div>
+      <div class="flex justify-center mt-5">
+        <button
+          @click="changePageNum(0)"
+          class="m-3 w-16 text-center p-2 rounded-md"
+          :class="[pageNum == 1 ? 'bg-gray-50' : 'bg-gray-200']"
+          :disabled="pageNum == 1"
+        >
+          قبلی
+        </button>
+        <div class="flex items-center mx-4">{{ pageNum }}</div>
+        <button
+          @click="changePageNum(1)"
+          :class="[
+            pageNum == Math.ceil(allproducts.data.recordNumbers / 40)
+              ? 'bg-gray-50'
+              : 'bg-gray-200'
+          ]"
+          class="w-32 text-center m-3 bg-gray-200 p-2 rounded-md"
+          :disabled="pageNum == Math.ceil(allproducts.data.recordNumbers / 40)"
+        >
+          بعدی
+        </button>
       </div>
     </div>
   </div>
@@ -488,6 +541,9 @@ import { XIcon } from '@heroicons/vue/outline'
 import { StarIcon } from '@heroicons/vue/solid'
 import Slider from '@vueform/slider'
 import MoneyFormat from 'vue-money-format'
+import { useRoute } from 'vue-router'
+const route = useRoute()
+
 const product = {
   name: 'Basic Tee 6-Pack ',
   price: '$192',
@@ -516,6 +572,7 @@ const product = {
 const min = ref(0)
 const max = ref(100)
 const open = ref(false)
+const pageNum = ref(1)
 
 const brands = ref([])
 const brandsToFilter = ref([])
@@ -530,29 +587,51 @@ const scolors = ref([])
 const orderDir = ref('desc')
 
 const price = ref([0, 0])
+function queryChanged (id) {
+  console.log('12')
+  console.log(id)
+
+  //assign article..
+}
 
 const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
   'allproducts',
-  () =>
-    $fetch(useRuntimeConfig().public.BASE_URL + '/products', {
+  () => {
+    console.log([parseInt(route.query.brandId)])
+    return $fetch(useRuntimeConfig().public.BASE_URL + '/products', {
       method: 'POST',
       body: {
-        brands: brandsToFilter.value,
+        brands:
+          brandsToFilter.value.length > 0
+            ? brandsToFilter.value
+            : parseInt(route.query.brandId)
+            ? [parseInt(route.query.brandId)]
+            : [],
         sizes: sizesToFilter.value,
         colors: colorsToFilter.value,
         secondColors: scolorsToFilter.value,
         types: typesToFilter.value,
-        main: [],
+        main: route.query.mainId
+          ? [route.query.mainType == 'زنانه' ? 4 : 1]
+          : [],
         search: '',
         showDiscounts: false,
-        page: 1,
+        page: pageNum.value,
         orderBy: 'price',
         orderDir: orderDir.value,
         minprice: price.value[0],
         maxprice: price.value[1]
       }
     })
+  }
 )
+
+function changePageNum (d) {
+  if (d) pageNum.value++
+  else pageNum.value--
+  refreshProducts()
+  window.scrollTo(0, 0)
+}
 
 const { data: filters } = await useAsyncData('filters', () =>
   $fetch(useRuntimeConfig().public.BASE_URL + '/filters')
@@ -560,7 +639,7 @@ const { data: filters } = await useAsyncData('filters', () =>
 
 onMounted(() => {
   // console.log(useRuntimeConfig().public.BASE_URL)
-  console.log(allproducts)
+  console.log(route.query)
   min.value = filters.value.data.filters[0].minprice
   max.value = filters.value.data.filters[0].maxprice
   price.value = [min.value, max.value]
@@ -577,9 +656,9 @@ function changeCost (value) {
   max.value = value[1]
 }
 
-function sortItems(sort) {
+function sortItems (sort) {
   orderDir.value = sort
-  refreshProducts();
+  refreshProducts()
 }
 
 function filterItems () {

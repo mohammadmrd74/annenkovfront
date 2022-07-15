@@ -5,6 +5,7 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   
   buildModules:['@nuxtjs/tailwindcss', '@pinia/nuxt'],
+
   
   css: ["@/assets/sass/_global.scss"],
 

@@ -1,7 +1,7 @@
 <template>
-  <div style="min-height: 70vh">
+  <div style="min-height: 70vh" class="container mx-auto">
     <h1 class="m-9 text-2xl font-bold">سبد خرید</h1>
-    <hr />
+    <hr class="my-4 " />
     <div v-if="authstore.getIsUser == 0">
       <div
         class="flex flex-col border items-center mx-5 py-10 rounded-lg justify-center text-2xl font-bold mt-10"
@@ -16,15 +16,16 @@
         >
       </div>
     </div>
-    <div v-else-if="authstore.getIsUser == 1">
+    <div v-else-if="authstore.getIsUser == 1" >
       <div v-if="pstate === 0">
-        <li
+        <div v-if="cartItems.length > 0">
+          <li
           v-for="(product, i) in cartItems"
           :key="product.productId"
           class="flex py-6 mt-4 px-10"
         >
           <div
-            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+            class="h-28 md:w-48 w-36 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
           >
             <img
               :src="product.image"
@@ -149,28 +150,34 @@
             ادامه خرید
           </button>
         </div>
+        </div>
+        <div v-else>
+          <span class="text-xl mx-5">
+            سبد خرید خالی می باشد.
+          </span>
+        </div>
       </div>
       <div v-else-if="pstate === 1">
         <div class="mt-10 sm:mt-0 px-12">
           <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
+            <div class="md:col-span-6 md:mt-10">
               <div class="flex justify-between px-4 sm:px-0">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">
                   مشخصات خریدار
                 </h3>
                 <h3
                   @click="pstate = 0"
-                  class="text-lg font-medium leading-6 text-gray-900"
+                  class="text-lg cursor-pointer font-medium leading-6 text-gray-900"
                 >
                   بازگشت
                 </h3>
               </div>
             </div>
-            <div class="mt-5 md:mt-0 md:col-span-2 mb-12">
+            <div class="mt-5 md:mt-0 md:col-span-12 mb-12">
               <div class="shadow sm:rounded-md">
                 <div class="px-4 py-5 bg-white sm:p-6">
                   <div class="grid grid-cols-6 gap-6">
-                    <div class="col-span-6 sm:col-span-3">
+                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
                         for="first-name"
                         class="block text-sm font-medium text-gray-700"
@@ -186,7 +193,7 @@
                       />
                     </div>
 
-                    <div class="col-span-6 sm:col-span-3">
+                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
                       <label
                         for="last-name"
                         class="block text-sm font-medium text-gray-700"
@@ -202,7 +209,7 @@
                       />
                     </div>
 
-                    <div class="col-span-6 sm:col-span-3">
+                    <div class="col-span-6 sm:col-span-2 lg:col-span-2">
                       <label
                         for="last-name"
                         class="block text-sm font-medium text-gray-700"
@@ -249,6 +256,21 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       />
                     </div>
+                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
+                      <label
+                        for="region"
+                        class="block text-sm font-medium text-gray-700"
+                        >کدپستی</label
+                      >
+                      <input
+                        v-model="postalCode"
+                        type="text"
+                        name="region"
+                        id="region"
+                        autocomplete="address-level1"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                    </div>
 
                     <div class="col-span-6">
                       <label
@@ -266,21 +288,7 @@
                       ></textarea>
                     </div>
 
-                    <div class="col-span-6 sm:col-span-3 lg:col-span-2">
-                      <label
-                        for="region"
-                        class="block text-sm font-medium text-gray-700"
-                        >کدپستی</label
-                      >
-                      <input
-                        v-model="postalCode"
-                        type="text"
-                        name="region"
-                        id="region"
-                        autocomplete="address-level1"
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                      />
-                    </div>
+                    
                   </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6 mb-12">
@@ -341,6 +349,7 @@ function changeCount (value, i) {
 }
 
 function countinuePurchase () {
+  window.scrollTo(0, 0)
   pstate.value = 1
 }
 
@@ -358,6 +367,7 @@ function validate () {
   }
   return false
 }
+
 
 function pay () {
   if (validate()) {
@@ -406,6 +416,7 @@ onMounted(async () => {
         .toString()
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
       console.log(cartItems)
+      authstore.setCartNumber(res.data.cart.length);
     } catch (error) {
       console.log(13, error)
     }

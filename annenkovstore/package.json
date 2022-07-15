@@ -23,6 +23,7 @@
     "@vueform/slider": "^2.0.10",
     "flowbite": "^1.4.7",
     "lightgallery": "^2.4.0",
+    "nuxt-breakpoints": "^1.1.9",
     "nuxt-tailvue": "^1.0.95",
     "pinia": "^2.0.14",
     "pinia-plugin-persistedstate": "^1.6.1",
@@ -30,6 +31,7 @@
     "tw-elements": "^1.0.0-alpha12",
     "vue-light-gallery": "^1.0.1",
     "vue-money-format": "^1.2.4",
+    "vue-next-breakpoints": "^1.0.1",
     "vue-toastification": "^2.0.0-rc.5",
     "vue3-otp-input": "^0.3.6",
     "vue3-slider": "^1.7.0"

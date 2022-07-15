@@ -26,78 +26,57 @@
             leave-to="translate-x-full"
           >
             <DialogPanel
-              class="relative max-w-[75%] w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
+              :class="[openLate ? 'overflow-y-auto' : '']"
+              class="relative max-w-[75%] w-full bg-white shadow-xl pb-12 flex flex-col "
             >
-              <!-- <div class="px-4 pt-5 pb-2 flex">
-                <button
-                  type="button"
-                  class="-m-2 p-2 rounded-md inline-flex items-center justify-center text-gray-400"
-                  @click="open = false"
-                >
-                  <span class="sr-only">Close menu</span>
-                  <XIcon class="h-6 w-6" aria-hidden="true" />
-                </button>
-              </div> -->
-
-              <!-- Links -->
-
               <strong class="text-3xl px-6 mt-5">ANNENKOV STORE</strong>
-              <!-- <div
-                  class="aspect-w-2 max-w-sm w-sm aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75"
-                >
-                  <img
-                    src="~/assets/logo.jpg"
-                    class="object-center object-cover"
-                  />
-                </div> -->
 
               <div
                 v-for="section in landing.data.menus.main"
                 :key="section.mainId"
                 class="p-6"
+                
               >
-                <p
+               <div v-if="section.mainId != 3">
+                 <p
                   :id="`${section.mainId}-heading-mobile`"
                   class="font-medium text-gray-900"
                 >
                   {{ section.mainType }}
                 </p>
-                <ul
-                  role="list"
-                  :aria-labelledby="`${section.mainType}-heading-mobile`"
-                  class="mt-6 flex flex-col space-y-6"
-                >
-                  <li
-                    v-for="item in section.categories"
-                    :key="item.categoryId"
+                <div class=" border-gray-200 py-6 px-4 space-y-6">
+                  <a
+                    class="font-bold"
+                    :href="
+                      `/products?mainType=${section.mainType}&mainId=${section.mainId}`
+                    "
+                    >مشاهده همه محصولات</a
+                  >
+                  <div
+                    v-for="brand in landing.data.menus.brands"
+                    :key="brand.brandId"
                     class="flow-root"
                   >
-                    <a class="-m-2 p-2 block text-gray-500">
-                      {{ item.categoryTitle }}
-                    </a>
-                  </li>
-                </ul>
+                    <a
+                      :href="
+                        `/products?mainType=${section.mainType}&mainId=${section.mainId}&brandId=${brand.brandId}`
+                      "
+                      class="-m-2 p-2 block font-medium text-gray-900"
+                      >{{ brand.brandNameEn }}</a
+                    >
+                  </div>
+                </div>
+               </div>
               </div>
 
-              <div class="border-t border-gray-200 py-6 px-4 space-y-6">
-                <div
-                  v-for="brand in landing.data.menus.brands"
-                  :key="brand.brandId"
-                  class="flow-root"
-                >
-                  <a class="-m-2 p-2 block font-medium text-gray-900">{{
-                    brand.brandNameEn
-                  }}</a>
-                </div>
-              </div>
-
-              <div class="border-t border-gray-200 py-6 px-4 space-y-6">
-                <div class="flow-root">
-                  <a href="#" class="-m-2 p-2 block font-medium text-gray-900"
-                    >ورود یا ثبت نام</a
-                  >
-                </div>
-              </div>
+              <nuxt-link
+              @click="open = false"
+                v-for="page in navigation.pages"
+                :key="page.name"
+                :to="page.href"
+                class="flex items-center whitespace-nowrap m-3 font-bold text-sm font-medium text-gray-700 hover:text-gray-800"
+                >{{ page.name }}</nuxt-link
+              >
             </DialogPanel>
           </TransitionChild>
         </div>
@@ -121,7 +100,8 @@
             leave-to="opacity-0"
           >
             <DialogPanel
-              class="relative w-full bg-white shadow-xl pb-12 flex flex-col overflow-y-auto"
+              :class="[open ? 'overflow-y-auto' : '']"
+              class="relative digitalpanel w-full bg-white shadow-xl pb-12 flex flex-col "
             >
               <div class="py-4 px-6">
                 <div class="flex flex-row">
@@ -175,23 +155,26 @@
 
             <!-- Flyout menus -->
             <PopoverGroup class="hidden lg:ml-8 lg:block lg:self-stretch">
-              <div class="h-full flex space-x-8">
+              <div class="h-full flex ">
                 <Popover
-                  v-for="category in navigation.categories"
-                  :key="category.name"
+                  v-for="(category, i) in landing.data.menus.main"
+                  :key="category.id"
                   class="flex"
                   v-slot="{ open }"
                 >
                   <div class="relative flex">
                     <PopoverButton
+                      @click="selectSection(i)"
                       :class="[
                         open
                           ? 'border-indigo-600 text-indigo-600'
                           : 'border-transparent text-gray-700 hover:text-gray-800',
-                        'relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 -mb-px pt-px'
+                        'relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 mx-5'
                       ]"
                     >
-                      {{ category.name }}
+                      {{
+                        category.mainType !== 'کودک' ? category.mainType : ''
+                      }}
                     </PopoverButton>
                   </div>
 
@@ -205,77 +188,99 @@
                   >
                     <PopoverPanel
                       class="absolute top-full inset-x-0 text-sm text-gray-500"
+                      style="z-index: 100;
+"
                     >
                       <!-- Presentational element used to render the bottom shadow, if we put the shadow on the actual panel it pokes out the top, so we use this shorter element to hide the top of the shadow -->
                       <div
-                        class="absolute inset-0 top-1/2 bg-white shadow"
+                        class="absolute inset-0  bg-white shadow"
                         aria-hidden="true"
                       />
 
                       <div class="relative bg-white">
-                        <div class="max-w-7xl mx-auto px-8">
-                          <div class="grid grid-cols-2 gap-y-10 gap-x-8 py-16">
-                            <div class="col-start-2 grid grid-cols-2 gap-x-8">
-                              <div
-                                v-for="item in category.featured"
-                                :key="item.name"
-                                class="group relative text-base sm:text-sm"
+                        <div class="max-w-5xl mx-auto px-8">
+                          <div class="py-4">
+                            <!-- <ul
+                              role="list"
+                              class="my-8 grid grid-cols-3 gap-y-10 gap-x-8 text-sm"
+                            >
+                              <li
+                                v-for="item in showSection.categories"
+                                :key="item.categoryId"
+                                class="text-gray-900 text-center"
                               >
-                                <div
-                                  class="aspect-w-1 aspect-h-1 rounded-lg bg-gray-100 overflow-hidden group-hover:opacity-75"
-                                >
-                                  <img
-                                    :src="item.imageSrc"
-                                    :alt="item.imageAlt"
-                                    class="object-center object-cover"
-                                  />
-                                </div>
-                                <a
-                                  :href="item.href"
-                                  class="mt-6 block font-medium text-gray-900"
-                                >
-                                  <span
-                                    class="absolute z-10 inset-0"
-                                    aria-hidden="true"
-                                  />
-                                  {{ item.name }}
-                                </a>
-                                <p aria-hidden="true" class="mt-1">Shop now</p>
-                              </div>
-                            </div>
+                                <a :href="`/products?mainType=${showSection.mainType}&mainId=${showSection.mainId}&categoryId=${item.categoryId}`">{{item.categoryTitle}}</a>
+                              </li>
+                            </ul> -->
+                            <!-- <hr class="mt-2 mb-5"/> -->
                             <div
-                              class="row-start-1 grid grid-cols-3 gap-y-10 gap-x-8 text-sm"
+                              class=" grid grid-cols-5 gap-y-3 gap-x-3 text-sm"
                             >
                               <div
-                                v-for="section in category.sections"
-                                :key="section.name"
+                                style="text-align: center;"
+                                v-for="brand in landing.data.menus.brands"
+                                :key="brand.brandId"
                               >
-                                <p
-                                  :id="`${section.name}-heading`"
-                                  class="font-medium text-gray-900"
+                                <a
+                                  :href="
+                                    `/products?mainType=${showSection.mainType}&mainId=${showSection.mainId}&brandId=${brand.brandId}`
+                                  "
+                                  class="-m-2 font-medium text-gray-900"
                                 >
-                                  {{ section.name }}
-                                </p>
-                                <ul
-                                  role="list"
-                                  :aria-labelledby="`${section.name}-heading`"
-                                  class="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
-                                >
-                                  <li
-                                    v-for="item in section.items"
-                                    :key="item.name"
-                                    class="flex"
+                                  <div
+                                    class="mx-auto text-center"
+                                    style="width:60px;height:60px"
                                   >
-                                    <a
-                                      :href="item.href"
-                                      class="hover:text-gray-800"
-                                    >
-                                      {{ item.name }}
-                                    </a>
-                                  </li>
-                                </ul>
+                                    <img
+                                      width="60"
+                                      height="60"
+                                      :src="url + brand.logo"
+                                    />
+                                  </div>
+                                  <span class="text-center text-lg">
+                                    {{ brand.brandNameEn }}</span
+                                  >
+                                </a>
                               </div>
+                              <a
+                                :href="
+                                  `/products?mainType=${showSection.mainType}&mainId=${showSection.mainId}`
+                                "
+                                class="m-auto mt-8 col-span-2 text-center text-black border p-4 hover:bg-black hover:bg-opacity-25 rounded-lg cursor-pointer text-lg flex items-center"
+                                style="height:60px"
+                                >مشاهده همه محصولات</a
+                              >
                             </div>
+                          </div>
+                          <div
+                            class="flex grid grid-cols-3 gap-y-10 gap-x-8 text-sm"
+                            v-for="section in category.sections"
+                            :key="section.name"
+                          >
+                            <p
+                              :id="`${section.name}-heading`"
+                              class="font-medium text-gray-900"
+                            >
+                              {{ section.name }}
+                            </p>
+                            <ul
+                              role="list"
+                              :aria-labelledby="`${section.name}-heading`"
+                              class="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
+                            >
+                              <li
+                                v-for="item in section.items"
+                                :key="item.name"
+                                class="flex"
+                              >
+                                <a
+                                  :href="item.href"
+                                  class="hover:text-gray-800"
+                                >
+                                  {{ item.name }}
+                                </a>
+                              </li>
+                            </ul>
                           </div>
                         </div>
                       </div>
@@ -286,122 +291,131 @@
             </PopoverGroup>
 
             <div class="flex w-full items-center">
-              <!-- Search -->
-              <div class="flex mx-2 w-1/3" style="position:relative">
-                <input
-                id="searchinput"
-                  @input="searchProduct"
-                  v-model="searchText"
-                  placeholder="جستجو کنید..."
-                  class="border px-3 h-12 rounded-lg w-full searchInput"
-                />
+              <!-- Logo -->
+              <div class="flex w-full justify-end ml-0 items-center">
+                <!-- Cart -->
+                <div
+                  v-if="authstore.getIsUser == 1"
+                  class="mx-2 flow-root lg:ml-6"
+                >
+                  <NuxtLink to="/cart">
+                    <ShoppingBagIcon
+                      class="flex-shrink-0 h-6 w-6"
+                      aria-hidden="true"
+                    />
+                    <span class="cartNumber" v-if="authstore.getCartNumber">{{
+                      authstore.getCartNumber
+                    }}</span>
+                  </NuxtLink>
+                </div>
 
-                <div id="searchmenu" class="mymenu" :class="[searchText.length>3 ? '' : 'hidden']">
-                  <div v-if="searchProducts.length > 0" class="py-1">
-                    <div v-for="(product, i) in searchProducts" :key="i">
-                      <a  target="_blank" :href="`/products/${product.productId}/${product.title.replace(/\//g, '-').replace(/ /g, '-')}`" class="flex py-6 mt-4 px-10 hover:bg-gray-200 cursor-pointer">
-                        <div
-                          class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                <div
+                  v-if="authstore.getIsUser == 1"
+                  class="mx-2 flow-root lg:ml-3"
+                >
+                  <NuxtLink
+                    to="/users"
+                    class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    پنل کاربری
+                  </NuxtLink>
+                </div>
+                <div
+                  v-if="authstore.getIsUser == 0"
+                  class="mx-2 flow-root lg:ml-3"
+                >
+                  <NuxtLink
+                    to="/users"
+                    class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >
+                    ورود / ثبت نام
+                  </NuxtLink>
+                </div>
+
+                <nuxt-link
+                  v-for="page in navigation.pages"
+                  :key="page.name"
+                  :to="page.href"
+                  class="flex items-center whitespace-nowrap hidden md:block mx-3 text-sm font-medium text-gray-700 hover:text-gray-800"
+                  >{{ page.name }}</nuxt-link
+                >
+                <!-- Search -->
+                <div class="flex mx-4 w-1/3 " style="position:relative">
+                  <input
+                    id="searchinput"
+                    @input="searchProduct"
+                    v-model="searchText"
+                    placeholder="جستجو کنید..."
+                    class="border px-3 h-12 rounded-lg w-full searchInput"
+                  />
+
+                  <div
+                    id="searchmenu"
+                    class="mymenu"
+                    :class="[searchText.length > 3 ? '' : 'hidden']"
+                  >
+                    <div v-if="searchProducts.length > 0" class="py-1">
+                      <div v-for="(product, i) in searchProducts" :key="i">
+                        <a
+                          target="_blank"
+                          :href="
+                            `/products/${
+                              product.productId
+                            }/${product.title
+                              .replace(/\//g, '-')
+                              .replace(/ /g, '-')}`
+                          "
+                          class="flex py-6 mt-4 px-10 hover:bg-gray-200 cursor-pointer"
                         >
-                          <img
-                            v-if="product.images"
-                            :src="product.images[0]"
-                            alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-                            class="h-full w-full object-cover object-center"
-                          />
-                        </div>
+                          <div
+                            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                          >
+                            <img
+                              v-if="product.images"
+                              :src="product.images[0]"
+                              alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                              class="h-full w-full object-cover object-center"
+                            />
+                          </div>
 
-                        <div class="mr-4 flex flex-1 flex-col">
-                          <div>
-                            <div
-                              class="flex justify-between align-center text-base font-medium text-gray-900"
-                            >
-                              <h3>
-                                 {{ product.title }} 
-                              </h3>
-                              <p class="mr-4">
-                                {{
-                                  product.price
-                                    .toString()
-                                    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-                                }}
-                                تومان
+                          <div class="mr-4 flex flex-1 flex-col">
+                            <div>
+                              <div
+                                class="flex justify-between align-center text-base font-medium text-gray-900"
+                              >
+                                <h3>
+                                  {{ product.title }}
+                                </h3>
+                                <p class="mr-4">
+                                  {{
+                                    product.totalPrice
+                                      .toString()
+                                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+                                  }}
+                                  تومان
+                                </p>
+                              </div>
+                              <p class="mt-1 text-sm text-gray-500">
+                                {{ product.styleNumber }}
                               </p>
                             </div>
-                            <p class="mt-1 text-sm text-gray-500">
-                              {{ product.styleNumber }}
-                            </p>
+                            <div
+                              class="flex flex-1 items-end justify-end text-sm"
+                            ></div>
                           </div>
-                          <div
-                            class="flex flex-1 items-end justify-end text-sm"
-                          ></div>
-                        </div>
-                      </a>
+                        </a>
+                      </div>
                     </div>
-                  </div>
-                  <div v-else>
-                    <div v-for="(product, i) in searchProducts" :key="i">
+                    <div v-else>
                       <li class="flex py-6 mt-4 px-10">
                         محصولی یافت نشد
                       </li>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <!-- Cart -->
-              <div
-                v-if="authstore.getIsUser == 1"
-                class="mx-2 flow-root lg:ml-6"
-              >
-                <NuxtLink to="/cart">
-                  <ShoppingBagIcon
-                    class="flex-shrink-0 h-6 w-6"
-                    aria-hidden="true"
-                  />
-                </NuxtLink>
-              </div>
-
-              <div
-                v-if="authstore.getIsUser == 1"
-                class="mx-2 flow-root lg:ml-3"
-              >
-                <NuxtLink
-                  to="/users"
-                  class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
-                >
-                  پنل کاربری
-                </NuxtLink>
-              </div>
-              <div
-                v-if="authstore.getIsUser == 0"
-                class="mx-2 flow-root lg:ml-3"
-              >
-                <NuxtLink
-                  to="/users"
-                  class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
-                >
-                  ورود / ثبت نام
-                </NuxtLink>
-              </div>
-
-              <a
-                v-for="page in navigation.pages"
-                :key="page.name"
-                :href="page.href"
-                class="flex items-center whitespace-nowrap mx-3 text-sm font-medium text-gray-700 hover:text-gray-800"
-                >{{ page.name }}</a
-              >
-
-              <!-- Logo -->
-              <div class="flex w-full justify-end ml-0">
                 <a href="/">
-                  <span class="sr-only">Workflow</span>
-                  <img
-                    class="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark.svg?color=indigo&shade=600"
-                    alt=""
-                  />
+                  <span class="sr-only">annenkovStore</span>
+                  <img class="h-12 w-auto" src="~/assets/logo.jpg" alt="" />
                 </a>
               </div>
             </div>
@@ -413,7 +427,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useAuthStore } from '@/stores/auth'
 import {
   Dialog,
@@ -446,116 +460,19 @@ import {
 } from '@heroicons/vue/outline'
 const searchProducts = ref('')
 const searchText = ref('')
+const selectedSection = ref(0)
+const showSection = ref([])
 const navigation = {
-  categories: [
-    {
-      sections: [
-        {
-          id: 'show',
-          name: 'کفش',
-          items: [
-            { name: 'نایکی', href: '#' },
-            { name: 'آدیداس', href: '#' },
-            { name: 'پوما', href: '#' },
-            { name: 'Denim', href: '#' },
-            { name: 'Sweaters', href: '#' },
-            { name: 'T-Shirts', href: '#' },
-            { name: 'Jackets', href: '#' },
-            { name: 'Activewear', href: '#' },
-            { name: 'Browse All', href: '#' }
-          ]
-        },
-        {
-          id: 'accessories',
-          name: 'Accessories',
-          items: [
-            { name: 'Watches', href: '#' },
-            { name: 'Wallets', href: '#' },
-            { name: 'Bags', href: '#' },
-            { name: 'Sunglasses', href: '#' },
-            { name: 'Hats', href: '#' },
-            { name: 'Belts', href: '#' }
-          ]
-        },
-        {
-          id: 'brands',
-          name: 'Brands',
-          items: [
-            { name: 'Full Nelson', href: '#' },
-            { name: 'My Way', href: '#' },
-            { name: 'Re-Arranged', href: '#' },
-            { name: 'Counterfeit', href: '#' },
-            { name: 'Significant Other', href: '#' }
-          ]
-        }
-      ]
-    }
-  ],
   pages: [
-    { name: 'درباره  ما', href: '#' },
-    { name: 'تماس با ما', href: '#' }
+    { name: 'درباره  ما', href: '/aboutus' },
+    { name: 'تماس با ما', href: '/contactus' }
   ]
 }
 
-import {
-  ChevronDownIcon,
-  FilterIcon,
-  MinusSmIcon,
-  PlusSmIcon,
-  ViewGridIcon
-} from '@heroicons/vue/solid'
-
-const sortOptions = [
-  { name: 'Most Popular', href: '#', current: true },
-  { name: 'Best Rating', href: '#', current: false },
-  { name: 'Newest', href: '#', current: false },
-  { name: 'Price: Low to High', href: '#', current: false },
-  { name: 'Price: High to Low', href: '#', current: false }
-]
-const subCategories = [
-  { name: 'Totes', href: '#' },
-  { name: 'Backpacks', href: '#' },
-  { name: 'Travel Bags', href: '#' },
-  { name: 'Hip Bags', href: '#' },
-  { name: 'Laptop Sleeves', href: '#' }
-]
-const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false }
-    ]
-  },
-  {
-    id: 'category',
-    name: 'Category',
-    options: [
-      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
-      { value: 'sale', label: 'Sale', checked: false },
-      { value: 'travel', label: 'Travel', checked: true },
-      { value: 'organization', label: 'Organization', checked: false },
-      { value: 'accessories', label: 'Accessories', checked: false }
-    ]
-  },
-  {
-    id: 'size',
-    name: 'Size',
-    options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true }
-    ]
-  }
-]
+function selectSection (i) {
+  console.log(landing.value.data.menus.main)
+  showSection.value = landing.value.data.menus.main[i]
+}
 
 const { data: landing } = await useAsyncData('landing', () =>
   $fetch(useRuntimeConfig().public.BASE_URL + '/landing')
@@ -564,11 +481,20 @@ const { data: landing } = await useAsyncData('landing', () =>
 const authstore = useAuthStore()
 
 const open = ref(false)
+const openLate = ref(false)
+watch(open, async (newQuestion, oldQuestion) => {
+  if (newQuestion)
+    setTimeout(() => {
+      openLate.value = true
+    }, 500)
+  else openLate.value = false
+})
 const opensearch = ref(false)
 const opensearch2 = ref(false)
-
+const url = useRuntimeConfig().public.BASE_URL
 async function searchProduct (e) {
   if (e.target.value.length > 3) {
+    searchProducts.value = []
     const { data: allproducts, refresh: refreshProducts } = await $fetch(
       useRuntimeConfig().public.BASE_URL + '/products',
       {
@@ -600,10 +526,10 @@ async function searchProduct (e) {
 
 onMounted(async () => {
   document.addEventListener('click', ({ target }) => {
-  if (!target.closest('#searchmenu') && !target.closest('#searchinput')) {
-    searchText.value = ''
-  }
-})
+    if (!target.closest('#searchmenu') && !target.closest('#searchinput')) {
+      searchText.value = ''
+    }
+  })
   if (authstore.getToken) {
     try {
       const token = await $fetch(
@@ -615,10 +541,8 @@ onMounted(async () => {
           }
         }
       )
-      console.log(12, token)
       authstore.setUser(1)
     } catch (error) {
-      console.log(13, error)
       authstore.setUser(0)
     }
   } else authstore.setUser(0)
@@ -626,13 +550,29 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
+.cartNumber {
+  background: coral;
+  border-radius: 5px;
+  height: 19px;
+  padding-right: 3px;
+  /* padding: 2px; */
+  position: absolute;
+  top: 20px;
+  width: 11px;
+}
 .mymenu {
-  width: 30vw;
-  height: 50vh;
+  @media (max-width: 900px) {
+    width: 80vw;
+  }
+  @media (min-width: 900px) {
+    width: 30vw;
+  }
+  max-height: 50vh;
   overflow: auto;
   position: absolute;
   z-index: 150;
   background: white;
+  left: 0;
   top: 50px;
   border: 1px solid #eee;
   border-radius: 6px;

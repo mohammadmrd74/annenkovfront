@@ -1,5 +1,6 @@
 <template>
-  <div style="min-height: 70vh">
+  <div style="min-height: 70vh" class="container mx-auto">
+
     <div v-if="authstore.getIsUser == 0">
       <div
         v-if="state == 0"
@@ -8,8 +9,8 @@
         <div class="max-w-md w-full  space-y-8" style="height: 70vh">
           <div>
             <img
-              class="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+              class="mx-auto h-28 w-auto"
+              src="~/assets/logo.jpg"
               alt="Workflow"
             />
             <h2 class="mt-6 text-right text-2xl font-extrabold text-gray-900">
@@ -60,8 +61,8 @@
         <div class="max-w-md w-full  space-y-8" style="height: 70vh">
           <div>
             <img
-              class="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+              class="mx-auto h-28 w-auto"
+              src="~/assets/logo.jpg"
               alt="Workflow"
             />
             <h2 class="mt-6 text-right text-2xl font-extrabold text-gray-900">
@@ -95,7 +96,15 @@
               @click="active"
               class="group relative w-full flex justify-center py-4 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-              ارسال
+              <div v-if="!wait">ارسال</div>
+              <div v-else class="flex justify-center items-center">
+                <div
+                  class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
             </button>
           </div>
         </div>
@@ -109,65 +118,91 @@
           </h2>
         </div>
         <div>
-          <h2
+          <button
             @click="logout"
-            class=" text-right text-2xl font-extrabold text-gray-900"
+            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
             خروج
-          </h2>
+          </button>
         </div>
       </div>
-      <div class="border rounded-xl m-5 px-5 my-3" v-for="(order, i) in orders" :key="i">
-        <div>
-          <div class="flex m-4 px-3 justify-between">
-          <h1 class=" text-lg font-bold">اطلاعات خریدار</h1>
-          <h1 v-if="order.status == 'created'" class=" text-lg font-bold">وضعیت: {{'ایجاد شده' }}</h1>
-          <h1  v-else-if="order.status == 'paymented'" class=" text-lg font-bold text-green-400">وضعیت: {{'پرداخت شده'}}</h1>
-
-          </div>
-          <div class="grid grid-cols-2 gap-6 p-4">
-            <li>نام: {{order.userData.firstname}}</li>
-            <li>نام خانوادگی: {{order.userData.lastname}}</li>
-            <li>موبایل: {{order.userData.mobile}}</li>
-            <li>استان: {{order.userData.province}}</li>
-            <li>شهر: {{order.userData.city}}</li>
-            <li>آدرس: {{order.userData.address}}</li>
-            <li>کد پتسی: {{order.userData.postalCode}}</li>
-          </div>
-        </div>
-        <li v-for="product in order.orderedProducts" :key="product.id" class="flex py-6 mt-4 px-3">
-          <div
-            class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
-          >
-            <img
-             :src="product.image"
-              alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-              class="h-full w-full object-cover object-center"
-            />
-          </div>
-
-          <div class="mr-4 flex flex-1 flex-col">
-            <div>
-              <div
-                class="flex justify-between align-center text-base font-medium text-gray-900"
+      <div v-if="orders.length">
+        <div
+          class="border rounded-xl m-5 px-5 my-3"
+          v-for="(order, i) in orders"
+          :key="i"
+        >
+          <div>
+            <div class="flex m-4 px-3 justify-between">
+              <h1 class=" text-lg font-bold">اطلاعات خریدار</h1>
+              <h1 v-if="order.status == 'created'" class=" text-lg font-bold">
+                وضعیت: {{ 'ایجاد شده' }}
+              </h1>
+              <h1
+                v-else-if="order.status == 'paymented'"
+                class=" text-lg font-bold text-green-400"
               >
-                <h3>
-                  <a href="#"> {{product.title}} </a>
-                </h3>
-                <div class="mr-4">
-                  <p >{{product.price.toString()
-                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}} تومان</p>
-                  <p>سایز {{product.size}}</p>
-                </div>
-                
-              </div>
-              <p class="mt-1 text-sm text-gray-500">{{product.styleNumber}}</p>
+                وضعیت: {{ 'پرداخت شده' }}
+              </h1>
             </div>
-            <div class="flex flex-1 items-end justify-between text-sm">
-              <p class="text-gray-500">{{product.count}} عدد</p>
+            <div class="grid grid-cols-2 gap-6 p-4">
+              <li>نام: {{ order.userData.firstname }}</li>
+              <li>نام خانوادگی: {{ order.userData.lastname }}</li>
+              <li>موبایل: {{ order.userData.mobile }}</li>
+              <li>استان: {{ order.userData.province }}</li>
+              <li>شهر: {{ order.userData.city }}</li>
+              <li>آدرس: {{ order.userData.address }}</li>
+              <li>کد پستی: {{ order.userData.postalCode }}</li>
             </div>
           </div>
-        </li>
+          <li
+            v-for="product in order.orderedProducts"
+            :key="product.id"
+            class="flex py-6 mt-4 px-3"
+          >
+            <div
+              class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+            >
+              <img
+                :src="product.image"
+                alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+
+            <div class="mr-4 flex flex-1 flex-col">
+              <div>
+                <div
+                  class="flex justify-between align-center text-base font-medium text-gray-900"
+                >
+                  <h3>
+                    <a href="#"> {{ product.title }} </a>
+                  </h3>
+                  <div class="mr-4">
+                    <p>
+                      {{
+                        product.price
+                          .toString()
+                          .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+                      }}
+                      تومان
+                    </p>
+                    <p>سایز {{ product.size }}</p>
+                  </div>
+                </div>
+                <p class="mt-1 text-sm text-gray-500">
+                  {{ product.styleNumber }}
+                </p>
+              </div>
+              <div class="flex flex-1 items-end justify-between text-sm">
+                <p class="text-gray-500">{{ product.count }} عدد</p>
+              </div>
+            </div>
+          </li>
+        </div>
+      </div>
+      <div v-else class="md:mt-10 md:mx-7">
+        <span>سفارشی ثبت نشده است.</span>
       </div>
     </div>
     <div v-else></div>
@@ -179,7 +214,8 @@ import { LockClosedIcon } from '@heroicons/vue/solid'
 import { createToaster } from '@meforma/vue-toaster'
 import { useAuthStore } from '@/stores/auth'
 import VOtpInput from 'vue3-otp-input'
-
+import { useRoute } from 'vue-router'
+const route = useRoute()
 const authstore = useAuthStore()
 const toaster = createToaster({ position: 'top' })
 const mobile = ref('')
@@ -188,6 +224,7 @@ const otpInput = ref(null)
 let userData = ref({})
 const code = ref('')
 const orders = ref([])
+const wait = ref(false)
 
 const isUser = authstore.getIsUser
 
@@ -204,10 +241,60 @@ async function handleOnComplete (value) {
       }
     )
     toaster.success(`با موفقیت وارد شدید.`)
-    state.value = 0
     authstore.setUserMobile('0' + mobile.value)
     authstore.setToken(token.token)
-    authstore.setUser(true)
+    if (route.query.type !== 'cart'){ authstore.setUser(true);state.value = 0}
+    await getOrders()
+    if (route.query.type === 'cart') {
+      wait.value = true
+      try {
+        const checkproduct = await $fetch(
+          useRuntimeConfig().public.BASE_URL +
+            `/updateproduct?productId=${authstore.getProductToBuy.productId}&sizeId=${authstore.getProductToBuy.selectedSize.id}`,
+          {
+            method: 'GET'
+          }
+        )
+        console.log('checked', checkproduct.data)
+        if (
+          authstore.getProductToBuy.productPrice !==
+          checkproduct.data.totalPrice
+        )
+          toaster.error(
+            `قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`
+          )
+        const res = await $fetch(
+          useRuntimeConfig().public.BASE_URL + '/insertToCart',
+          {
+            method: 'POST',
+            body: {
+              productId: authstore.getProductToBuy.productId,
+              selectedColor: authstore.getProductToBuy.selectedColor,
+              selectedSize: authstore.getProductToBuy.selectedSize.size,
+              productPrice: checkproduct.data.totalPrice,
+              count: 1
+            },
+            headers: {
+              Authorization: `Bearer ${authstore.getToken}`
+            }
+          }
+        )
+        wait.value = false;
+        authstore.setUser(true);
+
+        return navigateTo({
+          path: '/cart'
+        })
+      } catch (error) {
+        wait.value = false
+
+        console.log(error)
+        if (error.response._data.message.includes('Duplicate'))
+          toaster.error('این محصول هم اکنون در سبد خرید موجود می باشد')
+        else if (error.response._data.message.includes('Size not Found.'))
+          toaster.error('با عرض پوزش سایز انتخابی شما به پایان رسیده است.')
+      }
+    }
   } catch (error) {
     console.log(error)
     toaster.error('کد اشتباه است')
@@ -223,6 +310,12 @@ function logout () {
 }
 
 onMounted(async () => {
+  console.log(authstore.getProductToBuy)
+  await getOrders()
+  console.log(route.query.type === 'cart')
+})
+
+async function getOrders () {
   try {
     const res = await $fetch(
       useRuntimeConfig().public.BASE_URL + '/getorders',
@@ -238,7 +331,7 @@ onMounted(async () => {
   } catch (error) {
     console.log(error)
   }
-})
+}
 
 async function sendSms () {
   if (mobile.value) {
@@ -278,6 +371,7 @@ async function active () {
       }
     )
     console.log(2, token)
+    await getOrders()
     toaster.success(`با موفقیت وارد شدید.`)
   } catch (error) {
     console.log(error)
@@ -287,6 +381,15 @@ async function active () {
 </script>
 
 <style>
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
 .otp-input {
   width: 60px;
   height: 60px;
