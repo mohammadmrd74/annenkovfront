@@ -9,18 +9,13 @@ export default defineNuxtConfig({
     build: {
       transpile: ['@heroicons/vue']
   },
-
-  server: {
-      port: 3001,
-  },
-
   
   css: ["@/assets/sass/_global.scss"],
 
   runtimeConfig: {
     secretKey: '', // variable that can only be accessed on the server side
     public: {
-      BASE_URL: process.env.BASE_URL || 'http://localhost:3000/api/v1.0' // variable that can also be accessed on the client side
+      BASE_URL: process.env.BASE_URL || 'http://localhost:3500/api/v1.0' // variable that can also be accessed on the client side
     }
   },
 
