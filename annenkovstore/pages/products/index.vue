@@ -625,8 +625,8 @@ const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
         page: pageNum.value,
         orderBy: 'price',
         orderDir: orderDir.value,
-        minprice: price.value[0],
-        maxprice: price.value[1]
+        minprice: parseInt(price.value[0]),
+        maxprice: parseInt(price.value[1])
       }
     })
   }
