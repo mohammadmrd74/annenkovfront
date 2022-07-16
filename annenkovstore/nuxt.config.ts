@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     secretKey: '', // variable that can only be accessed on the server side
     public: {
-      BASE_URL: process.env.BASE_URL || 'http://localhost:3500/api/v1.0' // variable that can also be accessed on the client side
+      BASE_URL: process.env.BASE_URL || 'https://annenkovstore.ir/api/v1.0' // variable that can also be accessed on the client side
     }
   },
 
