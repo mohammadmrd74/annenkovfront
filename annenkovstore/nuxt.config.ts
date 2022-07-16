@@ -6,6 +6,10 @@ export default defineNuxtConfig({
   
   buildModules:['@nuxtjs/tailwindcss', '@pinia/nuxt'],
 
+    build: {
+      transpile: ['@heroicons/vue']
+  },
+
   
   css: ["@/assets/sass/_global.scss"],
 
