@@ -10,6 +10,10 @@ export default defineNuxtConfig({
       transpile: ['@heroicons/vue']
   },
 
+  server: {
+      port: 3001,
+  },
+
   
   css: ["@/assets/sass/_global.scss"],
 
