@@ -36,11 +36,11 @@
             />
           </div>
           <h2 class="mt-4 text-sm font-semibold text-gray-700">
-            {{ product.title }}
+            {{ product.brand }}   <span class="mx-1">{{ product.title }} </span>
           </h2>
-          <h3 class="mt-1 text-sm  text-gray-700">
-            {{ product.brand }}
-          </h3>
+          <p class="mt-1 text-sm font-medium text-gray-500">
+            {{ product.styleNumber }} 
+          </p>
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{
               product.totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
@@ -86,11 +86,12 @@
             />
           </div>
           <h2 class="mt-4  font-semibold text-gray-700">
-            {{ product.title }}
+            {{ product.brand }} 
           </h2>
-          <h3 class="mt-1 text-sm font-semibold text-gray-700">
-            {{ product.brand }}
-          </h3>
+          <p class="mt-1 text-sm font-medium text-gray-500">
+            {{ product.styleNumber }} 
+          </p>
+         
           
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{

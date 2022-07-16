@@ -110,6 +110,10 @@
               تومان
             </p>
 
+            <p class="mt-4 text-sm font-medium text-gray-500">
+               کد محصول:    {{ product1.data.products[0].styleNumber }}  
+              </p>
+
             <div class="mt-10">
               <!-- Sizes -->
               <div class="mt-10">
@@ -254,11 +258,14 @@
               />
             </div>
             <h2 class="mt-4  font-semibold text-gray-700">
-              {{ product.title }}
+              {{ product.brandNameFa }} {{ product.title }} 
             </h2>
             <h3 class="mt-1 text-sm font-semibold text-gray-700">
-              {{ product.brand }}
+              
             </h3>
+              <p class="mt-1 text-sm font-medium text-gray-500">
+                {{ product.styleNumber }} 
+              </p>
             <p class="mt-1 text-lg font-medium text-gray-900">
               {{ product.totalPrice.toString()
                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') }} تومان

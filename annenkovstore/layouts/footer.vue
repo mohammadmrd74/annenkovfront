@@ -29,25 +29,26 @@
            
             <div>
                 <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">آننکوف استور</h2>
-                <ul class="text-gray-600 dark:text-gray-400">
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">درباره ما</a>
-                    </li>
-                    <li class="mb-4">
-                        <a href="#" class="hover:underline">تماس با ما</a>
-                    </li>
-                    <li>
-                        <a href="#" class="hover:underline">قوانین و مقررات</a>
-                    </li>
-                </ul>
+                 <nuxt-link
+                  v-for="page in navigation.pages"
+                  :key="page.name"
+                  :to="page.href"
+                  class="mt-3 flex text-gray-600 dark:text-gray-400"
+                  >{{ page.name }}</nuxt-link
+                >
             </div>
         </div>
     </div>
 </footer>
 </template>
 
-<script>
-
+<script setup>
+const navigation = {
+  pages: [
+    { name: 'درباره  ما', href: '/aboutus' },
+    { name: 'تماس با ما', href: '/contactus' }
+  ]
+}
 </script>
 
 <style>

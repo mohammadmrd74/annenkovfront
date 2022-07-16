@@ -54,7 +54,6 @@
                     </div>
                   </div>
                   <div style="direction: ltr" class="mt-4 mb-2 px-8">
-                  
                     <Slider
                       @update="changeCost"
                       direction="ltr"
@@ -486,12 +485,19 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-          <h3 class="mt-4 text-sm text-gray-700">
-            {{ product.title }}
+          <h3 class="mt-4 text-md text-gray-900">
+            {{product.brandNameFa}} <span class="mx-1">{{ product.title }} </span>
           </h3>
+          <p class="mt-1 text-sm font-medium text-gray-500">
+            {{ product.styleNumber }}
+          </p>
           <p class="mt-1 text-lg font-medium text-gray-900">
-            {{ product.totalPrice.toString()
-                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') }} تومان
+            {{
+              product.totalPrice
+                .toString()
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            }}
+            تومان
           </p>
         </nuxt-link>
       </div>

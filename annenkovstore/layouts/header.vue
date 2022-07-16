@@ -35,42 +35,41 @@
                 v-for="section in landing.data.menus.main"
                 :key="section.mainId"
                 class="p-6"
-                
               >
-               <div v-if="section.mainId != 3">
-                 <p
-                  :id="`${section.mainId}-heading-mobile`"
-                  class="font-medium text-gray-900"
-                >
-                  {{ section.mainType }}
-                </p>
-                <div class=" border-gray-200 py-6 px-4 space-y-6">
-                  <a
-                    class="font-bold"
-                    :href="
-                      `/products?mainType=${section.mainType}&mainId=${section.mainId}`
-                    "
-                    >مشاهده همه محصولات</a
+                <div v-if="section.mainId != 3">
+                  <p
+                    :id="`${section.mainId}-heading-mobile`"
+                    class="font-medium text-gray-900"
                   >
-                  <div
-                    v-for="brand in landing.data.menus.brands"
-                    :key="brand.brandId"
-                    class="flow-root"
-                  >
+                    {{ section.mainType }}
+                  </p>
+                  <div class=" border-gray-200 py-6 px-4 space-y-6">
                     <a
+                      class="font-bold"
                       :href="
-                        `/products?mainType=${section.mainType}&mainId=${section.mainId}&brandId=${brand.brandId}`
+                        `/products?mainType=${section.mainType}&mainId=${section.mainId}`
                       "
-                      class="-m-2 p-2 block font-medium text-gray-900"
-                      >{{ brand.brandNameEn }}</a
+                      >مشاهده همه محصولات</a
                     >
+                    <div
+                      v-for="brand in landing.data.menus.brands"
+                      :key="brand.brandId"
+                      class="flow-root"
+                    >
+                      <a
+                        :href="
+                          `/products?mainType=${section.mainType}&mainId=${section.mainId}&brandId=${brand.brandId}`
+                        "
+                        class="-m-2 p-2 block font-medium text-gray-900"
+                        >{{ brand.brandNameEn }}</a
+                      >
+                    </div>
                   </div>
                 </div>
-               </div>
               </div>
 
               <nuxt-link
-              @click="open = false"
+                @click="open = false"
                 v-for="page in navigation.pages"
                 :key="page.name"
                 :to="page.href"
@@ -112,6 +111,8 @@
                       </span>
                     </div>
                     <input
+                      @input="searchProduct"
+                      v-model="searchText"
                       placeholder="جستجو کنید..."
                       class="border px-3 h-12 rounded-lg w-full searchInput"
                     />
@@ -128,6 +129,61 @@
                   </div>
                 </div>
               </div>
+              <div v-if="searchProducts.length > 0" class="py-1 overflow-y-auto">
+                <div v-for="(product, i) in searchProducts" :key="i">
+                  <a
+                    target="_blank"
+                    :href="
+                      `/products/${product.productId}/${product.title
+                        .replace(/\//g, '-')
+                        .replace(/ /g, '-')}`
+                    "
+                    class="flex py-6 mt-4 px-10 hover:bg-gray-200 cursor-pointer"
+                  >
+                    <div
+                      class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                    >
+                      <img
+                        v-if="product.images"
+                        :src="product.images[0]"
+                        alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                        class="h-full w-full object-cover object-center"
+                      />
+                    </div>
+
+                    <div class="mr-4 flex flex-1 flex-col">
+                      <div>
+                        <div
+                          class="flex justify-between align-center text-base font-medium text-gray-900"
+                        >
+                          <h3>
+                            {{ product.title }}
+                          </h3>
+                          <p class="mr-4">
+                            {{
+                              product.totalPrice
+                                .toString()
+                                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+                            }}
+                            تومان
+                          </p>
+                        </div>
+                        <p class="mt-1 text-sm text-gray-500">
+                          {{ product.styleNumber }}
+                        </p>
+                      </div>
+                      <div
+                        class="flex flex-1 items-end justify-end text-sm"
+                      ></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div v-else>
+                <li v-if="searchText.length > 3" class="flex py-6 mt-4 px-10">
+                  محصولی یافت نشد
+                </li>
+              </div>
             </DialogPanel>
           </TransitionChild>
         </div>
@@ -135,12 +191,6 @@
     </TransitionRoot>
 
     <header class="relative bg-white">
-      <!-- <p
-        class="bg-indigo-600 h-10 flex items-center justify-center text-sm font-medium text-white px-4 sm:px-6 lg:px-8"
-      >
-        Get free delivery on orders over $100
-      </p> -->
-
       <nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="border-b border-gray-200">
           <div class="h-16 flex items-center">
@@ -322,11 +372,11 @@
                 </div>
                 <div
                   v-if="authstore.getIsUser == 0"
-                  class="mx-2 flow-root lg:ml-3"
+                  class="mx-2 flow-root  lg:ml-3"
                 >
                   <NuxtLink
                     to="/users"
-                    class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
+                    class="flex items-center  whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
                   >
                     ورود / ثبت نام
                   </NuxtLink>
@@ -340,7 +390,10 @@
                   >{{ page.name }}</nuxt-link
                 >
                 <!-- Search -->
-                <div class="flex mx-4 w-1/3 " style="position:relative">
+                <div
+                  class="flex  hidden md:block mx-4 w-1/3 "
+                  style="position:relative"
+                >
                   <input
                     id="searchinput"
                     @input="searchProduct"
@@ -413,6 +466,13 @@
                     </div>
                   </div>
                 </div>
+                <span class="text-gray-500 mx-4 md:hidden sm:text-sm">
+                  <SearchIcon
+                    @click="opensearch = true"
+                    class="w-5 h-6"
+                    aria-hidden="true"
+                  />
+                </span>
                 <a href="/">
                   <span class="sr-only">annenkovStore</span>
                   <img class="h-12 w-auto" src="~/assets/logo.jpg" alt="" />

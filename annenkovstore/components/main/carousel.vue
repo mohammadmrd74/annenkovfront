@@ -19,7 +19,7 @@
       <!-- Item 2 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img
-          src="~/assets/images/nikebanner.jpg"
+          src="~/assets/images/newbalance-banner.jpg"
           class="block absolute "
           alt="..."
         />
