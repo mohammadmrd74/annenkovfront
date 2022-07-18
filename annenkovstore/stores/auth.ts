@@ -8,6 +8,7 @@ export const useAuthStore = defineStore('auth', {
     name: 'Auth',
     productToBuy: {},
     cartNumber : 0,
+    orderAmount: {}
   }),
   persist: true,
   getters: {
@@ -15,7 +16,8 @@ export const useAuthStore = defineStore('auth', {
     getIsUser: state => state.isUser,
     getUserMobile: state => state.userMobile,
     getProductToBuy: state => state.productToBuy,
-    getCartNumber: state => state.cartNumber
+    getCartNumber: state => state.cartNumber,
+    getOrderAmount: state => state.orderAmount
   },
   actions: {
     setToken (token) {
@@ -32,6 +34,9 @@ export const useAuthStore = defineStore('auth', {
     },
     setCartNumber (number) {
       this.cartNumber = number
+    },
+    setOrderAmount(amount) {
+      this.orderAmount = amount;
     }
   }
 })

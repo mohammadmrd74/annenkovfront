@@ -100,14 +100,26 @@
           </div>
 
           <!-- Options -->
-          <div class="mt-4 lg:mt-0 lg:row-span-3">
-            <p class="text-3xl lg:mt-4 text-gray-900">
+          <div class="mt-5 lg:mt-0 lg:row-span-3">
+            <p v-if="product1.data.products[0].totalPrice !== product1.data.products[0].price" class="lg:mt-5">
+              <span class="text-xl line-through  text-gray-900">
+                {{
+                product1.data.products[0].price
+                  .toString()
+                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+              }}
+              تومان
+              </span>
+              <span class="discount mx-3" style="position: static" v-if="product1.data.products[0].totalPrice !== product1.data.products[0].price">&#37;{{product1.data.products[0].discount}}</span>
+            </p>
+            <p  class="text-3xl mt-5 text-gray-900">
               {{
                 product1.data.products[0].totalPrice
                   .toString()
                   .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
               }}
               تومان
+              
             </p>
 
             <p class="mt-4 text-sm font-medium text-gray-500">
@@ -299,6 +311,15 @@ const toaster = createToaster({ position: 'top' })
 // import styles from 'lightgallery/scss/lightgallery.scss';
 
 const route = useRoute()
+useHead({
+  title: `${route.params.title}  |  آننکوف استور`,
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  charset: 'utf-8',
+  meta: [
+    { name: 'description', content: 'آننکوف استور' }
+  ]
+})
+
 const modules = [Navigation, Pagination, Scrollbar, A11y]
 const selectedImg = ref('')
 const selectedSize = ref('')

@@ -315,7 +315,12 @@ import { createToaster } from '@meforma/vue-toaster'
 import { useAuthStore } from '@/stores/auth'
 import VOtpInput from 'vue3-otp-input'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-
+useHead({
+  title: 'سبد خرید',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  charset: 'utf-8',
+  meta: [{ name: 'description', content: 'آننکوف استور' }]
+})
 const authstore = useAuthStore()
 const toaster = createToaster({ position: 'top' })
 const mobile = ref('')
@@ -369,7 +374,7 @@ function validate () {
 }
 
 
-function pay () {
+async function pay () {
   if (validate()) {
     let payBody = {
       userData: {
@@ -385,13 +390,32 @@ function pay () {
     }
     console.log(payBody)
     try {
-      let res = $fetch(useRuntimeConfig().public.BASE_URL + '/insertorder', {
+      let res = await $fetch(useRuntimeConfig().public.BASE_URL + '/insertorder', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${authstore.getToken}`
         },
         body: payBody
       })
+      console.log('order', res.data);
+      authstore.setOrderAmount({
+        id: res.data.orderId,
+        amount: parseInt(sumProduct.value.replaceAll('.',''))
+      })
+
+      let bank = await $fetch(useRuntimeConfig().public.BASE_URL + '/bank/sign', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authstore.getToken}`
+        },
+        body: {
+          Amount: parseInt(sumProduct.value.replaceAll('.','')),
+          Description: `خرید از آننکوف استور`
+        }
+      })
+      console.log(bank);
+
+      window.open('https://www.zarinpal.com/pg/StartPay/' + bank.data.authority, "_self")
 
       //go to bank and then confirm
     } catch (error) {

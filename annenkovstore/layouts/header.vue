@@ -113,7 +113,7 @@
                     <input
                       @input="searchProduct"
                       v-model="searchText"
-                      placeholder="جستجو کنید..."
+                      placeholder="نام یا کد محصول را وارد نمایید..."
                       class="border px-3 h-12 rounded-lg w-full searchInput"
                     />
                   </div>
@@ -398,7 +398,7 @@
                     id="searchinput"
                     @input="searchProduct"
                     v-model="searchText"
-                    placeholder="جستجو کنید..."
+                    placeholder="نام یا کد محصول را وارد نمایید..."
                     class="border px-3 h-12 rounded-lg w-full searchInput"
                   />
 

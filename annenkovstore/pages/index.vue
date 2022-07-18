@@ -35,6 +35,7 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
+            <span class="discount">&#37;{{product.discount}}</span>
           <h2 class="mt-4 text-sm font-semibold text-gray-700">
             {{ product.brand }}   <span class="mx-1">{{ product.title }} </span>
           </h2>
@@ -105,6 +106,7 @@
   </div>
 </template>
 <script>
+
 import Carousel from '@/components/main/carousel.vue'
 
 // import Swiper core and required modules
@@ -127,6 +129,15 @@ export default {
     Carousel
   },
   async setup () {
+    
+      useHead({
+    title: 'فروشگاه اینترنتی آننکوف استور | Annenkov Store',
+    viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+    charset: 'utf-8',
+    meta: [
+      { name: 'description', content: 'درباره ما آننکوف استور' }
+    ]
+  })
     const { data: landingItems } = await useAsyncData('landingItems', () =>
       $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
     )
@@ -170,6 +181,14 @@ export default {
 </script>
 
 <style lang="scss">
+.discount {
+  position: absolute;
+    top: 17px;
+    left: 10px;
+    background: #bfe7bf;
+    padding: 11px;
+    border-radius: 13px;
+}
 .swiper-pagination {
   bottom: -3px !important;
 }

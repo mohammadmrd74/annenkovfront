@@ -1,6 +1,5 @@
 <template>
   <div style="min-height: 70vh" class="container mx-auto">
-
     <div v-if="authstore.getIsUser == 0">
       <div
         v-if="state == 0"
@@ -133,19 +132,23 @@
           :key="i"
         >
           <div>
-            <div class="flex m-4 px-3 justify-between">
-              <h1 class=" text-lg font-bold">اطلاعات خریدار</h1>
+            <div class="md:flex m-4 px-3 md:justify-between">
+              <h1 class=" text-lg py-3 font-bold">اطلاعات خریدار</h1>
               <h1 v-if="order.status == 'created'" class=" text-lg font-bold">
                 وضعیت: {{ 'ایجاد شده' }}
               </h1>
               <h1
                 v-else-if="order.status == 'paymented'"
-                class=" text-lg font-bold text-green-400"
+                class=" text-lg font-bold text-green-500"
               >
                 وضعیت: {{ 'پرداخت شده' }}
+               <div class=" text-lg font-bold text-indigo-500">
+                 کد پیگیری: {{order.trackNumber}}
+               </div>
               </h1>
             </div>
-            <div class="grid grid-cols-2 gap-6 p-4">
+            
+            <div class="grid md:grid-cols-2 gap-6 p-4">
               <li>نام: {{ order.userData.firstname }}</li>
               <li>نام خانوادگی: {{ order.userData.lastname }}</li>
               <li>موبایل: {{ order.userData.mobile }}</li>
@@ -215,8 +218,14 @@ import { createToaster } from '@meforma/vue-toaster'
 import { useAuthStore } from '@/stores/auth'
 import VOtpInput from 'vue3-otp-input'
 import { useRoute } from 'vue-router'
-const route = useRoute()
 const authstore = useAuthStore()
+useHead({
+  title: authstore.getIsUser == 0 ? `ورود/ثبت نام` : 'سفارش ها',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  charset: 'utf-8',
+  meta: [{ name: 'description', content: 'آننکوف استور' }]
+})
+const route = useRoute()
 const toaster = createToaster({ position: 'top' })
 const mobile = ref('')
 const state = ref(0)
@@ -243,7 +252,10 @@ async function handleOnComplete (value) {
     toaster.success(`با موفقیت وارد شدید.`)
     authstore.setUserMobile('0' + mobile.value)
     authstore.setToken(token.token)
-    if (route.query.type !== 'cart'){ authstore.setUser(true);state.value = 0}
+    if (route.query.type !== 'cart') {
+      authstore.setUser(true)
+      state.value = 0
+    }
     await getOrders()
     if (route.query.type === 'cart') {
       wait.value = true
@@ -279,8 +291,8 @@ async function handleOnComplete (value) {
             }
           }
         )
-        wait.value = false;
-        authstore.setUser(true);
+        wait.value = false
+        authstore.setUser(true)
 
         return navigateTo({
           path: '/cart'

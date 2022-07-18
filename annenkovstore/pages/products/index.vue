@@ -549,6 +549,14 @@ import Slider from '@vueform/slider'
 import MoneyFormat from 'vue-money-format'
 import { useRoute } from 'vue-router'
 const route = useRoute()
+useHead({
+  title: `${route.query.mainType}  |  آننکوف استور`,
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+  charset: 'utf-8',
+  meta: [
+    { name: 'description', content: 'آننکوف استور' }
+  ]
+})
 
 const product = {
   name: 'Basic Tee 6-Pack ',
