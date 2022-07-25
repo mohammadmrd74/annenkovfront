@@ -468,6 +468,7 @@
           v-for="product in allproducts.data.products"
           :key="product.productId"
           class="group"
+          style="position: relative"
           :to="
             `/products/${product.productId}/${product.title
               .replace(/\//g, '-')
@@ -485,6 +486,7 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
+          <span class="discount" v-if="product.discount > 0">&#37;{{Math.floor(((product.price - product.totalPrice)/product.totalPrice) * 100)}}</span>
           <h3 class="mt-4 text-md text-gray-900">
             {{product.brandNameFa}} <span class="mx-1">{{ product.title }} </span>
           </h3>
@@ -550,7 +552,7 @@ import MoneyFormat from 'vue-money-format'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 useHead({
-  title: `${route.query.mainType}  |  آننکوف استور`,
+  title: `${route.query.mainType || 'محصولات'}  |  آننکوف استور`,
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
   meta: [
@@ -598,7 +600,7 @@ const colorsToFilter = ref([])
 const colors = ref([])
 const scolorsToFilter = ref([])
 const scolors = ref([])
-const orderDir = ref('desc')
+const orderDir = ref('asc')
 
 const price = ref([0, 0])
 function queryChanged (id) {
@@ -611,7 +613,7 @@ function queryChanged (id) {
 const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
   'allproducts',
   () => {
-    console.log([parseInt(route.query.brandId)])
+    console.log(route.query.discount)
     return $fetch(useRuntimeConfig().public.BASE_URL + '/products', {
       method: 'POST',
       body: {
@@ -629,7 +631,7 @@ const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
           ? [route.query.mainType == 'زنانه' ? 4 : 1]
           : [],
         search: '',
-        showDiscounts: false,
+        showDiscounts: route.query.discount ? true : false,
         page: pageNum.value,
         orderBy: 'price',
         orderDir: orderDir.value,

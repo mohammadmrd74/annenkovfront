@@ -392,7 +392,7 @@ async function active () {
 }
 </script>
 
-<style>
+<style lang="scss">
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -403,8 +403,14 @@ input[type='number'] {
   -moz-appearance: textfield;
 }
 .otp-input {
-  width: 60px;
+  @media (min-width: 969px) {
+    width: 60px;
   height: 60px;
+  }
+  @media (max-width: 968px) {
+    width: 45px;
+  height: 45px;
+  }
   padding: 5px;
   margin: 0 10px;
   font-size: 20px;

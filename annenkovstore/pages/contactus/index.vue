@@ -2,20 +2,14 @@
   <div class="container mx-auto p-10" style="min-height:70vh">
     <img class="mx-auto h-40 w-auto" src="~/assets/logo.jpg" alt="Workflow" />
     <h1 class="text-xl font-bold">تماس با ما</h1>
-    <p class="text-lg mt-10">
+    <!-- <p class="text-lg mt-10">
       آدرس: ساری خیابان فرهنگ، کوی توکل، توکل ۶
-    </p>
+    </p> -->
     <p class="text-lg mt-2">
       تلفن تماس: 09213983797
     </p>
     <p class="text-lg mt-2">
       ایمیل: info@annenkovstore.ir
-    </p>
-    <p class="text-lg mt-2">
-      در شرایط حاضر و با توجه به محدودیت های بوجود آمده برای هم وطنانمون، هموار
-      تلاش می کنیم تا با عرضه به روز ترین محصولات، امکان استفاده از جدید ترین
-      تولیدات برند های دنیا را برای مشتریان عزیزمون فراهم کنیم و در این راستا از
-      هیچ تلاشی فرو گذار نیستیم.
     </p>
     <ul class="w-1/3">
       <li class="mt-4 supportButton">

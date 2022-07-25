@@ -11,7 +11,7 @@
           >First Slide</span
         >
         <img
-          src="~/assets/images/adidasbanner.jpg"
+          src="~/assets/images/1.jpg"
           class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
           alt="..."
         />
@@ -19,27 +19,27 @@
       <!-- Item 2 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img
-          src="~/assets/images/newbalance-banner.jpg"
+          src="~/assets/images/2.jpg"
           class="block absolute "
           alt="..."
         />
       </div>
       <!-- Item 3 -->
-      <!-- <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img
-          src="~/assets/images/newbalance-banner.jpg"
+          src="~/assets/images/3.jpg"
           class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
           alt="..."
         />
-      </div> -->
+      </div>
       <!-- Item 4 -->
-      <!-- <div class="hidden duration-700 ease-in-out" data-carousel-item>
+      <div class="hidden duration-700 ease-in-out" data-carousel-item>
         <img
-          src="~/assets/images/pumabanner.jpg"
+          src="~/assets/images/4.webp"
           class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
           alt="..."
         />
-      </div> -->
+      </div>
     </div>
     <!-- Slider controls -->
     <div

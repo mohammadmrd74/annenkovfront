@@ -16,116 +16,122 @@
         >
       </div>
     </div>
-    <div v-else-if="authstore.getIsUser == 1" >
+    <div v-else-if="authstore.getIsUser == 1">
       <div v-if="pstate === 0">
         <div v-if="cartItems.length > 0">
           <li
-          v-for="(product, i) in cartItems"
-          :key="product.productId"
-          class="flex py-6 mt-4 px-10"
-        >
-          <div
-            class="h-28 md:w-48 w-36 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+            v-for="(product, i) in cartItems"
+            :key="product.productId"
+            class="flex py-6 mt-4 px-10"
           >
-            <img
-              :src="product.image"
-              alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
-              class="h-full w-full object-cover object-center"
-            />
-          </div>
+            <div
+              class="h-28 md:w-48 w-36 flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+            >
+              <img
+                :src="product.image"
+                alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
 
-          <div class="mr-4 flex flex-1 flex-col">
-            <div>
-              <div
-                class="flex justify-between align-center text-base font-medium text-gray-900"
-              >
-                <h3>
-                  <a href="#"> {{ product.title }} </a>
-                </h3>
-                <p class="mr-4">
-                  {{
-                    product.price
-                      .toString()
-                      .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
-                  }}
-                  تومان
+            <div class="mr-4 flex flex-1 flex-col">
+              <div>
+                <div
+                  class="flex justify-between align-center text-base font-medium text-gray-900"
+                >
+                  <h3>
+                    <a href="#"> {{ product.title }} </a>
+                  </h3>
+                  <p class="mr-4">
+                    {{
+                      product.price
+                        .toString()
+                        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+                    }}
+                    تومان
+                  </p>
+                </div>
+                <p class="mt-1">سایز {{ product.size }}</p>
+                <p class="mt-1 text-sm text-gray-500">
+                  {{ product.styleNumber }}
                 </p>
               </div>
-              <p class="mt-1">سایز {{ product.size }}</p>
-              <p class="mt-1 text-sm text-gray-500">
-                {{ product.styleNumber }}
-              </p>
-            </div>
-            <div class="flex flex-1 items-end justify-end text-sm">
-              <Menu as="div" class="relative inline-block  text-left">
-                <div>
-                  <MenuButton
-                    class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-                  >
-                    تعداد: {{ product.count }}
-                    <ChevronDownIcon
-                      class="-mr-1 ml-5 h-5 w-5"
-                      aria-hidden="true"
-                    />
-                  </MenuButton>
-                </div>
+              <div class="text-left  items-end justify-end text-sm">
+                <Menu as="div" class="relative inline-block  text-left">
+                  <div>
+                    <MenuButton
+                      class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                    >
+                      تعداد: {{ product.count }}
+                      <ChevronDownIcon
+                        class="-mr-1 ml-5 h-5 w-5"
+                        aria-hidden="true"
+                      />
+                    </MenuButton>
+                  </div>
 
-                <transition
-                  enter-active-class="transition ease-out duration-100"
-                  enter-from-class="transform opacity-0 scale-95"
-                  enter-to-class="transform opacity-100 scale-100"
-                  leave-active-class="transition ease-in duration-75"
-                  leave-from-class="transform opacity-100 scale-100"
-                  leave-to-class="transform opacity-0 scale-95"
-                >
-                  <MenuItems
-                    class="origin-top-right absolute left-0 mt-2 w-20 z-10 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                  <transition
+                    enter-active-class="transition ease-out duration-100"
+                    enter-from-class="transform opacity-0 scale-95"
+                    enter-to-class="transform opacity-100 scale-100"
+                    leave-active-class="transition ease-in duration-75"
+                    leave-from-class="transform opacity-100 scale-100"
+                    leave-to-class="transform opacity-0 scale-95"
                   >
-                    <div class="py-1">
-                      <MenuItem v-slot="{ active }">
-                        <div
-                          @click="changeCount(1, i)"
-                          :class="[
-                            orderDir == 'desc'
-                              ? 'bg-gray-200 text-gray-900'
-                              : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          ]"
-                        >
-                          1
-                        </div>
-                      </MenuItem>
-                      <MenuItem v-slot="{ active }">
-                        <div
-                          @click="changeCount(2, i)"
-                          :class="[
-                            orderDir == 'asc'
-                              ? 'bg-gray-200 text-gray-900'
-                              : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          ]"
-                        >
-                          2
-                        </div>
-                      </MenuItem>
-                      <MenuItem v-slot="{ active }">
-                        <div
-                          @click="changeCount(3, i)"
-                          :class="[
-                            orderDir == 'asc'
-                              ? 'bg-gray-200 text-gray-900'
-                              : 'text-gray-700',
-                            'block px-4 py-2 text-sm'
-                          ]"
-                        >
-                          3
-                        </div>
-                      </MenuItem>
-                    </div>
-                  </MenuItems>
-                </transition>
-              </Menu>
-              <!-- <div class="flex">
+                    <MenuItems
+                      class="origin-top-right absolute left-0 mt-2 w-20 z-10 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                    >
+                      <div class="py-1">
+                        <MenuItem v-slot="{ active }">
+                          <div
+                            @click="changeCount(1, i)"
+                            :class="[
+                              orderDir == 'desc'
+                                ? 'bg-gray-200 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            ]"
+                          >
+                            1
+                          </div>
+                        </MenuItem>
+                        <MenuItem v-slot="{ active }">
+                          <div
+                            @click="changeCount(2, i)"
+                            :class="[
+                              orderDir == 'asc'
+                                ? 'bg-gray-200 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            ]"
+                          >
+                            2
+                          </div>
+                        </MenuItem>
+                        <MenuItem v-slot="{ active }">
+                          <div
+                            @click="changeCount(3, i)"
+                            :class="[
+                              orderDir == 'asc'
+                                ? 'bg-gray-200 text-gray-900'
+                                : 'text-gray-700',
+                              'block px-4 py-2 text-sm'
+                            ]"
+                          >
+                            3
+                          </div>
+                        </MenuItem>
+                      </div>
+                    </MenuItems>
+                  </transition>
+                </Menu>
+                <button
+                  @click="deleteCart(product.id)"
+                  class=" justify-center md:mx-3 mt-3 p-3 w-full md:w-fit mx-auto border border-transparent text-md font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  حذف
+                </button>
+                <!-- <div class="flex">
               <button
                 type="button"
                 class="font-medium text-indigo-600 hover:text-indigo-500"
@@ -133,23 +139,23 @@
                 Remove
               </button>
             </div> -->
+              </div>
             </div>
-          </div>
-        </li>
+          </li>
 
-        <div class="flex items-center justify-center px-10 mt-12">
-          <span
-            v-if="sumProduct"
-            class="text-center text-xl font-bold w-2/3 items-center"
-            >مبلغ کل: {{ sumProduct }} تومان</span
-          >
-          <button
-            @click="countinuePurchase"
-            class=" justify-center py-4 w-1/3 px-4 mx-auto border border-transparent text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >
-            ادامه خرید
-          </button>
-        </div>
+          <div class="flex items-center justify-center px-10 mt-12">
+            <span
+              v-if="sumProduct"
+              class="text-center text-xl font-bold w-2/3 items-center"
+              >مبلغ کل: {{ sumProduct }} تومان</span
+            >
+            <button
+              @click="countinuePurchase"
+              class=" justify-center py-4 w-1/3 px-2 mx-auto border border-transparent text-md font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              ادامه خرید
+            </button>
+          </div>
         </div>
         <div v-else>
           <span class="text-xl mx-5">
@@ -158,7 +164,7 @@
         </div>
       </div>
       <div v-else-if="pstate === 1">
-        <div class="mt-10 sm:mt-0 px-12">
+        <div class="mt-10 sm:mt-0 md:px-12 px-4 py-3">
           <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="md:col-span-6 md:mt-10">
               <div class="flex justify-between px-4 sm:px-0">
@@ -287,14 +293,37 @@
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                       ></textarea>
                     </div>
-
-                    
                   </div>
                 </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6 mb-12">
+                  <div class="my-4 flex">
+                    <input
+                      class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mr-2 cursor-pointer"
+                      type="checkbox"
+                      v-model="agree"
+                      id="flexCheckChecked"
+                    />
+                    <label
+                      class="form-check-label mx-2  inline-block text-gray-800"
+                      for="flexCheckChecked"
+                      style="direction: ltr;"
+                    >
+                      با
+                      <a href="/rules" class="text-indigo-900" target="_blank"
+                        >قوانین و مقررات</a
+                      >
+                      آننکوف استور موافق هستم
+                    </label>
+                  </div>
                   <button
+                    :disabled="!agree"
                     @click="pay"
-                    class="inline-flex w-full h-14 pt-3 justify-center py-2 px-4 border border-transparent shadow-sm text-xl font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    :class="[
+                      !agree
+                        ? 'bg-indigo-400'
+                        : 'bg-indigo-600 hover:bg-indigo-700'
+                    ]"
+                    class="inline-flex w-full h-14 pt-3 justify-center py-2 px-4 border border-transparent shadow-sm text-xl font-medium rounded-md text-white bg-indigo-600  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
                     ورود به صفحه پرداخت
                   </button>
@@ -333,6 +362,7 @@ const city = ref('')
 const address = ref('')
 const postalCode = ref('')
 const otpInput = ref(null)
+const agree = ref(false)
 let userData = ref({})
 const code = ref('')
 const sumProduct = ref('')
@@ -373,6 +403,25 @@ function validate () {
   return false
 }
 
+async function deleteCart(pId) {
+  try {
+      let res = await $fetch(
+        useRuntimeConfig().public.BASE_URL + '/removeItemCart',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${authstore.getToken}`
+          },
+          body: {
+            productId: pId
+          }
+        }
+      )
+      init();
+  } catch(e) {
+    console.log(e);
+  }
+}
 
 async function pay () {
   if (validate()) {
@@ -390,32 +439,41 @@ async function pay () {
     }
     console.log(payBody)
     try {
-      let res = await $fetch(useRuntimeConfig().public.BASE_URL + '/insertorder', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${authstore.getToken}`
-        },
-        body: payBody
-      })
-      console.log('order', res.data);
+      let res = await $fetch(
+        useRuntimeConfig().public.BASE_URL + '/insertorder',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${authstore.getToken}`
+          },
+          body: payBody
+        }
+      )
+      console.log('order', res.data)
       authstore.setOrderAmount({
         id: res.data.orderId,
-        amount: parseInt(sumProduct.value.replaceAll('.',''))
+        amount: parseInt(sumProduct.value.replaceAll('.', ''))
       })
 
-      let bank = await $fetch(useRuntimeConfig().public.BASE_URL + '/bank/sign', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${authstore.getToken}`
-        },
-        body: {
-          Amount: parseInt(sumProduct.value.replaceAll('.','')),
-          Description: `خرید از آننکوف استور`
+      let bank = await $fetch(
+        useRuntimeConfig().public.BASE_URL + '/bank/sign',
+        {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${authstore.getToken}`
+          },
+          body: {
+            Amount: parseInt(sumProduct.value.replaceAll('.', '')),
+            Description: `خرید از آننکوف استور`
+          }
         }
-      })
-      console.log(bank);
+      )
+      console.log(bank)
 
-      window.open('https://www.zarinpal.com/pg/StartPay/' + bank.data.authority, "_self")
+      window.open(
+        'https://www.zarinpal.com/pg/StartPay/' + bank.data.authority,
+        '_self'
+      )
 
       //go to bank and then confirm
     } catch (error) {
@@ -425,7 +483,8 @@ async function pay () {
     toaster.error('لطفا همه اطلاعات را پر نمایید')
   }
 }
-onMounted(async () => {
+
+async function init(){
   if (authstore.getToken) {
     try {
       let res = await $fetch(useRuntimeConfig().public.BASE_URL + '/getcart', {
@@ -440,11 +499,14 @@ onMounted(async () => {
         .toString()
         .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
       console.log(cartItems)
-      authstore.setCartNumber(res.data.cart.length);
+      authstore.setCartNumber(res.data.cart.length)
     } catch (error) {
       console.log(13, error)
     }
   } else authstore.setUser(0)
+}
+onMounted(async () => {
+  init();
 })
 </script>
 

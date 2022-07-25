@@ -72,7 +72,8 @@ useHead({
 const navigation = {
   pages: [
     { name: 'درباره  ما', href: '/aboutus' },
-    { name: 'تماس با ما', href: '/contactus' }
+    { name: 'تماس با ما', href: '/contactus' },
+    { name: 'قوانین و مقررات', href: '/rules' }
   ]
 }
 </script>

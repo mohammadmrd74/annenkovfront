@@ -2,8 +2,9 @@
   <div class="container mx-auto">
     <Carousel></Carousel>
     <section class="px-3 mt-10">
-      <div class="swiperTitle">
-        فروش ویژه
+      <div class=" flex justify-between w-full">
+      <div class="swiperTitle">  فروش ویژه</div>
+      <nuxt-link to="/products?discount=true" class="text-left">مشاهده همه</nuxt-link>
       </div>
       <swiper
         :modules="modules"
@@ -35,7 +36,7 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-            <span class="discount">&#37;{{product.discount}}</span>
+            <span class="discount">&#37;{{Math.floor(((product.price - product.totalPrice)/product.totalPrice) * 100)}}</span>
           <h2 class="mt-4 text-sm font-semibold text-gray-700">
             {{ product.brand }}   <span class="mx-1">{{ product.title }} </span>
           </h2>
@@ -53,8 +54,9 @@
     </section>
 
     <section class="px-3 mt-10">
-      <div class="swiperTitle">
-        آخرین محصولات
+       <div class=" flex justify-between w-full">
+      <div class="swiperTitle">  آخرین محصولات</div>
+      <nuxt-link to="/products" class="text-left">مشاهده همه</nuxt-link>
       </div>
       <swiper
         :modules="modules"
@@ -87,7 +89,7 @@
             />
           </div>
           <h2 class="mt-4  font-semibold text-gray-700">
-            {{ product.brand }} 
+            {{ product.brand }} <span class="mx-1">{{ product.title }} </span>
           </h2>
           <p class="mt-1 text-sm font-medium text-gray-500">
             {{ product.styleNumber }} 
@@ -232,6 +234,6 @@ export default {
   font-size: 16px;
   font-weight: 500;
   border-bottom: 3px solid;
-  width: 50%;
+  width: 25%;
 }
 </style>
