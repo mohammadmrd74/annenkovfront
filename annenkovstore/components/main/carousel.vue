@@ -2,7 +2,7 @@
   <div id="default-carousel" class="relative" data-carousel="static">
     <!-- Carousel wrapper -->
     <div
-      class="overflow-hidden relative h-96 rounded-lg sm:h-64 xl:h-80 2xl:h-96"
+      class="overflow-hidden relative md:h-96 h-40 rounded-lg sm:h-40 xl:h-80 2xl:h-96"
     >
       <!-- Item 1 -->
       <div class="hidden duration-700 ease-in-out" data-carousel-item>

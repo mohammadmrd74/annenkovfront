@@ -202,10 +202,13 @@
               <span class="sr-only">Open menu</span>
               <MenuIcon class="h-6 w-6" aria-hidden="true" />
             </button>
+            <nuxt-link to="/products?discount=true" class="md:hidden text-sm mx-1 font-bold items-center m-auto text-orange-600" style="white-space: nowrap;">فروش ویژه  </nuxt-link>
+
 
             <!-- Flyout menus -->
             <PopoverGroup class="hidden lg:ml-8 lg:block lg:self-stretch">
               <div class="h-full flex ">
+                <nuxt-link to="/products?discount=true" class="text-sm mx-1 font-bold items-center m-auto text-orange-600" style="white-space: nowrap;">فروش ویژه  </nuxt-link>
                 <Popover
                   v-for="(category, i) in landing.data.menus.main"
                   :key="category.id"

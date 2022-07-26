@@ -305,6 +305,9 @@ async function handleOnComplete (value) {
           toaster.error('این محصول هم اکنون در سبد خرید موجود می باشد')
         else if (error.response._data.message.includes('Size not Found.'))
           toaster.error('با عرض پوزش سایز انتخابی شما به پایان رسیده است.')
+        return navigateTo({
+          path: '/'
+        })
       }
     }
   } catch (error) {

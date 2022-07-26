@@ -394,11 +394,11 @@
       class="max-w-2xl mx-auto py-4 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
     >
       <div class="flex justify-between items-center my-3">
-        <h2 class=" text-xl font-bold">
+        <h2 class=" text-md font-bold">
           {{ route.query.mainType || 'همه محصولات' }}
-          ({{ allproducts.data.recordNumbers }} عدد)
+          <div>({{ allproducts.data.recordNumbers }} عدد)</div>
         </h2>
-        <div class="flex">
+        <div class="flex" style="min-width:120px">
           <Menu as="div" class="relative inline-block  mx-3 text-left">
             <div>
               <MenuButton
@@ -406,7 +406,7 @@
               >
                 مرتب سازی
                 <ChevronDownIcon
-                  class="-mr-1 ml-2 h-5 w-5"
+                  class="-mr-1 ml-2 md:h-5 md:w-5"
                   aria-hidden="true"
                 />
               </MenuButton>
@@ -454,7 +454,7 @@
               </MenuItems>
             </transition>
           </Menu>
-          <button class="flex bg-gray-100 p-2 rounded-md" @click="open = true">
+          <button class="flex bg-gray-100 p-2 rounded-md items-center" @click="open = true">
             فیلتر
             <FilterIcon class="h-6 w-6" aria-hidden="true" />
           </button>
