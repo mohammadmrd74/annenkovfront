@@ -36,7 +36,7 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-            <span class="discount">&#37;{{Math.floor(((product.price - product.totalPrice)/product.totalPrice) * 100)}}</span>
+            <span class="discount">&#37;{{Math.floor(((product.price - product.totalPrice)/product.price) * 100)}}</span>
           <h2 class="mt-4 text-sm font-semibold text-gray-700">
             {{ product.brand }}   <span class="mx-1">{{ product.title }} </span>
           </h2>

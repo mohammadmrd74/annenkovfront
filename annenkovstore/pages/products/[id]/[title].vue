@@ -111,7 +111,7 @@
               تومان
               </span>
               <span class="discount mx-3" style="position: static" v-if="product1.data.products[0].totalPrice !== product1.data.products[0].price">&#37;
-              {{Math.floor(((product1.data.products[0].price - product1.data.products[0].totalPrice)/product1.data.products[0].totalPrice) * 100)}}</span>
+              {{Math.floor(((product1.data.products[0].price - product1.data.products[0].totalPrice)/product1.data.products[0].price) * 100)}}</span>
             </p>
             <p  class="text-3xl mt-5 text-gray-900">
               {{
