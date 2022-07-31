@@ -420,8 +420,8 @@ async function addToCart () {
           }
         )
         console.log('checked', checkproduct.data);
-        if(product1.value.data.products[0].totalPrice !== checkproduct.data.totalPrice)
-          toaster.error(`قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`)
+        // if(product1.value.data.products[0].totalPrice !== checkproduct.data.totalPrice)
+        //   toaster.error(`قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`)
         const res = await $fetch(
           useRuntimeConfig().public.BASE_URL + '/insertToCart',
           {

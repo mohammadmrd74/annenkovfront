@@ -203,6 +203,7 @@
               <MenuIcon class="h-6 w-6" aria-hidden="true" />
             </button>
             <nuxt-link to="/products?discount=true" class="md:hidden text-sm mx-1 font-bold items-center m-auto text-orange-600" style="white-space: nowrap;">فروش ویژه  </nuxt-link>
+            <nuxt-link to="/annenkovfamily" class="md:hidden text-sm mx-1 font-bold items-center m-auto text-green-700" style="white-space: nowrap;">خانواده آننکوف </nuxt-link>
 
 
             <!-- Flyout menus -->
@@ -230,6 +231,7 @@
                       }}
                     </PopoverButton>
                   </div>
+                  
 
                   <transition
                     enter-active-class="transition ease-out duration-200"
@@ -340,6 +342,8 @@
                     </PopoverPanel>
                   </transition>
                 </Popover>
+                <nuxt-link to="/annenkovfamily" class="text-sm  font-bold items-center m-auto text-green-700" style="white-space: nowrap;">خانواده آننکوف   </nuxt-link>
+
               </div>
             </PopoverGroup>
 
@@ -605,6 +609,13 @@ onMounted(async () => {
         }
       )
       authstore.setUser(1)
+      let res = await $fetch(useRuntimeConfig().public.BASE_URL + '/getcart', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${authstore.getToken}`
+        }
+      })
+      authstore.setCartNumber(res.data.cart.length)
     } catch (error) {
       authstore.setUser(0)
     }

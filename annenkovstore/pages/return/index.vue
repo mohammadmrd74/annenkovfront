@@ -24,10 +24,10 @@
       </div>
     </div>
     <div v-else class="border md:p-8 py-8 px-3 rounded-lg">
-      <div class="text-xl font-bold text-green-500">
+      <div v-if="success" class="text-xl font-bold text-green-500">
         پرداخت شما با موفقیت انجام شد
       </div>
-      <div v-if="loading" class="text-lg mt-3 mb-6">
+      <div v-if="loading && success" class="text-lg mt-3 mb-6">
         در حال ثبت خرید...
         <div
           class="spinner-border animate-spin inline-block w-4 h-4 border-2 mx-3 rounded-full"
@@ -108,6 +108,7 @@ onMounted(async () => {
       refId.value = res.data.refId
     } catch (error) {
       loading.value = false
+      success.value = false
       console.log('me', error)
     }
   }
