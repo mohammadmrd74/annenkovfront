@@ -30,50 +30,105 @@
               class="relative max-w-[75%] w-full bg-white shadow-xl pb-12 flex flex-col "
             >
               <strong class="text-3xl px-6 mt-5">ANNENKOV STORE</strong>
-
+             
               <div
                 v-for="section in landing.data.menus.main"
+                v-show="section.mainId != 3"
                 :key="section.mainId"
-                class="p-6"
+                class="px-6 py-3"
               >
-                <div v-if="section.mainId != 3">
-                  <p
-                    :id="`${section.mainId}-heading-mobile`"
-                    class="font-medium text-gray-900"
-                  >
-                    {{ section.mainType }}
-                  </p>
-                  <div class=" border-gray-200 py-6 px-4 space-y-6">
-                    <a
-                      class="font-bold"
-                      :href="
-                        `/products?mainType=${section.mainType}&mainId=${section.mainId}`
-                      "
-                      >مشاهده همه محصولات</a
-                    >
-                    <div
-                      v-for="brand in landing.data.menus.brands"
-                      :key="brand.brandId"
-                      class="flow-root"
-                    >
-                      <a
-                        :href="
-                          `/products?mainType=${section.mainType}&mainId=${section.mainId}&brandId=${brand.brandId}`
-                        "
-                        class="-m-2 p-2 block font-medium text-gray-900"
-                        >{{ brand.brandNameEn }}</a
+                <div >
+                  <div class="accordion w-full" id="types">
+                    <div class="accordion-item bg-white border border-gray-200">
+                      <h2 class="accordion-header mb-0" id="headingtype">
+                        <button
+                          class="
+                            accordion-button
+                            relative
+                            collapsed
+                            flex
+                            items-center
+                            w-full
+                            py-3
+                            px-2
+                            text-base text-gray-800 text-left
+                            bg-white
+                            border-none
+                            after:border-transparent
+                            before:border-transparent
+                            rounded-none
+                            transition
+                            headerAccordion
+                            focus:outline-none
+                          "
+                          type="button"
+                          data-bs-toggle="collapse"
+                          :data-bs-target="`#${section.mainType}`"
+                          aria-expanded="true"
+                          aria-controls="colorcollapse"
+                        >
+                          <p
+                            :id="`${section.mainId}-heading-mobile`"
+                            class="font-sm text-gray-900"
+                          >
+                            {{ section.mainType }}
+                          </p>
+                        </button>
+                      </h2>
+                      <div
+                        :id="section.mainType"
+                        class="accordion-collapse collapse  text-right"
+                        aria-labelledby="colorcollapse"
+                        data-bs-parent="#brandcollapse"
                       >
+                        <div class="accordion-body px-5">
+                          <div class=" border-gray-200  px-3 py-4 space-y-6">
+                            <a
+                              class="font-bold"
+                              :href="
+                                `/products?mainType=${section.mainType}&mainId=${section.mainId}`
+                              "
+                              >مشاهده همه محصولات</a
+                            >
+                            <div
+                              v-for="brand in landing.data.menus.brands"
+                              :key="brand.brandId"
+                              class="flex items-center"
+                            >
+                              <img
+                                width="35"
+                                style="height: 23px !important"
+                                :src="url + brand.logo"
+                              />
+                              <a
+                                :href="
+                                  `/products?mainType=${section.mainType}&mainId=${section.mainId}&brandId=${brand.brandId}`
+                                "
+                                class=" p-2 block font-medium text-gray-900"
+                                >{{ brand.brandNameEn }}</a
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+               <a
+                href="/annenkovfamily"
+                class="md:hidden px-6 py-4 text-sm mx-1 font-bold items-center mx-auto text-green-700"
+                style="white-space: nowrap;"
+                >خانواده آننکوف
+              </a>
 
               <nuxt-link
                 @click="open = false"
                 v-for="page in navigation.pages"
                 :key="page.name"
                 :to="page.href"
-                class="flex items-center whitespace-nowrap m-3 font-bold text-sm font-medium text-gray-700 hover:text-gray-800"
+                class="flex items-center whitespace-nowrap mx-5 my-1 p-3 font-bold text-sm font-medium text-gray-700 hover:text-gray-800"
                 >{{ page.name }}</nuxt-link
               >
             </DialogPanel>
@@ -129,7 +184,10 @@
                   </div>
                 </div>
               </div>
-              <div v-if="searchProducts.length > 0" class="py-1 overflow-y-auto">
+              <div
+                v-if="searchProducts.length > 0"
+                class="py-1 overflow-y-auto"
+              >
                 <div v-for="(product, i) in searchProducts" :key="i">
                   <a
                     target="_blank"
@@ -202,21 +260,32 @@
               <span class="sr-only">Open menu</span>
               <MenuIcon class="h-6 w-6" aria-hidden="true" />
             </button>
-            <nuxt-link to="/products?discount=true" class="md:hidden text-sm mx-1 font-bold items-center m-auto text-orange-600" style="white-space: nowrap;">فروش ویژه  </nuxt-link>
-            <nuxt-link to="/annenkovfamily" class="md:hidden text-sm mx-1 font-bold items-center m-auto text-green-700" style="white-space: nowrap;">خانواده آننکوف </nuxt-link>
-
+            <nuxt-link
+              to="/products?discount=true"
+              class="md:hidden text-sm mx-1 font-bold items-center m-auto text-orange-600"
+              style="white-space: nowrap;"
+              >فروش ویژه
+            </nuxt-link>
 
             <!-- Flyout menus -->
             <PopoverGroup class="hidden lg:ml-8 lg:block lg:self-stretch">
               <div class="h-full flex ">
-                <nuxt-link to="/products?discount=true" class="text-sm mx-1 font-bold items-center m-auto text-orange-600" style="white-space: nowrap;">فروش ویژه  </nuxt-link>
+                <nuxt-link
+                  to="/products?discount=true"
+                  class="text-sm mx-1 font-bold items-center m-auto text-orange-600"
+                  style="white-space: nowrap;"
+                  >فروش ویژه
+                </nuxt-link>
                 <Popover
                   v-for="(category, i) in landing.data.menus.main"
                   :key="category.id"
                   class="flex"
                   v-slot="{ open }"
                 >
-                  <div class="relative flex">
+                  <div
+                    v-if="category.mainType !== 'کودک'"
+                    class="relative flex"
+                  >
                     <PopoverButton
                       @click="selectSection(i)"
                       :class="[
@@ -226,12 +295,9 @@
                         'relative z-10 flex items-center transition-colors ease-out duration-200 text-sm font-medium border-b-2 mx-5'
                       ]"
                     >
-                      {{
-                        category.mainType !== 'کودک' ? category.mainType : ''
-                      }}
+                      {{ category.mainType }}
                     </PopoverButton>
                   </div>
-                  
 
                   <transition
                     enter-active-class="transition ease-out duration-200"
@@ -255,19 +321,6 @@
                       <div class="relative bg-white">
                         <div class="max-w-5xl mx-auto px-8">
                           <div class="py-4">
-                            <!-- <ul
-                              role="list"
-                              class="my-8 grid grid-cols-3 gap-y-10 gap-x-8 text-sm"
-                            >
-                              <li
-                                v-for="item in showSection.categories"
-                                :key="item.categoryId"
-                                class="text-gray-900 text-center"
-                              >
-                                <a :href="`/products?mainType=${showSection.mainType}&mainId=${showSection.mainId}&categoryId=${item.categoryId}`">{{item.categoryTitle}}</a>
-                              </li>
-                            </ul> -->
-                            <!-- <hr class="mt-2 mb-5"/> -->
                             <div
                               class=" grid grid-cols-5 gap-y-3 gap-x-3 text-sm"
                             >
@@ -307,6 +360,7 @@
                               >
                             </div>
                           </div>
+
                           <div
                             class="flex grid grid-cols-3 gap-y-10 gap-x-8 text-sm"
                             v-for="section in category.sections"
@@ -342,8 +396,12 @@
                     </PopoverPanel>
                   </transition>
                 </Popover>
-                <nuxt-link to="/annenkovfamily" class="text-sm  font-bold items-center m-auto text-green-700" style="white-space: nowrap;">خانواده آننکوف   </nuxt-link>
-
+                <nuxt-link
+                  to="/annenkovfamily"
+                  class="text-sm  font-bold items-center m-auto text-green-700"
+                  style="white-space: nowrap;"
+                  >خانواده آننکوف
+                </nuxt-link>
               </div>
             </PopoverGroup>
 
@@ -634,6 +692,17 @@ onMounted(async () => {
   top: 20px;
   width: 11px;
 }
+.headerAccordion::after{
+  
+    border: none !important;
+  
+}
+.headerAccordion::before{
+  
+    border: none !important;
+  
+}
+
 .mymenu {
   @media (max-width: 900px) {
     width: 80vw;
