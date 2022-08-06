@@ -627,7 +627,7 @@ const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
         colors: colorsToFilter.value,
         secondColors: scolorsToFilter.value,
         types: typesToFilter.value,
-        main: [route.query.mainId ? [parseInt(route.query.mainId)] : []],
+        main: route.query.mainId ? [parseInt(route.query.mainId)] : [],
         search: '',
         showDiscounts: route.query.discount ? true : false,
         page: pageNum.value,
