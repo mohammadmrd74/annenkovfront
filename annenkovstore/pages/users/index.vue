@@ -268,13 +268,13 @@ async function handleOnComplete (value) {
           }
         )
         console.log('checked', checkproduct.data)
-        if (
-          authstore.getProductToBuy.productPrice !==
-          checkproduct.data.totalPrice
-        )
-          toaster.error(
-            `قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`
-          )
+        // if (
+        //   authstore.getProductToBuy.productPrice !==
+        //   checkproduct.data.totalPrice
+        // )
+        //   toaster.error(
+        //     `قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`
+        //   )
         const res = await $fetch(
           useRuntimeConfig().public.BASE_URL + '/insertToCart',
           {

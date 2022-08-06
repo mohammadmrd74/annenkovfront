@@ -12,6 +12,7 @@ export default defineNuxtConfig({
   
   css: ["@/assets/sass/_global.scss"],
 
+
   runtimeConfig: {
     secretKey: '', // variable that can only be accessed on the server side
     public: {
