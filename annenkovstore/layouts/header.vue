@@ -81,12 +81,14 @@
                         aria-labelledby="colorcollapse"
                         data-bs-parent="#brandcollapse"
                       >
+                      
                         <div class="accordion-body px-5">
                           <div class=" border-gray-200  px-3 py-4 space-y-6">
+                            
                             <a
                               class="font-bold"
                               :href="
-                                `/products?mainType=${section.mainType}&mainId=${section.mainId}`
+                                `/products?mainType=${section.mainType}&mainId=${section.categories ? section.categories[0].mainAndCategId : ''}`
                               "
                               >مشاهده همه محصولات</a
                             >
@@ -102,7 +104,7 @@
                               />
                               <a
                                 :href="
-                                  `/products?mainType=${section.mainType}&mainId=${section.mainId}&brandId=${brand.brandId}`
+                                  `/products?mainType=${section.mainType}&mainId=${section.categories ? section.categories[0].mainAndCategId : ''}&brandId=${brand.brandId}`
                                 "
                                 class=" p-2 block font-medium text-gray-900"
                                 >{{ brand.brandNameEn }}</a
@@ -324,6 +326,7 @@
                             <div
                               class=" grid grid-cols-5 gap-y-3 gap-x-3 text-sm"
                             >
+                            
                               <div
                                 style="text-align: center;"
                                 v-for="brand in landing.data.menus.brands"
@@ -331,7 +334,7 @@
                               >
                                 <a
                                   :href="
-                                    `/products?mainType=${showSection.mainType}&mainId=${showSection.mainId}&brandId=${brand.brandId}`
+                                    `/products?mainType=${showSection.mainType}&mainId=${category.categories[0].mainAndCategId}&brandId=${brand.brandId}`
                                   "
                                   class="-m-2 font-medium text-gray-900"
                                 >
@@ -352,7 +355,8 @@
                               </div>
                               <a
                                 :href="
-                                  `/products?mainType=${showSection.mainType}&mainId=${showSection.mainId}`
+                                  `/products?mainType=${showSection.mainType}&mainId=${category.categories[0].mainAndCategId
+                                  }`
                                 "
                                 class="m-auto mt-8 col-span-2 text-center text-black border p-4 hover:bg-black hover:bg-opacity-25 rounded-lg cursor-pointer text-lg flex items-center"
                                 style="height:60px"

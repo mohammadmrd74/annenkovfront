@@ -613,7 +613,7 @@ function queryChanged (id) {
 const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
   'allproducts',
   () => {
-    console.log(route.query.discount)
+    console.log(route.query.mainId)
     return $fetch(useRuntimeConfig().public.BASE_URL + '/products', {
       method: 'POST',
       body: {
@@ -627,9 +627,7 @@ const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
         colors: colorsToFilter.value,
         secondColors: scolorsToFilter.value,
         types: typesToFilter.value,
-        main: route.query.mainId
-          ? [route.query.mainType == 'زنانه' ? 4 : 1]
-          : [],
+        main: [route.query.mainId ? [parseInt(route.query.mainId)] : []],
         search: '',
         showDiscounts: route.query.discount ? true : false,
         page: pageNum.value,
