@@ -367,7 +367,6 @@ function validate () {
     firstname.value &&
     lastname.value &&
     userMobile.value &&
-    postalCode.value &&
     address.value &&
     city.value &&
     province.value
