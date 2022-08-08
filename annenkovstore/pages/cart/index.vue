@@ -95,32 +95,6 @@
                             1
                           </div>
                         </MenuItem>
-                        <MenuItem v-slot="{ active }">
-                          <div
-                            @click="changeCount(2, i)"
-                            :class="[
-                              orderDir == 'asc'
-                                ? 'bg-gray-200 text-gray-900'
-                                : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            ]"
-                          >
-                            2
-                          </div>
-                        </MenuItem>
-                        <MenuItem v-slot="{ active }">
-                          <div
-                            @click="changeCount(3, i)"
-                            :class="[
-                              orderDir == 'asc'
-                                ? 'bg-gray-200 text-gray-900'
-                                : 'text-gray-700',
-                              'block px-4 py-2 text-sm'
-                            ]"
-                          >
-                            3
-                          </div>
-                        </MenuItem>
                       </div>
                     </MenuItems>
                   </transition>
