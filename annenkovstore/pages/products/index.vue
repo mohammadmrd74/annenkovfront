@@ -382,7 +382,14 @@
                   @click="filterItems"
                   class="fixed inset-x-0 mx-10 h-12 bottom-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
-                  فیلتر
+                  <div v-if="!filterBool"> فیلتر</div>
+                  <div
+                    v-else
+                    class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
+                    role="status"
+                  >
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
                 </button>
               </DialogPanel>
             </TransitionChild>
@@ -454,7 +461,10 @@
               </MenuItems>
             </transition>
           </Menu>
-          <button class="flex bg-gray-100 p-2 rounded-md items-center" @click="open = true">
+          <button
+            class="flex bg-gray-100 p-2 rounded-md items-center"
+            @click="open = true"
+          >
             فیلتر
             <FilterIcon class="h-6 w-6" aria-hidden="true" />
           </button>
@@ -486,9 +496,16 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-          <span class="discount" v-if="product.discount > 0">&#37;{{Math.floor(((product.price - product.totalPrice)/product.price) * 100)}}</span>
+          <span class="discount" v-if="product.discount > 0"
+            >&#37;{{
+              Math.floor(
+                ((product.price - product.totalPrice) / product.price) * 100
+              )
+            }}</span
+          >
           <h3 class="mt-4 text-md text-gray-900">
-            {{product.brandNameFa}} <span class="mx-1">{{ product.title }} </span>
+            {{ product.brandNameFa }}
+            <span class="mx-1">{{ product.title }} </span>
           </h3>
           <p class="mt-1 text-sm font-medium text-gray-500">
             {{ product.styleNumber }}
@@ -555,9 +572,7 @@ useHead({
   title: `${route.query.mainType || 'محصولات'}  |  آننکوف استور`,
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
-  meta: [
-    { name: 'description', content: 'آننکوف استور' }
-  ]
+  meta: [{ name: 'description', content: 'آننکوف استور' }]
 })
 
 const product = {
@@ -589,6 +604,7 @@ const min = ref(0)
 const max = ref(100)
 const open = ref(false)
 const pageNum = ref(1)
+const filterBool = ref(false)
 
 const brands = ref([])
 const brandsToFilter = ref([])
@@ -675,7 +691,8 @@ function sortItems (sort) {
   refreshProducts()
 }
 
-function filterItems () {
+async function filterItems () {
+  filterBool.value = true;
   brandsToFilter.value = filters.value.data.filters[0].brands
     .filter((br, i) => {
       if (brands.value[i]) return br
@@ -705,8 +722,12 @@ function filterItems () {
       if (scolors.value[i]) return br
     })
     .map(bri => bri.id)
+  
 
-  refreshProducts()
+
+  await refreshProducts()
+  filterBool.value = false;
+
   open.value = false
 }
 </script>
