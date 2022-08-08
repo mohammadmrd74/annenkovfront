@@ -433,9 +433,22 @@
                 <div class="py-1">
                   <MenuItem v-slot="{ active }">
                     <div
-                      @click="sortItems('desc')"
+                      @click="sortItems('new', 'desc')"
                       :class="[
-                        orderDir == 'desc'
+                        orderBy == 'new' && orderDir == 'desc'
+                          ? 'bg-gray-200 text-gray-900'
+                          : 'text-gray-700',
+                        'block px-4 py-2 text-sm'
+                      ]"
+                    >
+                      جدید ترین
+                    </div>
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <div
+                      @click="sortItems('price', 'desc')"
+                      :class="[
+                        orderBy != 'new' && orderDir == 'desc'
                           ? 'bg-gray-200 text-gray-900'
                           : 'text-gray-700',
                         'block px-4 py-2 text-sm'
@@ -446,9 +459,9 @@
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
                     <div
-                      @click="sortItems('asc')"
+                      @click="sortItems('price', 'asc')"
                       :class="[
-                        orderDir == 'asc'
+                        orderBy != 'new' && orderDir == 'asc'
                           ? 'bg-gray-200 text-gray-900'
                           : 'text-gray-700',
                         'block px-4 py-2 text-sm'
@@ -616,6 +629,7 @@ const colorsToFilter = ref([])
 const colors = ref([])
 const scolorsToFilter = ref([])
 const scolors = ref([])
+const orderBy = ref('new')
 const orderDir = ref('asc')
 
 const price = ref([0, 0])
@@ -647,7 +661,7 @@ const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
         search: '',
         showDiscounts: route.query.discount ? true : false,
         page: pageNum.value,
-        orderBy: 'price',
+        orderBy: orderBy.value,
         orderDir: orderDir.value,
         minprice: parseInt(price.value[0]),
         maxprice: parseInt(price.value[1])
@@ -686,8 +700,9 @@ function changeCost (value) {
   max.value = value[1]
 }
 
-function sortItems (sort) {
-  orderDir.value = sort
+function sortItems (by, sort) {
+  orderBy.value = by;
+  orderDir.value = sort;
   refreshProducts()
 }
 
