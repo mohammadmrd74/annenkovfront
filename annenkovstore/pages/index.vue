@@ -133,7 +133,7 @@ export default {
   async setup () {
     
       useHead({
-    title: 'فروشگاه اینترنتی آننکوف استور | Annenkov Store',
+    title: '250846',
     viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
     charset: 'utf-8',
     meta: [
