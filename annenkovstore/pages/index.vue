@@ -3,8 +3,10 @@
     <Carousel></Carousel>
     <section class="px-3 mt-10">
       <div class=" flex justify-between w-full">
-      <div class="swiperTitle">  فروش ویژه</div>
-      <nuxt-link to="/products?discount=true" class="text-left">مشاهده همه</nuxt-link>
+        <div class="swiperTitle">فروش ویژه</div>
+        <nuxt-link to="/products?discount=true" class="text-left"
+          >مشاهده همه</nuxt-link
+        >
       </div>
       <swiper
         :modules="modules"
@@ -36,16 +38,24 @@
               class="w-full h-full object-center object-cover group-hover:opacity-75"
             />
           </div>
-            <span class="discount">&#37;{{Math.floor(((product.price - product.totalPrice)/product.price) * 100)}}</span>
+          <span class="discount"
+            >&#37;{{
+              Math.floor(
+                ((product.price - product.totalPrice) / product.price) * 100
+              )
+            }}</span
+          >
           <h2 class="mt-4 text-sm font-semibold text-gray-700">
-            {{ product.brand }}   <span class="mx-1">{{ product.title }} </span>
+            {{ product.brand }} <span class="mx-1">{{ product.title }} </span>
           </h2>
           <p class="mt-1 text-sm font-medium text-gray-500">
-            {{ product.styleNumber }} 
+            {{ product.styleNumber }}
           </p>
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{
-              product.totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+              product.totalPrice
+                .toString()
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
             }}
             تومان
           </p>
@@ -54,9 +64,9 @@
     </section>
 
     <section class="px-3 mt-10">
-       <div class=" flex justify-between w-full">
-      <div class="swiperTitle">  آخرین محصولات</div>
-      <nuxt-link to="/products" class="text-left">مشاهده همه</nuxt-link>
+      <div class=" flex justify-between w-full">
+        <div class="swiperTitle">آخرین محصولات</div>
+        <nuxt-link to="/products" class="text-left">مشاهده همه</nuxt-link>
       </div>
       <swiper
         :modules="modules"
@@ -92,13 +102,14 @@
             {{ product.brand }} <span class="mx-1">{{ product.title }} </span>
           </h2>
           <p class="mt-1 text-sm font-medium text-gray-500">
-            {{ product.styleNumber }} 
+            {{ product.styleNumber }}
           </p>
-         
-          
+
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{
-              product.totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+              product.totalPrice
+                .toString()
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
             }}
             تومان
           </p>
@@ -108,7 +119,6 @@
   </div>
 </template>
 <script>
-
 import Carousel from '@/components/main/carousel.vue'
 
 // import Swiper core and required modules
@@ -131,15 +141,90 @@ export default {
     Carousel
   },
   async setup () {
-    
-      useHead({
-    title: 'فروشگاه اینترنتی آننکوف استور | Annenkov Store',
-    viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
-    charset: 'utf-8',
-    meta: [
-      { name: 'description', content: 'درباره ما آننکوف استور' }
-    ]
-  })
+    useHead({
+      title: 'فروشگاه اینترنتی آننکوف استور | Annenkov Store',
+      viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
+      charset: 'utf-8',
+      meta: [
+        {
+          name: 'description',
+          content:
+            'خرید انواع کفش و اسنیکرز برند آدیداس ، ماسیمو دوتی ، زارا، اکو ، نیوبالانس ، نایک ، پوما اورجینال و اصل با بهترین قیمت و سریعترین زمان ارسال'
+        },
+        { property: 'og:locale', content: 'fa_IR' },
+        {
+          property: 'og:title',
+          content:
+            ' فروشگاه اینترنتی آننکوف استور بهترین قیمت کفش اورجینال | Annenkov Store'
+        },{
+          property: 'og:description',
+          content:
+            'خرید انواع کفش و اسنیکرز برند آدیداس ، زارا، ماسیمو دوتی ، اکو ، نیوبالانس ، نایک ، پوما اورجینال و اصل با بهترین قیمت و سریعترین زمان ارسال'
+        },
+        {
+          property: 'og:url',
+          content:
+            'https://annenkovstore.ir/'
+        },
+        {
+          property: 'og:site_name',
+          content:
+            'آننکوف استور'
+        },
+        {
+          property: 'og:updated_time',
+          content:
+            '2022-08-13T14:11:56+04:30'
+        },
+        {
+          property: 'og:image',
+          content:
+            'https://annenkovstore.ir/_nuxt/logo.0e5474c5.jpg'
+        },
+        {
+          property: 'twitter:card',
+          content:
+            'summary_large_image'
+        },
+        {
+          property: 'twitter:title',
+          content:
+            'فروشگاه اینترنتی آننکوف استور | Annenkov Store'
+        },
+        {
+          property: 'twitter:description',
+          content:
+            'خرید انواع کفش و اسنیکرز برند آدیداس ، ماسیمو دوتی ، زارا، اکو ، نیوبالانس ، نایک ، پوما اورجینال و اصل با بهترین قیمت و سریعترین زمان ارسال'
+        },
+        {
+          property: 'twitter:image',
+          content:
+            'https://annenkovstore.ir/_nuxt/logo.0e5474c5.jpg'
+        },
+        {
+          property: 'twitter:label1',
+          content:
+            'Written by'
+        },
+        {
+          property: 'twitter:data1',
+          content:
+            'Time to read'
+        },
+        {
+          property: 'twitter:label2',
+          content:
+            'Mohammad'
+        },
+        {
+          property: 'twitter:data2',
+          content:
+            'کمتر از یک دقیقه'
+        },
+        
+      ],
+      link: [{ rel: 'canonical', href: 'https://annenkovstore.ir/' }]
+    })
     const { data: landingItems } = await useAsyncData('landingItems', () =>
       $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
     )
@@ -185,11 +270,11 @@ export default {
 <style lang="scss">
 .discount {
   position: absolute;
-    top: 17px;
-    left: 10px;
-    background: #bfe7bf;
-    padding: 11px;
-    border-radius: 13px;
+  top: 17px;
+  left: 10px;
+  background: #bfe7bf;
+  padding: 11px;
+  border-radius: 13px;
 }
 .swiper-pagination {
   bottom: -3px !important;
