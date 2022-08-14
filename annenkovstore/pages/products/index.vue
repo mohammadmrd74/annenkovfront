@@ -526,8 +526,6 @@
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{
               product.totalPrice
-                .toString()
-                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
             }}
             تومان
           </p>

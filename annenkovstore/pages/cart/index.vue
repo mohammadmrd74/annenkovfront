@@ -269,6 +269,38 @@
                     </div>
                   </div>
                 </div>
+                <div class="p-4 mr-3">
+                  <span class="text-xl font-bold">مبلغ کل:</span>
+                  <span
+                    v-if="sumProduct"
+                    :class="[discountPrice ? 'line-through' : '']"
+                    class="text-center text-xl font-bold w-2/3 items-center"
+                    > {{ sumProduct }} تومان</span
+                  >
+                  <span
+                    v-if="discountPrice"
+                    class="text-center text-xl mr-3 font-bold w-2/3 items-center"
+                    > {{ discountPrice }} تومان</span
+                  >
+                  <div class="text-md mt-5 font-bold">آیا کد تخفیف دارید؟</div>
+                  <div class=" flex ">
+                    <input
+                      v-model="discountCode"
+                      type="text"
+                      name="discount"
+                      id="discount"
+                      placeholder="کد تخفیف خود را وارد نمایید"
+                      class="mt-2 focus:ring-indigo-500 w-1/4 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                    />
+
+                    <button
+                    @click="discounter"
+                      class="inline-flex mr-4 bg-indigo h-10 mt-2 justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                      اعمال
+                    </button>
+                  </div>
+                </div>
                 <div class="px-4 py-3 bg-gray-50 text-right sm:px-6 mb-12">
                   <div class="my-4 flex">
                     <input
@@ -334,7 +366,9 @@ const userMobile = ref('')
 const province = ref('')
 const city = ref('')
 const address = ref('')
+const discountCode = ref('')
 const postalCode = ref('')
+const discountPrice = ref ('')
 const otpInput = ref(null)
 const agree = ref(false)
 let userData = ref({})
@@ -347,6 +381,31 @@ const cartItems = ref([])
 const pstate = ref(0)
 
 userMobile.value = authstore.getUserMobile
+
+async function discounter() {
+ try {
+    let res = await $fetch(
+      useRuntimeConfig().public.BASE_URL + '/discount',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authstore.getToken}`
+        },
+        body: {
+          value: parseInt(sumProduct.value.replaceAll('.', '')),
+          code: discountCode.value
+        }
+      }
+    )
+    console.log(res.data);
+    discountPrice.value = res.data.newValue ? res.data.newValue.toString()
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.') : '';
+  } catch (e) {
+    toaster.error('کد اشتباه است')
+
+    console.log(e)
+  }
+}
 
 function changeCount (value, i) {
   console.log(cartItems)
@@ -376,23 +435,23 @@ function validate () {
   return false
 }
 
-async function deleteCart(pId) {
+async function deleteCart (pId) {
   try {
-      let res = await $fetch(
-        useRuntimeConfig().public.BASE_URL + '/removeItemCart',
-        {
-          method: 'POST',
-          headers: {
-            Authorization: `Bearer ${authstore.getToken}`
-          },
-          body: {
-            productId: pId
-          }
+    let res = await $fetch(
+      useRuntimeConfig().public.BASE_URL + '/removeItemCart',
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${authstore.getToken}`
+        },
+        body: {
+          productId: pId
         }
-      )
-      init();
-  } catch(e) {
-    console.log(e);
+      }
+    )
+    init()
+  } catch (e) {
+    console.log(e)
   }
 }
 
@@ -425,7 +484,7 @@ async function pay () {
       console.log('order', res.data)
       authstore.setOrderAmount({
         id: res.data.orderId,
-        amount: parseInt(sumProduct.value.replaceAll('.', ''))
+        amount:  discountPrice.value ? parseInt(discountPrice.value.replaceAll('.', ''))  : parseInt(sumProduct.value.replaceAll('.', ''))
       })
 
       let bank = await $fetch(
@@ -436,7 +495,7 @@ async function pay () {
             Authorization: `Bearer ${authstore.getToken}`
           },
           body: {
-            Amount: parseInt(sumProduct.value.replaceAll('.', '')),
+            Amount:  discountPrice.value ? parseInt(discountPrice.value.replaceAll('.', ''))  : parseInt(sumProduct.value.replaceAll('.', '')),
             Description: `خرید از آننکوف استور`
           }
         }
@@ -457,7 +516,7 @@ async function pay () {
   }
 }
 
-async function init(){
+async function init () {
   if (authstore.getToken) {
     try {
       let res = await $fetch(useRuntimeConfig().public.BASE_URL + '/getcart', {
@@ -479,7 +538,7 @@ async function init(){
   } else authstore.setUser(0)
 }
 onMounted(async () => {
-  init();
+  init()
 })
 </script>
 
