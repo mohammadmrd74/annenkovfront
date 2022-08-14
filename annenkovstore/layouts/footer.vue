@@ -55,6 +55,7 @@
             alt="دروازه پرداخت معتبر"
           />
         </a>
+        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3" alt="" style="cursor:pointer" id="6KYf5dvH47oyHqyYv5g3"></a>
       </div>
     </div>
   </footer>
