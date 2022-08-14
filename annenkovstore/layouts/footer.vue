@@ -1,7 +1,9 @@
 <template>
   <footer class="  p-4 bg-gray-100 mt-10 sm:p-6 dark:bg-gray-800">
     <div class="container mx-auto md:flex md:justify-between">
-      <div class="mb-6 md:mb-0">
+      <div
+        class="mb-6 md:mb-0 flex grid md:grid-cols-4 w-100 grow justify-center gap-2 grid-cols-2"
+      >
         <a href="https://annenkovstore.com" class="flex items-center">
           <img src="~/assets/logo.jpg" class="mr-3 h-8" alt="FlowBite Logo" />
           <span
@@ -9,7 +11,7 @@
             >آننکوف استور</span
           >
         </a>
-        <div class="mr-3">
+        <div class="mr-10">
           <h2
             class="my-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
           >
@@ -31,11 +33,9 @@
             </li>
           </ul>
         </div>
-      </div>
-      <div class="grid grid-cols-2 sm:gap-6 sm:grid-cols-3">
         <div>
           <h2
-            class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+            class=" text-sm mt-6 font-semibold text-gray-900 uppercase dark:text-white"
           >
             آننکوف استور
           </h2>
@@ -47,15 +47,33 @@
             >{{ page.name }}</nuxt-link
           >
         </div>
-        <a href="javascript:showZPTrust();" title="دروازه پرداخت معتبر">
-          <img
-          width="80px"
-            class="cursor-pointer"
-            src="https://cdn.zarinpal.com/badges/trustLogo/1.svg"
-            alt="دروازه پرداخت معتبر"
-          />
-        </a>
-        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3" alt="" style="cursor:pointer" id="6KYf5dvH47oyHqyYv5g3"></a>
+
+        <div class="flex jusitfy-end items-center">
+          <a href="javascript:showZPTrust();" title="دروازه پرداخت معتبر">
+            <img
+              width="80px"
+              class="cursor-pointer"
+              src="https://cdn.zarinpal.com/badges/trustLogo/1.svg"
+              alt="دروازه پرداخت معتبر"
+            />
+          </a>
+          <a
+            referrerpolicy="origin"
+            target="_blank"
+            style="min-height:115px; max-width: 90px;"
+            class="border mx-5 items-center justify-center flex rounded-md"
+            href="https://trustseal.enamad.ir/?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3"
+          >
+            <img
+              class="w-100 m-auto"
+              src="~/assets/images/enamad-b8f9b6ac.png"
+              width="75"
+              height="75"
+              alt="نماد اعتماد الکترونیک"
+              style="object-fit: contain;"
+            />
+          </a>
+        </div>
       </div>
     </div>
   </footer>
