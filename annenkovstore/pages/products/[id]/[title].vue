@@ -1,5 +1,14 @@
 <template>
   <div class="bg-white container mx-auto">
+    <Head>
+      <Title>{{ title }}</Title>
+      <Meta name="product_id" :content="route.params.id" />
+      <Meta name="product_name" :content="product1.data.products[0].title" />
+      <Meta name="product_price" :content="product1.data.products[0].totalPrice" />
+      <Meta name="product_oldprice" :content="product1.data.products[0].price" />
+      <Meta name="availability" :content="product1.data.products[0].sizes && product1.data.products[0].sizes.length ? 'instock' : 'outofstock'" />
+      <Meta name="og:image" :content="product1.data.products[0].images[0]" />
+    </Head>
     <div class="pt-6">
       <nav aria-label="Breadcrumb">
         <ol
@@ -8,7 +17,7 @@
         >
           <li>
             <div class="flex items-center">
-              <a class="mr-2 text-sm font-medium text-gray-900">
+              <a class="mr-2 productCategory text-sm font-medium text-gray-900">
                 {{ product1.data.products[0].categoryTitle }}
               </a>
               <svg
@@ -93,7 +102,7 @@
           class="max-w-2xl mx-auto pt-10 pb-16 px-4 sm:px-6 lg:max-w-7xl lg:pt-16 lg:pb-24 lg:px-8  lg:grid-rows-[auto,auto,1fr] lg:gap-x-8"
         >
           <div class="lg:col-span-4 ">
-            <h1 class="text-3xl font-extrabold text-gray-900 sm:text-3xl">
+            <h1 class="text-3xl productTitle font-extrabold text-gray-900 sm:text-3xl">
               {{ product1.data.products[0].brandNameFa }}
               {{ product1.data.products[0].title }}
             </h1>
@@ -102,7 +111,7 @@
           <!-- Options -->
           <div class="mt-5 lg:mt-0 lg:row-span-3">
             <p v-if="product1.data.products[0].totalPrice !== product1.data.products[0].price" class="lg:mt-5">
-              <span class="text-xl line-through  text-gray-900">
+              <span class="text-xl line-through productOldPrice  text-gray-900">
                 {{
                 product1.data.products[0].price
                   .toString()
@@ -110,10 +119,10 @@
               }}
               تومان
               </span>
-              <span class="discount mx-3" style="position: static" v-if="product1.data.products[0].totalPrice !== product1.data.products[0].price">&#37;
+              <span class="productDiscount mx-3" style="position: static" v-if="product1.data.products[0].totalPrice !== product1.data.products[0].price">&#37;
               {{Math.floor(((product1.data.products[0].price - product1.data.products[0].totalPrice)/product1.data.products[0].price) * 100)}}</span>
             </p>
-            <p  class="text-3xl mt-5 text-gray-900">
+            <p  class="text-3xl mt-5 productPrice text-gray-900">
               {{
                 product1.data.products[0].totalPrice
                   .toString()
@@ -123,7 +132,7 @@
               
             </p>
 
-            <p class="mt-4 text-sm font-medium text-gray-500">
+            <p class="mt-4 productCode text-sm font-medium text-gray-500">
                کد محصول:    {{ product1.data.products[0].styleNumber }}  
               </p>
 
@@ -318,7 +327,9 @@ useHead({
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   charset: 'utf-8',
   meta: [
-    { name: 'description', content: 'آننکوف استور' }
+    { name: 'description',
+     content: `${route.params.title} خرید کفش اورجینال`
+      }
   ]
 })
 
