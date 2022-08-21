@@ -51,6 +51,13 @@
           <p class="mt-1 text-sm font-medium text-gray-500">
             {{ product.styleNumber }}
           </p>
+          <p v-if="product.price !== product.totalPrice" class="mt-1 line-through text-md text-gray-900">
+            {{
+              product.price
+                .toString()
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+            }}
+          </p>
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{
               product.totalPrice
@@ -104,7 +111,7 @@
           <p class="mt-1 text-sm font-medium text-gray-500">
             {{ product.styleNumber }}
           </p>
-
+          
           <p class="mt-1 text-lg font-medium text-gray-900">
             {{
               product.totalPrice

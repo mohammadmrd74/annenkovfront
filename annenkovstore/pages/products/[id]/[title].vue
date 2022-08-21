@@ -141,11 +141,10 @@
               <div class="mt-10">
                 <div class="flex items-center justify-between px-3 py-2">
                   <h3 class="text-lg text-gray-900 font-medium">سایز ها</h3>
-                  <a
-                    target="_blank"
-                    :href="url + '/files/sizes/' + product1.data.products[0].brandNameFa + '.jpeg'"
+                  <button
+                  @click="emitevent"
                     class="text-lg font-medium text-indigo-600 hover:text-indigo-500"
-                    >راهنمای سایز</a
+                    >راهنمای سایز</button
                   >
                 </div>
 
@@ -310,6 +309,7 @@ import lgZoom from 'lightgallery/plugins/zoom'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { createToaster } from '@meforma/vue-toaster'
+const { $bus } = useNuxtApp()
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -350,6 +350,7 @@ let onInit = () => {
 let onBeforeSlide = () => {
   console.log('calling before slide')
 }
+
 
 const { data: product1, refresh: refreshProduct } = await useAsyncData(
   'product',
@@ -402,6 +403,10 @@ onMounted(() => {
 function changeImg (i) {
   console.log(i)
   selectedImg.value = product1.value.data.products[0].images[i]
+}
+
+function emitevent() {
+  $bus.$emit('sizeChartEvent', {})
 }
 
 async function addToCart () {

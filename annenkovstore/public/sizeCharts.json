@@ -1,0 +1,2699 @@
+{
+"sizeCharts": [
+	{
+		"id" : 1,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "38.5",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 2,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "39",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 3,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "40",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 5,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "40.5",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 6,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "41",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 7,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 8,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "42.5",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 9,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "43",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 10,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 11,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "44.5",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 12,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "45",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 13,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "45.5",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 14,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "46",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 15,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "47.5",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 16,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "48.5",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 17,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "49.5",
+		"sizeInCM" : "33",
+		"type" : "men"
+	},
+	{
+		"id" : 18,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "35.5",
+		"sizeInCM" : "22",
+		"type" : "women"
+	},
+	{
+		"id" : 19,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 20,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "36.5",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 21,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "37.5",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 22,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "38",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 23,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "38.5",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 24,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 25,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "40",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 26,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "40.5",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 27,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "41",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 28,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "42",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 29,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "42.5",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 30,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "43",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 31,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "44",
+		"sizeInCM" : "28.5",
+		"type" : "women"
+	},
+	{
+		"id" : 32,
+		"brandId" : 1,
+		"brandName" : "nike",
+		"size" : "44.5",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 33,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "38 2\/3",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 34,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "39 1\/3",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 35,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "40",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 36,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "40 2\/3",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 37,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "41 1\/3",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 38,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 39,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "42 2\/3",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 40,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "43 1\/3",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 41,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 42,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "44 2\/3",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 43,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "45 1\/3",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 44,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "46",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 45,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "46 1\/3",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 46,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "48",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 47,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "49 1\/3",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 48,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "50 2\/3",
+		"sizeInCM" : "33",
+		"type" : "men"
+	},
+	{
+		"id" : 49,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "35",
+		"sizeInCM" : "21",
+		"type" : "women"
+	},
+	{
+		"id" : 50,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "35 1\/2",
+		"sizeInCM" : "21.5",
+		"type" : "women"
+	},
+	{
+		"id" : 51,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "36",
+		"sizeInCM" : "22",
+		"type" : "women"
+	},
+	{
+		"id" : 52,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "36 2\/3",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 53,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "37 1\/3",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 54,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "38",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 55,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "38 2\/3",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 56,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "39 1\/3",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 57,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "40",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 58,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "40 2\/3",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 59,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "41 1\/3",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 60,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 61,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "42 2\/3",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 62,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "43 1\/3",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 63,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 64,
+		"brandId" : 2,
+		"brandName" : "adidas",
+		"size" : "45",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 66,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "37.5",
+		"sizeInCM" : "23",
+		"type" : "men"
+	},
+	{
+		"id" : 67,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "38",
+		"sizeInCM" : "23.5",
+		"type" : "men"
+	},
+	{
+		"id" : 68,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "38.5",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 69,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "39.5",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 70,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 71,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "40.5",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 72,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "41.5",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 73,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 74,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "42.5",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 75,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "43",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 76,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 77,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "44.5",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 78,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 79,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45.5",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 80,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45.5",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 81,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "47.5",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 82,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "49",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 83,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "35",
+		"sizeInCM" : "22",
+		"type" : "women"
+	},
+	{
+		"id" : 84,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 85,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "36.5",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 86,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "37",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 87,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "37.5",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 88,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "38",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 89,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 90,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "40",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 91,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "40.5",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 92,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "41",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 93,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "41.5",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 94,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "42.5",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 95,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "43",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 96,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "43.5",
+		"sizeInCM" : "28.5",
+		"type" : "women"
+	},
+	{
+		"id" : 97,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "44",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 98,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45.5",
+		"sizeInCM" : "30",
+		"type" : "women"
+	},
+	{
+		"id" : 99,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "46.5",
+		"sizeInCM" : "31",
+		"type" : "women"
+	},
+	{
+		"id" : 100,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "men"
+	},
+	{
+		"id" : 101,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "37",
+		"sizeInCM" : "23",
+		"type" : "men"
+	},
+	{
+		"id" : 102,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "37.5",
+		"sizeInCM" : "23.5",
+		"type" : "men"
+	},
+	{
+		"id" : 103,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "38",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 104,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "38.5",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 105,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 106,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "40",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 107,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "40.5",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 108,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "41",
+		"sizeInCM" : "22.5",
+		"type" : "men"
+	},
+	{
+		"id" : 109,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "42",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 110,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "42.5",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 111,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "43",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 112,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "44",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 113,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "44.5",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 114,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "45",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 115,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "46",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 116,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "46.5",
+		"sizeInCM" : "30.5",
+		"type" : "men"
+	},
+	{
+		"id" : 117,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "47",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 118,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 119,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "37",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 120,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "37.5",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 121,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "38",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 122,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "38.5",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 123,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 124,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "40",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 125,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "40.5",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 126,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "41",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 127,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "42",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 128,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "42.5",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 129,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "43",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 130,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "44",
+		"sizeInCM" : "28.5",
+		"type" : "women"
+	},
+	{
+		"id" : 131,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "44.5",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 132,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "45",
+		"sizeInCM" : "29.5",
+		"type" : "women"
+	},
+	{
+		"id" : 133,
+		"brandId" : 4,
+		"brandName" : "puma",
+		"size" : "46",
+		"sizeInCM" : "30",
+		"type" : "women"
+	},
+	{
+		"id" : 134,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "36",
+		"sizeInCM" : "22",
+		"type" : "sport"
+	},
+	{
+		"id" : 135,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "37",
+		"sizeInCM" : "22.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 136,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "37.5",
+		"sizeInCM" : "23",
+		"type" : "sport"
+	},
+	{
+		"id" : 137,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "38",
+		"sizeInCM" : "23.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 138,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "38.5",
+		"sizeInCM" : "24",
+		"type" : "sport"
+	},
+	{
+		"id" : 139,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "39.5",
+		"sizeInCM" : "24.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 140,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "40",
+		"sizeInCM" : "25",
+		"type" : "sport"
+	},
+	{
+		"id" : 141,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "40.5",
+		"sizeInCM" : "25.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 142,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "41.5",
+		"sizeInCM" : "26",
+		"type" : "sport"
+	},
+	{
+		"id" : 143,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 144,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "42.5",
+		"sizeInCM" : "27",
+		"type" : "sport"
+	},
+	{
+		"id" : 145,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "43",
+		"sizeInCM" : "27.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 146,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "sport"
+	},
+	{
+		"id" : 147,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "44.5",
+		"sizeInCM" : "28.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 148,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45",
+		"sizeInCM" : "29",
+		"type" : "sport"
+	},
+	{
+		"id" : 149,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "45.5",
+		"sizeInCM" : "29.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 150,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "46.5",
+		"sizeInCM" : "30",
+		"type" : "sport"
+	},
+	{
+		"id" : 151,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "47",
+		"sizeInCM" : "30.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 152,
+		"brandId" : 3,
+		"brandName" : "new balance",
+		"size" : "47.5",
+		"sizeInCM" : "31",
+		"type" : "sport"
+	},
+	{
+		"id" : 153,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 154,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "40",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 155,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "40.5",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 156,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "41",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 157,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "42",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 158,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "42.5",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 159,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "43",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 160,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "44",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 161,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "44.5",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 162,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "45",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 163,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "45.5",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 164,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "46",
+		"sizeInCM" : "30.5",
+		"type" : "men"
+	},
+	{
+		"id" : 165,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "47",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 166,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "48",
+		"sizeInCM" : "31.5",
+		"type" : "men"
+	},
+	{
+		"id" : 167,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "48.5",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 168,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "49",
+		"sizeInCM" : "32.5",
+		"type" : "men"
+	},
+	{
+		"id" : 169,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "50",
+		"sizeInCM" : "33",
+		"type" : "men"
+	},
+	{
+		"id" : 170,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "35",
+		"sizeInCM" : "22",
+		"type" : "women"
+	},
+	{
+		"id" : 171,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "35.5",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 172,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "36",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 173,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "37",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 174,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "37.5",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 175,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "38",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 176,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "38.5",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 177,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "39",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 178,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "40",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 179,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "40.5",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 180,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "41",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 181,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "42",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 182,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "42.5",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 183,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "43",
+		"sizeInCM" : "28.5",
+		"type" : "women"
+	},
+	{
+		"id" : 184,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "44",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 185,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "34.5",
+		"sizeInCM" : "23",
+		"type" : "sport"
+	},
+	{
+		"id" : 186,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "35",
+		"sizeInCM" : "23.3",
+		"type" : "sport"
+	},
+	{
+		"id" : 187,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "36",
+		"sizeInCM" : "23.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 188,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "36.5",
+		"sizeInCM" : "23.6",
+		"type" : "sport"
+	},
+	{
+		"id" : 189,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "37.5",
+		"sizeInCM" : "24",
+		"type" : "sport"
+	},
+	{
+		"id" : 190,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "38.5",
+		"sizeInCM" : "24.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 191,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "sport"
+	},
+	{
+		"id" : 192,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "40",
+		"sizeInCM" : "25.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 193,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "40.5",
+		"sizeInCM" : "26",
+		"type" : "sport"
+	},
+	{
+		"id" : 194,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "41",
+		"sizeInCM" : "26.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 195,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "42",
+		"sizeInCM" : "27",
+		"type" : "sport"
+	},
+	{
+		"id" : 196,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "42.5",
+		"sizeInCM" : "27.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 197,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "43",
+		"sizeInCM" : "28",
+		"type" : "sport"
+	},
+	{
+		"id" : 198,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "44",
+		"sizeInCM" : "28.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 199,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "44.5",
+		"sizeInCM" : "29",
+		"type" : "sport"
+	},
+	{
+		"id" : 200,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "45",
+		"sizeInCM" : "29.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 201,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "45.5",
+		"sizeInCM" : "30",
+		"type" : "sport"
+	},
+	{
+		"id" : 202,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "46",
+		"sizeInCM" : "30.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 203,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "47",
+		"sizeInCM" : "31",
+		"type" : "sport"
+	},
+	{
+		"id" : 204,
+		"brandId" : 5,
+		"brandName" : "reebok",
+		"size" : "48.5",
+		"sizeInCM" : "32",
+		"type" : "sport"
+	},
+	{
+		"id" : 205,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "men"
+	},
+	{
+		"id" : 206,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "37",
+		"sizeInCM" : "23",
+		"type" : "men"
+	},
+	{
+		"id" : 207,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "37.5",
+		"sizeInCM" : "23.5",
+		"type" : "men"
+	},
+	{
+		"id" : 208,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "38",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 209,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "39",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 210,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "39.5",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 211,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "40",
+		"sizeInCM" : "25.25",
+		"type" : "men"
+	},
+	{
+		"id" : 212,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "40.5",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 213,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "41.5",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 214,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 215,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "42.5",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 216,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "43.5",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 217,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "44",
+		"sizeInCM" : "28.25",
+		"type" : "men"
+	},
+	{
+		"id" : 218,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "45",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 219,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "46",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 220,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "46.5",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 221,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "47",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 222,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "48",
+		"sizeInCM" : "30.5",
+		"type" : "men"
+	},
+	{
+		"id" : 223,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "49",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 224,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "50.5",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 225,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "51.5",
+		"sizeInCM" : "33",
+		"type" : "men"
+	},
+	{
+		"id" : 226,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "53",
+		"sizeInCM" : "34",
+		"type" : "men"
+	},
+	{
+		"id" : 227,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 228,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "37",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 229,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "37.5",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 230,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "38",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 231,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "39",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 232,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "39.5",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 233,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "40",
+		"sizeInCM" : "25.25",
+		"type" : "women"
+	},
+	{
+		"id" : 234,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "40.5",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 235,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "41.5",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 236,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 237,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "42.5",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 238,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "43.5",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 239,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 240,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "44.5",
+		"sizeInCM" : "28.5",
+		"type" : "women"
+	},
+	{
+		"id" : 241,
+		"brandId" : 6,
+		"brandName" : "asics",
+		"size" : "46",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 242,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "36",
+		"sizeInCM" : "21.5",
+		"type" : "men"
+	},
+	{
+		"id" : 243,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "36 2\/3",
+		"sizeInCM" : "22",
+		"type" : "men"
+	},
+	{
+		"id" : 244,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "37 1\/3",
+		"sizeInCM" : "22.5",
+		"type" : "men"
+	},
+	{
+		"id" : 245,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "38",
+		"sizeInCM" : "23",
+		"type" : "men"
+	},
+	{
+		"id" : 246,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "38 2\/3",
+		"sizeInCM" : "23.5",
+		"type" : "men"
+	},
+	{
+		"id" : 247,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "39 1\/3",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 248,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "40",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 249,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "40 2\/3",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 250,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "41 1\/3",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 251,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "42",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 252,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "42 2\/3",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 253,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "43 1\/3",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 254,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "44",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 255,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "44 2\/3",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 256,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "45 1\/3",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 257,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "46",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 258,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "46 2\/3",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 259,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "47 1\/3",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 260,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "48",
+		"sizeInCM" : "30.5",
+		"type" : "men"
+	},
+	{
+		"id" : 261,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "48 2\/3",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 262,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "49 1\/3",
+		"sizeInCM" : "31.5",
+		"type" : "men"
+	},
+	{
+		"id" : 263,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "50",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 264,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "50 2\/3",
+		"sizeInCM" : "32.5",
+		"type" : "men"
+	},
+	{
+		"id" : 265,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "36",
+		"sizeInCM" : "21.5",
+		"type" : "women"
+	},
+	{
+		"id" : 266,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "36 2\/3",
+		"sizeInCM" : "22",
+		"type" : "women"
+	},
+	{
+		"id" : 267,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "37 1\/3",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 268,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "38",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 269,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "38 2\/3",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 270,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "39 1\/3",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 271,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "40",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 272,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "40 2\/3",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 273,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "41 1\/3",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 274,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "42",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 275,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "42 2\/3",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 276,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "43 1\/3",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 277,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "44",
+		"sizeInCM" : "27.5",
+		"type" : "women"
+	},
+	{
+		"id" : 278,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "44 2\/3",
+		"sizeInCM" : "28",
+		"type" : "women"
+	},
+	{
+		"id" : 279,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "45 1\/3",
+		"sizeInCM" : "28.5",
+		"type" : "women"
+	},
+	{
+		"id" : 280,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "46",
+		"sizeInCM" : "29",
+		"type" : "women"
+	},
+	{
+		"id" : 281,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "46 2\/3",
+		"sizeInCM" : "29.5",
+		"type" : "women"
+	},
+	{
+		"id" : 282,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "47 1\/3",
+		"sizeInCM" : "30",
+		"type" : "women"
+	},
+	{
+		"id" : 283,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "48",
+		"sizeInCM" : "30.5",
+		"type" : "women"
+	},
+	{
+		"id" : 284,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "48 2\/3",
+		"sizeInCM" : "31",
+		"type" : "women"
+	},
+	{
+		"id" : 285,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "49 1\/3",
+		"sizeInCM" : "31.5",
+		"type" : "women"
+	},
+	{
+		"id" : 286,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "50 ",
+		"sizeInCM" : "32",
+		"type" : "women"
+	},
+	{
+		"id" : 287,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "50 2\/3",
+		"sizeInCM" : "32.5",
+		"type" : "women"
+	},
+	{
+		"id" : 288,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "36",
+		"sizeInCM" : "21.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 289,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "36 2\/3",
+		"sizeInCM" : "22",
+		"type" : "sport"
+	},
+	{
+		"id" : 290,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "37 1\/3",
+		"sizeInCM" : "22.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 291,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "38",
+		"sizeInCM" : "23",
+		"type" : "sport"
+	},
+	{
+		"id" : 292,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "38 2\/3",
+		"sizeInCM" : "23.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 293,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "39 1\/3",
+		"sizeInCM" : "24",
+		"type" : "sport"
+	},
+	{
+		"id" : 294,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "40",
+		"sizeInCM" : "24.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 295,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "40 2\/3",
+		"sizeInCM" : "25",
+		"type" : "sport"
+	},
+	{
+		"id" : 296,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "41 1\/3",
+		"sizeInCM" : "25.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 297,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "42",
+		"sizeInCM" : "26",
+		"type" : "sport"
+	},
+	{
+		"id" : 298,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "42 2\/3",
+		"sizeInCM" : "26.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 299,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "43 1\/3",
+		"sizeInCM" : "27",
+		"type" : "sport"
+	},
+	{
+		"id" : 300,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "44",
+		"sizeInCM" : "27.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 301,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "44 2\/3",
+		"sizeInCM" : "28",
+		"type" : "sport"
+	},
+	{
+		"id" : 302,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "45 1\/3",
+		"sizeInCM" : "28.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 303,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "46",
+		"sizeInCM" : "29",
+		"type" : "sport"
+	},
+	{
+		"id" : 304,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "46 2\/3",
+		"sizeInCM" : "29.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 305,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "47 1\/3",
+		"sizeInCM" : "30",
+		"type" : "sport"
+	},
+	{
+		"id" : 306,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "48",
+		"sizeInCM" : "30.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 307,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "48 2\/3",
+		"sizeInCM" : "31",
+		"type" : "sport"
+	},
+	{
+		"id" : 308,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "49 1\/3",
+		"sizeInCM" : "31.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 309,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "50 2\/3",
+		"sizeInCM" : "32",
+		"type" : "sport"
+	},
+	{
+		"id" : 310,
+		"brandId" : 7,
+		"brandName" : "salomon",
+		"size" : "51 1\/3",
+		"sizeInCM" : "32.5",
+		"type" : "sport"
+	},
+	{
+		"id" : 311,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "39",
+		"sizeInCM" : "24",
+		"type" : "men"
+	},
+	{
+		"id" : 312,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "39.5",
+		"sizeInCM" : "24.5",
+		"type" : "men"
+	},
+	{
+		"id" : 313,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "40",
+		"sizeInCM" : "25",
+		"type" : "men"
+	},
+	{
+		"id" : 314,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "41",
+		"sizeInCM" : "25.5",
+		"type" : "men"
+	},
+	{
+		"id" : 315,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "41.5",
+		"sizeInCM" : "26",
+		"type" : "men"
+	},
+	{
+		"id" : 316,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "42",
+		"sizeInCM" : "26.5",
+		"type" : "men"
+	},
+	{
+		"id" : 317,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "43",
+		"sizeInCM" : "27",
+		"type" : "men"
+	},
+	{
+		"id" : 318,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "43.5",
+		"sizeInCM" : "27.5",
+		"type" : "men"
+	},
+	{
+		"id" : 319,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "44",
+		"sizeInCM" : "28",
+		"type" : "men"
+	},
+	{
+		"id" : 320,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "44.5",
+		"sizeInCM" : "28.5",
+		"type" : "men"
+	},
+	{
+		"id" : 321,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "45",
+		"sizeInCM" : "29",
+		"type" : "men"
+	},
+	{
+		"id" : 322,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "45.5",
+		"sizeInCM" : "29.5",
+		"type" : "men"
+	},
+	{
+		"id" : 323,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "46",
+		"sizeInCM" : "30",
+		"type" : "men"
+	},
+	{
+		"id" : 324,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "47.5",
+		"sizeInCM" : "31",
+		"type" : "men"
+	},
+	{
+		"id" : 325,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "49",
+		"sizeInCM" : "32",
+		"type" : "men"
+	},
+	{
+		"id" : 326,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "50",
+		"sizeInCM" : "33",
+		"type" : "men"
+	},
+	{
+		"id" : 327,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "51",
+		"sizeInCM" : "34",
+		"type" : "men"
+	},
+	{
+		"id" : 328,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "35.5",
+		"sizeInCM" : "22",
+		"type" : "women"
+	},
+	{
+		"id" : 329,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "36",
+		"sizeInCM" : "22.5",
+		"type" : "women"
+	},
+	{
+		"id" : 330,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "37",
+		"sizeInCM" : "23",
+		"type" : "women"
+	},
+	{
+		"id" : 331,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "37.5",
+		"sizeInCM" : "23.5",
+		"type" : "women"
+	},
+	{
+		"id" : 332,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "38",
+		"sizeInCM" : "24",
+		"type" : "women"
+	},
+	{
+		"id" : 333,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "38.5",
+		"sizeInCM" : "24.5",
+		"type" : "women"
+	},
+	{
+		"id" : 334,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "39",
+		"sizeInCM" : "25",
+		"type" : "women"
+	},
+	{
+		"id" : 335,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "39.5",
+		"sizeInCM" : "25.5",
+		"type" : "women"
+	},
+	{
+		"id" : 336,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "40",
+		"sizeInCM" : "26",
+		"type" : "women"
+	},
+	{
+		"id" : 337,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "41",
+		"sizeInCM" : "26.5",
+		"type" : "women"
+	},
+	{
+		"id" : 338,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "41.5",
+		"sizeInCM" : "27",
+		"type" : "women"
+	},
+	{
+		"id" : 339,
+		"brandId" : 9,
+		"brandName" : "timberland",
+		"size" : "42",
+		"sizeInCM" : "28",
+		"type" : "women"
+	}
+]}

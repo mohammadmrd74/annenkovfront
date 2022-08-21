@@ -25,6 +25,7 @@
     "flowbite": "^1.4.7",
     "i": "^0.3.7",
     "lightgallery": "^2.4.0",
+    "mitt": "^3.0.0",
     "npm": "^8.16.0",
     "nuxt-breakpoints": "^1.1.9",
     "nuxt-tailvue": "^1.0.95",
