@@ -12,6 +12,13 @@ export default defineNuxtConfig({
   
   css: ["@/assets/sass/_global.scss"],
 
+  modules: [
+      ['@netsells/nuxt-hotjar', { 
+          id: '3120863', 
+          sv: '6',
+      }],
+  ],
+
 
   runtimeConfig: {
     secretKey: '', // variable that can only be accessed on the server side
