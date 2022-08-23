@@ -85,6 +85,10 @@ useHead({
     {
       src: 'https://www.zarinpal.com/webservice/TrustCode',
       async: true
+    },
+    {
+      src: '/plugins/hotjar.client.js',
+      async: true
     }
   ]
 })
