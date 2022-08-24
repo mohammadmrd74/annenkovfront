@@ -636,7 +636,7 @@
                     to="/users"
                     class="flex items-center whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
                   >
-                    پنل کاربری
+                    پیگیری خرید
                   </NuxtLink>
                 </div>
                 <div
@@ -647,7 +647,7 @@
                     to="/users"
                     class="flex items-center  whitespace-nowrap text-sm font-medium text-gray-700 hover:text-gray-800"
                   >
-                    ورود / ثبت نام
+                    پیگیری خرید
                   </NuxtLink>
                 </div>
 
