@@ -12,7 +12,7 @@
         <nuxt-link
           to="/users"
           class="mt-10 group relative  w-1/3 flex justify-center py-4 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-          >ورود / ثبت نام</nuxt-link
+          >پیگیری خرید</nuxt-link
         >
       </div>
     </div>
