@@ -758,7 +758,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useAuthStore } from '@/stores/auth'
-import sizeChart from '~/public/sizeCharts'
+import sizeChart from '~/plugins/sizeCharts'
 import { createToaster } from '@meforma/vue-toaster'
 
 import {
