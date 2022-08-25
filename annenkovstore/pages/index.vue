@@ -58,7 +58,7 @@
                 .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
             }}
           </p>
-          <p class="mt-1 text-lg font-medium text-gray-900">
+          <p class="mt-1 text-lg text-red-700 font-medium text-gray-900">
             {{
               product.totalPrice
                 .toString()

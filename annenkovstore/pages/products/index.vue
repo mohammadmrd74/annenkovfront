@@ -382,7 +382,7 @@
                   @click="filterItems"
                   class="fixed inset-x-0 mx-10 h-12 bottom-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
                 >
-                  <div v-if="!filterBool"> فیلتر</div>
+                  <div v-if="!filterBool">فیلتر</div>
                   <div
                     v-else
                     class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full"
@@ -405,81 +405,37 @@
           {{ route.query.mainType || 'همه محصولات' }}
           <div>({{ allproducts.data.recordNumbers }} عدد)</div>
         </h2>
-        <div class="flex" style="min-width:120px">
-          <Menu as="div" class="relative inline-block  mx-3 text-left">
-            <div>
-              <MenuButton
-                class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
-              >
-                مرتب سازی
-                <ChevronDownIcon
-                  class="-mr-1 ml-2 md:h-5 md:w-5"
-                  aria-hidden="true"
-                />
-              </MenuButton>
-            </div>
-
-            <transition
-              enter-active-class="transition ease-out duration-100"
-              enter-from-class="transform opacity-0 scale-95"
-              enter-to-class="transform opacity-100 scale-100"
-              leave-active-class="transition ease-in duration-75"
-              leave-from-class="transform opacity-100 scale-100"
-              leave-to-class="transform opacity-0 scale-95"
-            >
-              <MenuItems
-                class="origin-top-right absolute right-0 mt-2 w-40 z-10 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
-              >
-                <div class="py-1">
-                  <MenuItem v-slot="{ active }">
-                    <div
-                      @click="sortItems('new', 'desc')"
-                      :class="[
-                        orderBy == 'new' && orderDir == 'desc'
-                          ? 'bg-gray-200 text-gray-900'
-                          : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      ]"
-                    >
-                      جدید ترین
-                    </div>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <div
-                      @click="sortItems('price', 'desc')"
-                      :class="[
-                        orderBy != 'new' && orderDir == 'desc'
-                          ? 'bg-gray-200 text-gray-900'
-                          : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      ]"
-                    >
-                      گران ترین
-                    </div>
-                  </MenuItem>
-                  <MenuItem v-slot="{ active }">
-                    <div
-                      @click="sortItems('price', 'asc')"
-                      :class="[
-                        orderBy != 'new' && orderDir == 'asc'
-                          ? 'bg-gray-200 text-gray-900'
-                          : 'text-gray-700',
-                        'block px-4 py-2 text-sm'
-                      ]"
-                    >
-                      ارزان ترین
-                    </div>
-                  </MenuItem>
-                </div>
-              </MenuItems>
-            </transition>
-          </Menu>
+        <div class="flex " style="min-width:120px">
+          <select
+            id="brands"
+            v-model="selectedType"
+            @change="sortItems"
+            style="background-position: left 0.5rem center;min-width: 140px;"
+            class="bg-gray-50 mx-3 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          >
+            <option disabled selected>انتخاب نوع</option>
+            <option value="new">جدیدترین</option>
+            <option value="cheap">ارزان ترین</option>
+            <option value="expensive">گران ترین</option>
+          </select>
+          
           <button
-            class="flex bg-gray-100 p-2 rounded-md items-center"
+          style="min-width: 140px;"
+            class=" hidden md:flex bg-gray-100 p-2 mx-2 rounded-md items-center"
             @click="open = true"
           >
-            فیلتر
-            <FilterIcon class="h-6 w-6" aria-hidden="true" />
+            فیلتر محصولات
+            <FilterIcon class="h-5 w-5 mx-1" aria-hidden="true" />
+          </button>
+          <button
+            style="    z-index: 1;
+                      bottom: 35px;
+                      right: 35px;"
+            class="flex fixed md:hidden bg-blue-500 p-3 text-white font-bold p-2 rounded-md items-center"
+            @click="open = true"
+          >
+            <FilterIcon class="h-6 w-6 mx-1" aria-hidden="true" />
+            فیلتر محصولات
           </button>
         </div>
       </div>
@@ -523,17 +479,24 @@
           <p class="mt-1 text-sm font-medium text-gray-500">
             {{ product.styleNumber }}
           </p>
-          <p v-if="product.price !== product.totalPrice" class="mt-1 line-through text-md text-gray-900">
+          <p
+            v-if="product.price !== product.totalPrice"
+            class="mt-1 line-through text-md text-gray-900"
+          >
             {{
-              product.price
-                .toString()
-                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+              product.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
             }}
           </p>
-          <p class="mt-1 text-lg font-medium text-gray-900">
+          <p
+            :class="[
+              product.price !== product.totalPrice ? 'text-red-700' : ''
+            ]"
+            class="mt-1 text-lg font-medium text-gray-900"
+          >
             {{
-              product.totalPrice.toString()
-                  .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
+              product.totalPrice
+                .toString()
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
             }}
             تومان
           </p>
@@ -635,6 +598,7 @@ const colorsToFilter = ref([])
 const colors = ref([])
 const scolorsToFilter = ref([])
 const scolors = ref([])
+const selectedType = ref('new')
 const orderBy = ref('new')
 const orderDir = ref('asc')
 
@@ -706,14 +670,22 @@ function changeCost (value) {
   max.value = value[1]
 }
 
-function sortItems (by, sort) {
-  orderBy.value = by;
-  orderDir.value = sort;
+function sortItems () {
+  if (selectedType.value == 'new') {
+    orderBy.value = "new"
+    orderDir.value = "desc"
+  } else if (selectedType.value == 'cheap') {
+    orderBy.value = "price"
+    orderDir.value = "asc"
+  } else {
+    orderBy.value = "price"
+    orderDir.value = "desc"
+  }
   refreshProducts()
 }
 
 async function filterItems () {
-  filterBool.value = true;
+  filterBool.value = true
   brandsToFilter.value = filters.value.data.filters[0].brands
     .filter((br, i) => {
       if (brands.value[i]) return br
@@ -743,11 +715,9 @@ async function filterItems () {
       if (scolors.value[i]) return br
     })
     .map(bri => bri.id)
-  
-
 
   await refreshProducts()
-  filterBool.value = false;
+  filterBool.value = false
 
   open.value = false
 }
