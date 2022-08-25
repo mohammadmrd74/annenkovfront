@@ -34,6 +34,7 @@
     "pinia-plugin-persistedstate": "^1.6.1",
     "swiper": "^8.1.5",
     "tw-elements": "^1.0.0-alpha12",
+    "vue-easy-lightbox": "^1.7.1",
     "vue-gtag-next": "^1.14.0",
     "vue-light-gallery": "^1.0.1",
     "vue-money-format": "^1.2.4",
