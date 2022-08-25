@@ -515,12 +515,12 @@
         <button
           @click="changePageNum(1)"
           :class="[
-            pageNum == Math.ceil(allproducts.data.recordNumbers / 40)
+            pageNum == Math.ceil(allproducts.data.recordNumbers / 100)
               ? 'bg-gray-50'
               : 'bg-gray-200'
           ]"
           class="w-32 text-center m-3 bg-gray-200 p-2 rounded-md"
-          :disabled="pageNum == Math.ceil(allproducts.data.recordNumbers / 40)"
+          :disabled="pageNum == Math.ceil(allproducts.data.recordNumbers / 100)"
         >
           بعدی
         </button>
