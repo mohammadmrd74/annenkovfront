@@ -429,7 +429,7 @@
           </button>
           <button
             style="    z-index: 1;
-                      bottom: 35px;
+                      bottom: 20px;
                       right: 35px;"
             class="flex fixed md:hidden bg-blue-500 p-3 text-white font-bold p-2 rounded-md items-center"
             @click="open = true"
