@@ -501,6 +501,7 @@ async function addToCart () {
     } else {
       try {
         buttonName.value = 'لطفا کمی صبر کنید...'
+          console.log('ss', selectedSize);
         const checkproduct = await $fetch(
           useRuntimeConfig().public.BASE_URL +
             `/updateproduct?productId=${product1.value.data.products[0].productId}&sizeId=${selectedSize.value.id}`,
@@ -518,7 +519,7 @@ async function addToCart () {
             body: {
               productId: product1.value.data.products[0].productId,
               selectedColor: '',
-              selectedSize: selectedSize.value.id,
+              selectedSize: selectedSize.value.size,
               productPrice: product1.value.data.products[0].totalPrice,
               count: 1
             },
