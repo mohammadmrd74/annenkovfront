@@ -114,14 +114,14 @@
                           >
                             <div class="form-check">
                               <input
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                class=" h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200  mx-3 cursor-pointer"
                                 type="checkbox"
                                 v-model="sizes[i]"
-                                id="flexCheckChecked"
+                                :id="'flexCheckChecked' + i"
                               />
                               <label
                                 class="form-check-label inline-block text-gray-800"
-                                for="flexCheckChecked"
+                                :for="'flexCheckChecked' + i"
                                 style="direction: ltr;"
                               >
                                 {{ size.name }}
@@ -176,15 +176,15 @@
                           >
                             <div class="form-check">
                               <input
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mx-3 cursor-pointer"
                                 type="checkbox"
                                 v-model="brands[i]"
                                 value=""
-                                id="flexCheckChecked"
+                                :id="'brandsChecked' + i"
                               />
                               <label
                                 class="form-check-label inline-block text-gray-800"
-                                for="flexCheckChecked"
+                                :for="'brandsChecked' + i"
                               >
                                 {{ brand.name }}
                               </label>
@@ -237,14 +237,14 @@
                           >
                             <div class="form-check">
                               <input
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mx-3 cursor-pointer"
                                 type="checkbox"
                                 v-model="types[i]"
-                                id="flexCheckChecked"
+                                :id="'typesChecked' + i"
                               />
                               <label
                                 class="form-check-label inline-block text-gray-800"
-                                for="flexCheckChecked"
+                                :for="'typesChecked' + i"
                               >
                                 {{ typee.name }}
                               </label>
@@ -298,14 +298,14 @@
                           >
                             <div class="form-check">
                               <input
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mx-3 cursor-pointer"
                                 type="checkbox"
                                 v-model="colors[i]"
-                                id="flexCheckChecked"
+                                :id="'colorChecked' + i"
                               />
                               <label
                                 class="form-check-label inline-block text-gray-800"
-                                for="flexCheckChecked"
+                                :for="'colorChecked' + i"
                               >
                                 {{ color.name }}
                               </label>
@@ -360,14 +360,14 @@
                           >
                             <div class="form-check">
                               <input
-                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+                                class="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain mx-3 cursor-pointer"
                                 type="checkbox"
                                 v-model="scolors[i]"
-                                id="flexCheckChecked"
+                                :id="'scolorChecked' + i"
                               />
                               <label
                                 class="form-check-label inline-block text-gray-800"
-                                for="flexCheckChecked"
+                                :for="'scolorChecked' + i"
                               >
                                 {{ color.name }}
                               </label>

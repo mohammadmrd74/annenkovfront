@@ -77,7 +77,7 @@
       </nav>
 
       <div class="md:grid  grid-cols-2 gap-4 block">
-        <div>
+        <div class="md:block hidden">
           <div
             class="cursor-pointer"
             v-if="product1.data.products[0].images"
@@ -90,7 +90,7 @@
               "
             />
           </div>
-          
+
           <div class="grid grid-cols-4 gap-4 px-3">
             <div
               v-for="(img, i) in product1.data.products[0].images"
@@ -105,7 +105,64 @@
               </div>
             </div>
           </div>
-           <vue-easy-lightbox :rtl="true" :visible="visibleRef" :imgs="product1.data.products[0].images" :index="indexRef" @hide="onHide"></vue-easy-lightbox>
+          <vue-easy-lightbox
+            :rtl="true"
+            :visible="visibleRef"
+            :imgs="product1.data.products[0].images"
+            :index="indexRef"
+            @hide="onHide"
+          ></vue-easy-lightbox>
+        </div>
+
+        <div class="md:hidden productSwiper">
+          <swiper
+            :modules="modules"
+            :slides-per-view="1"
+            :cssMode="isDesktop ? true : false"
+            :navigation="true"
+            :pagination="true"
+            :space-between="30"
+            @swiper="setSwiperRef"
+          >
+            <swiper-slide
+              v-for="(img, i) in product1.data.products[0].images"
+              :key="i"
+              class="group py-2"
+              target="_blank"
+            >
+              <div
+                @click="selectedImg = product1.data.products[0].images[i]"
+                class="cursor-pointer"
+              >
+                <img
+                  :src="img"
+                  class="w-full h-full object-center object-cover group-hover:opacity-75"
+                />
+              </div>
+            </swiper-slide>
+          </swiper>
+
+          <div class="grid grid-cols-4 gap-4 px-3">
+            <div
+              v-for="(img, i) in product1.data.products[0].images"
+              :key="i"
+              class="group py-2"
+            >
+              <div @click="slideTo(i)" class="cursor-pointer">
+                <img
+                  :src="img"
+                  class="w-full h-full object-center object-cover group-hover:opacity-75"
+                />
+              </div>
+            </div>
+          </div>
+          <vue-easy-lightbox
+            :rtl="true"
+            :visible="visibleRef"
+            :imgs="product1.data.products[0].images"
+            :index="indexRef"
+            @hide="onHide"
+          ></vue-easy-lightbox>
         </div>
 
         <!-- Product info -->
@@ -385,7 +442,6 @@ import 'swiper/css/scrollbar'
 import { useAuthStore } from '@/stores/auth'
 import { useRoute } from 'vue-router'
 const toaster = createToaster({ position: 'top' })
-
 const route = useRoute()
 useHead({
   title: `${route.params.title}  |  آننکوف استور`,
@@ -400,6 +456,8 @@ const modules = [Navigation, Pagination, Scrollbar, A11y]
 const selectedImg = ref('')
 const selectedSize = ref('')
 const price = ref('')
+//@ts-ignore
+
 const index = null
 const buttonName = ref('افزودن به سبد خرید')
 const reviews = { href: '#', average: 4, totalCount: 117 }
@@ -432,6 +490,13 @@ const { data: product1, refresh: refreshProduct } = await useAsyncData(
     )
   }
 )
+let swiperRef = null
+const setSwiperRef = swiper => {
+  swiperRef = swiper
+}
+const slideTo = index => {
+  swiperRef.slideTo(index, 0)
+}
 
 const url = useRuntimeConfig().public.BASE_URL
 
@@ -472,6 +537,7 @@ onMounted(() => {
   // selectedSize.value = ref(product1.value.data.products[0].sizes[0])
 })
 
+
 function changeImg (i) {
   console.log(i)
   selectedImg.value = product1.value.data.products[0].images[i]
@@ -501,7 +567,7 @@ async function addToCart () {
     } else {
       try {
         buttonName.value = 'لطفا کمی صبر کنید...'
-          console.log('ss', selectedSize);
+        console.log('ss', selectedSize)
         const checkproduct = await $fetch(
           useRuntimeConfig().public.BASE_URL +
             `/updateproduct?productId=${product1.value.data.products[0].productId}&sizeId=${selectedSize.value.id}`,
@@ -547,7 +613,12 @@ async function addToCart () {
 // watch(() => route.params, refreshData)
 </script>
 
-<style lang="css">
+<style lang="scss">
+.productSwiper {
+  .swiper-pagination {
+    bottom: 32px !important;
+  }
+}
 .swiper-button-next {
   border-top-right-radius: 8px;
   background: white;
