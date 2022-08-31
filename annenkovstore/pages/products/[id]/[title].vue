@@ -474,7 +474,13 @@ const showImg = index => {
   indexRef.value = index
   visibleRef.value = true
 }
-const onHide = () => (visibleRef.value = false)
+
+function onHide() {
+  visibleRef.value = false
+  setTimeout(() => {
+    document.getElementsByTagName("body")[0].style.overflowY= "auto"
+  }, 250);
+}
 
 prId.value = route.params.id
 
