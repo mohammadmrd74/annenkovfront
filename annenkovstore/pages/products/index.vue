@@ -420,7 +420,7 @@
           </select>
           
           <button
-          style="min-width: 140px;"
+          style="min-width: 140px"
             class=" hidden md:flex bg-gray-100 p-2 mx-2 rounded-md items-center"
             @click="open = true"
           >
@@ -443,16 +443,17 @@
       <div
         class="grid grid-cols-2 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
       >
-        <nuxt-link
+        <a
           v-for="product in allproducts.data.products"
           :key="product.productId"
           class="group"
           style="position: relative"
-          :to="
+          :href="
             `/products/${product.productId}/${product.title
               .replace(/\//g, '-')
               .replace(/ /g, '-')}`
           "
+          target="_blank"
         >
           <div
             class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
@@ -500,7 +501,7 @@
             }}
             تومان
           </p>
-        </nuxt-link>
+        </a>
       </div>
       <div class="flex justify-center mt-5">
         <button
@@ -660,9 +661,6 @@ onMounted(() => {
 })
 
 function currenyConvert (value) {
-  if (typeof value !== 'number') {
-    return value
-  }
   return value.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
 }
 function changeCost (value) {

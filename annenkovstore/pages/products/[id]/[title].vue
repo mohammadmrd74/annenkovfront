@@ -31,7 +31,7 @@
         >
           <li>
             <div class="flex items-center">
-              <a class="mr-2 productCategory text-sm font-medium text-gray-900">
+              <a  class="mr-2 productCategory text-sm font-medium text-gray-900">
                 {{ product1.data.products[0].categoryTitle }}
               </a>
               <svg
@@ -49,7 +49,7 @@
           </li>
           <li>
             <div class="flex items-center">
-              <a class="mr-2 text-sm font-medium text-gray-900">
+              <a :href="`/products?mainType=${product1.data.products[0].mainType}&mainId=${product1.data.products[0].mainAndCategoryId}`" class="mr-2 text-sm font-medium text-gray-900">
                 {{ product1.data.products[0].mainType }}
               </a>
               <svg
@@ -67,6 +67,7 @@
           </li>
           <li class="text-sm">
             <a
+            :href="`/products?mainType=${product1.data.products[0].mainType}&mainId=${product1.data.products[0].mainAndCategoryId}&brandId=${product1.data.products[0].brandId}`"
               aria-current="page"
               class="font-medium text-gray-500 hover:text-gray-600"
             >
@@ -174,9 +175,11 @@
               class="text-3xl productTitle font-extrabold text-gray-900 sm:text-3xl"
             >
               {{ product1.data.products[0].brandNameFa }}
+              {{ product1.data.products[0].type }}
               {{ product1.data.products[0].title }}
             </h1>
           </div>
+
 
           <!-- Options -->
           <div class="mt-5 lg:mt-0 lg:row-span-3">
@@ -304,7 +307,7 @@
                       <a
                         target="_blank"
                         href="https://wa.link/19kpt3"
-                        class="hover:underline flex justify-center"
+                        class="hov  er:underline flex justify-center"
                       >
                         <svg
                           class="w-5 h-5 ml-4"
