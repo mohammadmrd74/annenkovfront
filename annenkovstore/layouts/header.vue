@@ -213,6 +213,7 @@
                     target="_blank"
                     :href="
                       `/products/${product.productId}/${product.title
+                        .replace(/%/g, '')
                         .replace(/\//g, '-')
                         .replace(/ /g, '-')}`
                     "

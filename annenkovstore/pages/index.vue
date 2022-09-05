@@ -23,6 +23,7 @@
           @click="
             openUrl(
               `/products/${product.productId}/${product.title
+                .replace(/%/g, '')
                 .replace(/\//g, '-')
                 .replace(/ /g, '-')}`
             )
@@ -89,6 +90,7 @@
           @click="
             openUrl(
               `/products/${product.productId}/${product.title
+                .replace(/%/g, '')
                 .replace(/\//g, '-')
                 .replace(/ /g, '-')}`
             )

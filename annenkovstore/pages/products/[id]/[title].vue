@@ -389,13 +389,13 @@
             tag="a"
             :href="
               `/products/${product.productId}/${product.title
+                .replace(/%/g, '')
                 .replace(/\//g, '-')
                 .replace(/ /g, '-')}`
             "
             class="group py-2"
             target="_blank"
           >
-            <!-- <a  :href="`/products/${product.productId}/${product.title.replace(/\//g, '-').replace(/ /g, '-')}`" target="_blank" > -->
             <div
               class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8"
             >

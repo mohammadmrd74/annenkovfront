@@ -450,6 +450,7 @@
           style="position: relative"
           :href="
             `/products/${product.productId}/${product.title
+              .replace(/%/g, '')
               .replace(/\//g, '-')
               .replace(/ /g, '-')}`
           "
