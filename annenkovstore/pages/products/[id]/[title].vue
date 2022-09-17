@@ -229,7 +229,8 @@
               کد محصول: {{ product1.data.products[0].styleNumber }}
             </p>
 
-            <div class="mt-10">
+            <div v-if="sizeGet">
+              <div class="mt-10" v-if="foundSizes.data && foundSizes.data.length > 0">
               <!-- Sizes -->
               <div class="mt-10">
                 <div class="flex items-center justify-between px-3 py-2">
@@ -241,14 +242,13 @@
                     راهنمای سایز
                   </button>
                 </div>
-
                 <RadioGroup v-model="selectedSize" class="mt-4">
                   <div
                     class="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4"
                   >
                     <RadioGroupOption
                       as="template"
-                      v-for="size in product1.data.products[0].sizes"
+                      v-for="size in foundSizes.data"
                       :key="size"
                       :value="size"
                       v-slot="{ active, checked }"
@@ -264,7 +264,7 @@
                         ]"
                       >
                         <RadioGroupLabel as="span">
-                          {{ size.size }}
+                          {{ size }}
                         </RadioGroupLabel>
                         <span
                           :class="[
@@ -289,6 +289,11 @@
               >
                 {{ buttonName }}
               </button>
+            </div>
+            <div v-else>اتمام موجودی</div>
+            </div>
+            <div v-else class="py-6 text-xl">
+              در حال دریافت سایز ها...
             </div>
           </div>
 
@@ -532,7 +537,9 @@ const { data: similarProducts, refresh: refreshSProduct } = await useAsyncData(
   }
 )
 
-onMounted(() => {
+const foundSizes = ref([])
+
+onMounted(async() => {
   if (route.params.id !== product1.value.data.products[0].productId) {
     console.log(route.params.id, product1.value.data.products[0].productId)
     prId.value = route.params.id
@@ -540,11 +547,24 @@ onMounted(() => {
     refreshProduct()
   }
 
+  foundSizes.value = await $fetch(
+          useRuntimeConfig().public.BASE_URL +
+            `/updateproduct?productId=${product1.value.data.products[0].productId}`,
+          {
+            method: 'GET'
+          }
+  )
+  sizeGet.value = true
+
+  console.log(foundSizes.value.data);
+
   // if (product1.value.data.products[0])
   //   selectedImg.value = product1.value.data.products[0].images[0]
   // const selectedColor = ref(product.colors[0])
   // selectedSize.value = ref(product1.value.data.products[0].sizes[0])
 })
+
+const sizeGet = ref(false)
 
 
 function changeImg (i) {
@@ -576,15 +596,6 @@ async function addToCart () {
     } else {
       try {
         buttonName.value = 'لطفا کمی صبر کنید...'
-        console.log('ss', selectedSize)
-        const checkproduct = await $fetch(
-          useRuntimeConfig().public.BASE_URL +
-            `/updateproduct?productId=${product1.value.data.products[0].productId}&sizeId=${selectedSize.value.id}`,
-          {
-            method: 'GET'
-          }
-        )
-        console.log('checked', checkproduct.data)
         // if(product1.value.data.products[0].totalPrice !== checkproduct.data.totalPrice)
         //   toaster.error(`قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`)
         const res = await $fetch(

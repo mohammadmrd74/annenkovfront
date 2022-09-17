@@ -260,21 +260,7 @@ async function handleOnComplete (value) {
     if (route.query.type === 'cart') {
       wait.value = true
       try {
-        const checkproduct = await $fetch(
-          useRuntimeConfig().public.BASE_URL +
-            `/updateproduct?productId=${authstore.getProductToBuy.productId}&sizeId=${authstore.getProductToBuy.selectedSize.id}`,
-          {
-            method: 'GET'
-          }
-        )
-        console.log('checked', checkproduct.data)
-        // if (
-        //   authstore.getProductToBuy.productPrice !==
-        //   checkproduct.data.totalPrice
-        // )
-        //   toaster.error(
-        //     `قیمت این محصول هم اکنون ${checkproduct.data.totalPrice} می باشد.`
-        //   )
+  
         const res = await $fetch(
           useRuntimeConfig().public.BASE_URL + '/insertToCart',
           {
@@ -363,13 +349,14 @@ async function sendSms () {
           }
         }
       )
+      state.value = 1
       userData = user
     } catch (error) {
       console.log(error)
       toaster.error(`شماره همراه اشتباه است`)
     }
 
-    state.value = 1
+    
     console.log(state.value)
   }
 }
