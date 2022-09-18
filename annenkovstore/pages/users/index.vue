@@ -268,7 +268,7 @@ async function handleOnComplete (value) {
             body: {
               productId: authstore.getProductToBuy.productId,
               selectedColor: authstore.getProductToBuy.selectedColor,
-              selectedSize: authstore.getProductToBuy.selectedSize.size,
+              selectedSize: authstore.getProductToBuy.selectedSize,
               productPrice: authstore.getProductToBuy.productPrice,
               count: 1
             },

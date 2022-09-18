@@ -538,6 +538,7 @@ const { data: similarProducts, refresh: refreshSProduct } = await useAsyncData(
 )
 
 const foundSizes = ref([])
+const sizeGet = ref(false)
 
 onMounted(async() => {
   if (route.params.id !== product1.value.data.products[0].productId) {
@@ -547,6 +548,7 @@ onMounted(async() => {
     refreshProduct()
   }
 
+try {
   foundSizes.value = await $fetch(
           useRuntimeConfig().public.BASE_URL +
             `/updateproduct?productId=${product1.value.data.products[0].productId}`,
@@ -555,6 +557,10 @@ onMounted(async() => {
           }
   )
   sizeGet.value = true
+} catch (error) {
+  sizeGet.value = false
+  
+}
 
   console.log(foundSizes.value.data);
 
@@ -564,7 +570,7 @@ onMounted(async() => {
   // selectedSize.value = ref(product1.value.data.products[0].sizes[0])
 })
 
-const sizeGet = ref(false)
+
 
 
 function changeImg (i) {
@@ -605,7 +611,7 @@ async function addToCart () {
             body: {
               productId: product1.value.data.products[0].productId,
               selectedColor: '',
-              selectedSize: selectedSize.value.size,
+              selectedSize: selectedSize.value,
               productPrice: product1.value.data.products[0].totalPrice,
               count: 1
             },
