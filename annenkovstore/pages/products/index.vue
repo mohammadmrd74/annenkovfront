@@ -403,6 +403,7 @@
       <div class="flex justify-between items-center my-3">
         <h2 class=" text-md font-bold">
           {{ route.query.mainType || 'همه محصولات' }}
+          {{ route.query.typeName || ''}}
           <div>({{ allproducts.data.recordNumbers }} عدد)</div>
         </h2>
         <div class="flex " style="min-width:120px">
@@ -628,7 +629,7 @@ const { data: allproducts, refresh: refreshProducts } = await useAsyncData(
         sizes: sizesToFilter.value,
         colors: colorsToFilter.value,
         secondColors: scolorsToFilter.value,
-        types: typesToFilter.value,
+        types: route.query.typeId ? [parseInt(route.query.typeId)] : typesToFilter.value,
         main: route.query.mainId ? [parseInt(route.query.mainId)] : [],
         search: '',
         showDiscounts: route.query.discount ? true : false,

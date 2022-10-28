@@ -129,12 +129,12 @@
               </div>
 
               <button
-                  @click="sizeChartDialog = true"
-                  class="font-bold ml-auto px-7 py-4"
-                  style="white-space: nowrap;"
-                >
-                  راهنمای سایز
-                </button>
+                @click="sizeChartDialog = true"
+                class="font-bold ml-auto px-7 py-4"
+                style="white-space: nowrap;"
+              >
+                راهنمای سایز
+              </button>
 
               <a
                 href="/annenkovfamily"
@@ -268,7 +268,6 @@
         </div>
       </Dialog>
     </TransitionRoot>
-
     <header class="relative bg-white">
       <nav aria-label="Top" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="border-b border-gray-200">
@@ -297,6 +296,7 @@
                   style="white-space: nowrap;"
                   >فروش ویژه
                 </a>
+
                 <Popover
                   v-for="(category, i) in landing.data.menus.main"
                   :key="category.id"
@@ -340,7 +340,10 @@
                       />
 
                       <div class="relative bg-white">
-                        <div class="max-w-5xl mx-auto px-8">
+                        <div class="d-flex max-w-5xl mx-auto px-8">
+                          <!-- <div v-for="c in category.categories" :key="c.mainId">
+                            {{ c.categoryTitle }}
+                          </div> -->
                           <div class="py-4">
                             <div
                               class=" grid grid-cols-5 gap-y-3 gap-x-3 text-sm"
@@ -489,7 +492,9 @@
                           <div class="grid grid-cols-12">
                             <div class="md:col-span-9 col-span-12">
                               <div class="text-right  font-md">
-                                <span class="text-red-600 font-bold">چطوری اندازه کفشمونو بفهمیم؟</span>
+                                <span class="text-red-600 font-bold"
+                                  >چطوری اندازه کفشمونو بفهمیم؟</span
+                                >
                                 <ul class="p-4" style="list-style: disc">
                                   <li class="my-2 font-bold">
                                     برای اندازه گیری دقیق تر، پاهاتونو در آخر
@@ -579,9 +584,11 @@
                                 </button>
                               </div>
                             </div>
-                            
                           </div>
-                          <div v-if="foundedSizes.length > 0" class="text-center my-5">
+                          <div
+                            v-if="foundedSizes.length > 0"
+                            class="text-center my-5"
+                          >
                             <!-- {{foundedSizes}} -->
                             <table id="sizechart" class="m-auto">
                               <thead>
@@ -594,10 +601,20 @@
                               </thead>
                               <tbody>
                                 <tr v-for="(size, i) in foundedSizes" :key="i">
-                                  <td class="p-5">{{size.brandName}}</td>
-                                  <td class="p-5">{{size.sizeInCM}}</td>
-                                  <td class="p-5" style="direction:ltr">{{size.size}}</td>
-                                  <td class="p-5">{{size.type=='men' ? 'مردانه' : size.type=='women' ? 'زنانه' : 'اسپورت'}}</td>
+                                  <td class="p-5">{{ size.brandName }}</td>
+                                  <td class="p-5">{{ size.sizeInCM }}</td>
+                                  <td class="p-5" style="direction:ltr">
+                                    {{ size.size }}
+                                  </td>
+                                  <td class="p-5">
+                                    {{
+                                      size.type == 'men'
+                                        ? 'مردانه'
+                                        : size.type == 'women'
+                                        ? 'زنانه'
+                                        : 'اسپورت'
+                                    }}
+                                  </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -804,9 +821,9 @@ const selectedType = ref('انتخاب نوع')
 const sizeChartDialog = ref(false)
 const selectedSection = ref(0)
 
- $bus.$on('sizeChartEvent', (data) => {
-     sizeChartDialog.value = true
- })
+$bus.$on('sizeChartEvent', data => {
+  sizeChartDialog.value = true
+})
 const brands = [
   {
     en: 'nike',
@@ -862,14 +879,18 @@ const { data: landing } = await useAsyncData('landing', () =>
 const authstore = useAuthStore()
 
 function calculate () {
-  if (!sizeInCM.value || selectedBrand.value === 'انتخاب برند' || selectedType.value === 'انتخاب نوع')
+  if (
+    !sizeInCM.value ||
+    selectedBrand.value === 'انتخاب برند' ||
+    selectedType.value === 'انتخاب نوع'
+  )
     toaster.error('لطفا سایز و برند خود را وارد نمایید')
   else {
     foundedSizes.value = []
     let goal = parseFloat(sizeInCM.value)
     let min = 0
     let max = 0
-    console.log(11, goal % 1);
+    console.log(11, goal % 1)
     if (goal % 1 > 0.5) {
       max = Math.ceil(goal)
       min = Math.floor(goal) + 0.5
@@ -883,7 +904,9 @@ function calculate () {
     console.log(max)
     console.log(min)
     let filteredBrands = sizeChart.sizeCharts.filter(
-      brand => brand.brandName === selectedBrand.value && brand.type === selectedType.value
+      brand =>
+        brand.brandName === selectedBrand.value &&
+        brand.type === selectedType.value
     )
     var closest1 = filteredBrands.reduce(function (prev, curr) {
       return Math.abs(parseFloat(curr.sizeInCM) - max) <
@@ -901,13 +924,12 @@ function calculate () {
 
   console.log(closest1)
   console.log(closest2)
-  if(closest1.size !== closest2.size) {
+  if (closest1.size !== closest2.size) {
     foundedSizes.value.push(closest1)
     foundedSizes.value.push(closest2)
   } else {
     foundedSizes.value.push(closest2)
   }
-  
 }
 
 const open = ref(false)
@@ -1010,14 +1032,19 @@ onMounted(async () => {
   width: 100%;
 }
 
-#sizechart td, #sizechart th {
+#sizechart td,
+#sizechart th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#sizechart tr:nth-child(even){background-color: #f2f2f2;}
+#sizechart tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
 
-#sizechart tr:hover {background-color: #ddd;}
+#sizechart tr:hover {
+  background-color: #ddd;
+}
 
 #sizechart th {
   padding-top: 12px;

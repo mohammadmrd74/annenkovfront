@@ -71,10 +71,10 @@
       </swiper>
     </section>
 
-    <section class="px-3 mt-10">
+    <section v-show="product.data" v-for="(product, i) in landingItems.data.newProducts" :key="i" class="px-3 mt-10">
       <div class=" flex justify-between w-full">
-        <div class="swiperTitle">آخرین محصولات</div>
-        <nuxt-link to="/products" class="text-left">مشاهده همه</nuxt-link>
+        <div class="swiperTitle">{{product.typeName}}</div>
+        <nuxt-link :to="'/products?typeId=' + product.typeId + '&typeName=' + product.typeName" class="text-left">مشاهده همه</nuxt-link>
       </div>
       <swiper
         :modules="modules"
@@ -85,7 +85,7 @@
         :navigation="isDesktop ? true : false"
       >
         <swiper-slide
-          v-for="(product, i) in landingItems.data.newProducts"
+          v-for="(product, i) in product.data"
           :key="i"
           @click="
             openUrl(
@@ -235,8 +235,9 @@ export default {
       link: [{ rel: 'canonical', href: 'https://annenkovstore.ir/' }]
     })
     const { data: landingItems } = await useAsyncData('landingItems', () =>
-      $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
+    $fetch(useRuntimeConfig().public.BASE_URL + '/landingItems')
     )
+    
     const onSwiper = swiper => {
       console.log(swiper)
     }
