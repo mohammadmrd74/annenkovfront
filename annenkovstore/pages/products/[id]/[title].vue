@@ -303,7 +303,7 @@
               <div class="space-y-6">
                 <div class="text-base text-lg text-gray-900">
                   <ul>
-                    <li>زمان تقریبی تحویل: سه هفته کاری</li>
+                    <li>زمان تقریبی تحویل: ۳۰ روز کاری</li>
                     <li class="mt-4">هزینه ارسال: رایگان</li>
                     <li class="mt-4">
                       برای خرید این کفش نیاز به راهنمایی دارید؟
