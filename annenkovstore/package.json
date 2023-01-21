@@ -32,6 +32,7 @@
     "nuxt-tailvue": "^1.0.95",
     "pinia": "^2.0.14",
     "pinia-plugin-persistedstate": "^1.6.1",
+    "sass": "^1.57.1",
     "swiper": "^8.1.5",
     "tw-elements": "^1.0.0-alpha12",
     "vue-easy-lightbox": "^1.7.1",

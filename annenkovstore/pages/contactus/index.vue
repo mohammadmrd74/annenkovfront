@@ -2,11 +2,11 @@
   <div class="container mx-auto p-10" style="min-height:70vh">
     <img class="mx-auto h-40 w-auto" src="~/assets/logo.jpg" alt="Workflow" />
     <h1 class="text-xl font-bold">تماس با ما</h1>
-    <!-- <p class="text-lg mt-10">
+    <p class="text-lg mt-10">
       آدرس: ساری خیابان فرهنگ، کوی توکل، توکل ۶
-    </p> -->
+    </p>
     <p class="text-lg mt-2">
-      تلفن تماس: 09361505529
+      تلفن تماس: 02144068731
     </p>
     <p class="text-lg mt-2">
       ایمیل: info@annenkovstore.ir

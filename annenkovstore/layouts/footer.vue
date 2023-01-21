@@ -57,22 +57,7 @@
               alt="دروازه پرداخت معتبر"
             />
           </a>
-          <a
-            referrerpolicy="origin"
-            target="_blank"
-            style="min-height:115px; max-width: 90px;"
-            class="border mx-5 items-center justify-center flex rounded-md"
-            href="https://trustseal.enamad.ir/?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3"
-          >
-            <img
-              class="w-100 m-auto"
-              src="~/assets/images/enamad-b8f9b6ac.png"
-              width="75"
-              height="75"
-              alt="نماد اعتماد الکترونیک"
-              style="object-fit: contain;"
-            />
-          </a>
+          <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3"><img referrerpolicy="origin" src="https://Trustseal.eNamad.ir/logo.aspx?id=291376&amp;Code=6KYf5dvH47oyHqyYv5g3" alt="" style="cursor:pointer" id="6KYf5dvH47oyHqyYv5g3"></a>
         </div>
       </div>
     </div>
